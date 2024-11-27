@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.parent-register { 
+    margin-top: 90px ;
+    display: grid;
+    grid-template-columns: repeat(36, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    background-image: url('/assets/image/fondo.webp');
+    border-bottom: 4px solid 7bd9f2;
+      font-family: "Jost", sans-serif;
+    
+    
+}
+
+.world {
+    grid-column:16 /span 50 ;
+    height: 120vh;
+    width: 100%;
+    grid-row: 1 /span 16;
+    background-image: url('/assets/image/fondo-registro.webp');
+}
+
+
+
+
+.register-container {
+
+    grid-column:1 /span 16 ;
+    grid-row: 1 /span 16;
+    width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    color: white;
+    
+    .title {
+        font-size: 3.4em;
+        margin-bottom: 30px;
+        text-align: center;
+        font-family: "Jost", sans-serif;
+        font-weight: 300;
+    }
+}
+
+.register-form {
+
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    
+    .input-full, .input-half {
+        background: rgba(59, 59, 59, 0.555);
+        border: none;
+        border-radius: 25px;
+        padding: 12px 20px;
+        color: white;
+        font-size: 16px;
+        height: 3vh;
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        &:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+        }
+    }
+    
+    .input-row {
+        display: flex;
+        gap: 15px;
+        
+        .input-half {
+            flex: 1;
+        }
+    }
+    
+    .phone-input {
+        flex: 1;
+        display: flex;
+        gap: 5px;
+        
+        .country-code {
+            width: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 25px;
+            padding: 12px;
+            color: white;
+        }
+        
+        .phone {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 25px;
+            padding: 12px 20px;
+            color: white;
+        }
+    }
+    
+    .terms {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 5px 0;
+        
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+        }
+        
+        label {
+            color: rgba(255, 255, 255, 0.8);
+        }
+    }
+    
+    .register-btn {
+        background: transparent;
+        border: 2px solid #00ccff;
+        border-radius: 25px;
+        color: white;
+        padding: 12px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        
+        &:hover {
+            background: rgba(0, 204, 255, 0.1);
+        }
+    }
+}

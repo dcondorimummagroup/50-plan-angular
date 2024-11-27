@@ -1,0 +1,43 @@
+<div class="parent">
+    <div class="parent-sidebar">
+      <div class="sidebar">
+        <!-- Logo -->
+        <div class="sidebar-element-logo">
+          <img [routerLink]="['/']" (click)="goToSection('logo')" class="image-logo" src="/assets/image/logo.webp" alt="logo">
+        </div>
+        
+        <!-- Navegación a secciones -->
+        <div class="sidebar-element-1">
+          <button (click)="goToSection('nosotros')" class="text-element">Nosotros</button>
+        </div>
+        <div class="sidebar-element-2">
+          <button (click)="goToSection('estrategia')" class="text-element">Estrategia</button>
+        </div>
+        <div class="sidebar-element-3">
+          <button (click)="goToSection('licencias')" class="text-element">Licencias</button>
+        </div>
+        <div class="sidebar-element-4">
+          <button (click)="goToSection('clientes')" class="text-element">Clientes</button>
+        </div>
+        
+        <!-- Simulator -->
+        <div class="sidebar-element-simulator">
+          <button [routerLink]="['/simulator']" class="element-simulator">
+            <p class="simulator">Simulator</p>
+          </button>
+        </div>
+        
+        <!-- Autenticación -->
+        <div class="sidebar-element-inicio">
+          <button class="btn-inicio" (click)="goToLogin()">
+            <p class="inicio">Iniciar Sesión</p>
+          </button>
+        </div>
+        <div class="sidebar-element-register">
+          <button class="btn-register" (click)="goToRegister()">
+            <p class="register">Registrarse</p>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
