@@ -2,14 +2,24 @@
     "version": 2,
     "builds": [
       {
-        "src": "dist/plan_50_angular/*",
-        "use": "@vercel/static"
+        "src": "package.json",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "dist/plan_50_angular"
+        }
       }
     ],
     "routes": [
       {
+        "handle": "filesystem"
+      },
+      {
+        "src": "/assets/(.*)",
+        "dest": "/assets/$1"
+      },
+      {
         "src": "/(.*)",
-        "dest": "/dist/plan_50_angular/index.html"
+        "dest": "/index.html"
       }
     ]
 }
