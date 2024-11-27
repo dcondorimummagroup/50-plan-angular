@@ -44,10 +44,15 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "1mb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "150kb",
+                  "maximumError": "200kb"
+                },
+                {
+                  "type": "bundle",
+                  "name": "styles",
+                  "maximumWarning": "150kb",
+                  "maximumError": "200kb"
                 }
-                
               ],
               "outputHashing": "all"
             },
