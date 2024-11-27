@@ -2,14 +2,14 @@
     "version": 2,
     "builds": [
       {
-        "src": "dist/plan-50-angular/*",
+        "src": "dist/plan_50_angular/*",
         "use": "@vercel/static"
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "/dist/plan-50-angular/index.html"
+        "dest": "/dist/plan_50_angular/index.html"
       }
     ]
-  }
+}
