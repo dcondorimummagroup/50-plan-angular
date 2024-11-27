@@ -1,10 +1,12 @@
 {
     "version": 2,
+    "buildCommand": "npm run vercel-build",
     "builds": [
       {
         "src": "package.json",
         "use": "@vercel/static-build",
         "config": {
+          "maxLambdaSize": "15mb",
           "distDir": "dist/plan_50_angular"
         }
       }
@@ -22,4 +24,4 @@
         "dest": "/index.html"
       }
     ]
-}
+  }
