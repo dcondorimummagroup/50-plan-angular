@@ -10,26 +10,29 @@ export class SidebarComponent {
   constructor(private router: Router) {}
 
   goToSection(section: string): void {
-    // Si ya estamos en la página principal
-    if (this.router.url === '/') {
-      const element = document.getElementById(section);
-      if (element) {
-        const headerOffset = 90;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
+    if (this.router.url !== '/') {
+      this.router.navigate(['/']).then(() => {
+        setTimeout(() => {
+          this.scrollToSection(section);
+        }, 100);
+      });
     } else {
-      // Si no estamos en la página principal, navegar primero
-      this.router.navigate(['/'], { fragment: section });
+      this.scrollToSection(section);
     }
   }
 
-  // Agregar métodos de navegación
+  private scrollToSection(section: string): void {
+    const element = document.getElementById(section);
+    if (element) {
+      const headerOffset = 90;
+      const targetPosition = element.offsetTop - headerOffset;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }
+
   goToLogin(): void {
     this.router.navigate(['/login']);
   }

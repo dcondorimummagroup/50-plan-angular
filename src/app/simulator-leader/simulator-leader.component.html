@@ -1,11 +1,11 @@
 <div class="parent-body-simulator-capa-1" >
     <div class="block-1" >
         <div class="block-1-box-1" >   
-                <div [routerLink]="['/simulator-investor']"  class="icon-1" routerLinkActive="active" ></div>
+                <div [routerLink]="['/simulator-investor']" routerLinkActive="active" class="icon-1" ></div>
                 <div  [routerLink]="['/simulator-promoter']" routerLinkActive="active" class="icon-2" ></div>
                 <div [routerLink]="['/simulator-leader']" routerLinkActive="active" class="icon-3" ></div>
             <div class="text-invent" >
-                Inversionista
+                Lider
             </div>
         </div>
         <div class="block-1-box-2" >
@@ -29,34 +29,56 @@
         </div>
     </div>
     <div class="block-2" >
-        <div class="block-2-box-1" >
-            <div class="block-2-box-1-title" >Capital + rendimiento anual:</div>
-            <div class="block-2-box-1-amount" > $130.00</div>
+ 
+        <div class="block-2-box-1" >   
+           <P class="orbit-text">Órbitas</P> 
+          
+           
         </div>
-        <div class="block-2-box-2" > 
-            <div class="block-2-box-2-title" >Semanal</div>
-            <div class="block-2-box-2-amount" >$0.63</div>
+        <div class="block-2-box-2" >
+            <div  class="orbit-1" >
+                <p>
+                   1
+                </p> 
+            </div>   
         </div>
         <div class="block-2-box-3" >
-            <div class="block-2-box-3-title" >Mensual</div>
-            <div class="block-2-box-3-amount" >$2.50</div>
+                <div  class="orbit-1" >
+                    <p>
+                       2
+                    </p> 
+                </div>      
         </div>
         <div class="block-2-box-4" >
-            <div class="block-2-box-4-title" >Anual</div>
-            <div class="block-2-box-4-amount" >$30.00</div>
+            <div  class="orbit-1" >
+                <p>
+                  3
+                </p> 
+            </div>    
         </div>
-    </div>
-    <div class="button-simulation">
-        <p class="button-text" >volver a simular</p>
-    </div>
-    <button class="exclamation-mark" (click)="showInfo()"> <p class="text-i">¡</p> </button>
+        <div class="block-2-box-5" >
+            <div  class="orbit-1" >
+                <p>
+                    4
+                </p> 
+            </div>  
+        </div>
+        <div class="block-2-box-6" >
+            <div  class="orbit-1" >
+                <p>
+                   5
+                </p> 
+            </div>    
+        </div>
 
+    </div>
+    <button class="exclamation-mark" (click)="showInfo()" > <p class="text-i" >¡</p> </button>
 </div>
 
 <div class="card-overlay" *ngIf="isCardVisible" (click)="hideInfo()">
     <div class="card-wrapper" (click)="$event.stopPropagation()">
         <app-card 
-            *ngIf="!showCard2 && !showLicenses"
+            *ngIf="!showCard2"
             (closeCard)="hideInfo()"
             (nextCard)="showNextCard()">
         </app-card>
@@ -64,9 +86,5 @@
             *ngIf="showCard2"
             (closeCard)="hideInfo()">
         </app-card-2>
-        <app-licenses
-            *ngIf="showLicenses"
-            (closeEvent)="hideInfo()">
-        </app-licenses>
     </div>
 </div>

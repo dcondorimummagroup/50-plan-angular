@@ -64,19 +64,28 @@
              
                 <div class="line-2" >ol</div>
         </div>
-        <div id="licencias" class="parent-body-4" >
-            <div class="body-4-sub-title" >Licencias de Inversión</div>
-                <div class="body-4-box-1" >
+            <!-- Tus secciones existentes -->
+            <div id="licencias" class="parent-body-4">
+              <div class="body-4-sub-title">Licencias de Inversión</div>
+              
+              <!-- Boxes con eventos click -->
+              <div class="body-4-box-1" (click)="showLicenses(1)"></div>
+              <div class="body-4-box-2" (click)="showLicenses(2)"></div>
+              <div class="body-4-box-3" (click)="showLicenses(3)"></div>
+              <div class="body-4-box-4" (click)="showLicenses(4)"></div>
+              
+              <img class="image-planeta" src="/assets/image/planeta.webp" alt="">
+            </div>
+          
+            <!-- Overlay para las licencias -->
+            <div class="overlay" *ngIf="isLicensesVisible" (click)="hideLicenses()">
+                <div class="modal-wrapper" (click)="$event.stopPropagation()">
+                  <app-licenses 
+                    [selectedBox]="selectedBoxId"
+                    (closeEvent)="hideLicenses()">
+                  </app-licenses>
                 </div>
-                <div class="body-4-box-2" > 
-                </div>
-                <div class="body-4-box-3" >
-                </div>
-                <div class="body-4-box-4" >
-      
-                </div>
-                <img class="image-planeta" src="/assets/image/planeta.webp" alt="">
-        </div>
+              </div>
         <div id="clientes" class="parent-body-5" >
             <div class="body-5-sub-title" >Testimonios</div>
             <div class="rectangle">

@@ -1,0 +1,57 @@
+<div class="modal-container" [@cardAnimation]>
+    <div class="modal-content">
+        <!-- Header -->
+        <div class="parent-header">
+            <div class="modal-header" [@contentAnimation]>
+                <h2>{{ currentContent.title }}</h2>
+                <button class="close-button" (click)="onClose()">✕</button>
+            </div>
+        </div>
+
+        <!-- Body -->
+        <div class="modal-body">
+            <p class="description" [@contentAnimation]>
+                {{ currentContent.description }}
+            </p>
+
+            <!-- Card Section -->
+            <div class="card-section" [@contentAnimation]>
+                <div class="card">
+                    <img [src]="currentContent.image" [alt]="currentContent.title">
+                    <div class="section-button">
+                        <div class="investment-range-1">
+                            <span class="investment-range-title">Inversión (USD)</span>
+                            <span class="investment-range-text">{{ currentContent.investmentRange }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Earnings Section -->
+                <div class="earnings">
+                    <h3>Ganancias</h3>
+                    <div class="earnings-item">
+                        <span>Semanal:</span>
+                        <span class="highlight">{{ currentContent.earnings.weekly }}</span>
+                    </div>
+                    <div class="earnings-item">
+                        <span>Mensual:</span>
+                        <span class="highlight">{{ currentContent.earnings.monthly }}</span>
+                    </div>
+                    <div class="earnings-item">
+                        <span>Anual:</span>
+                        <span class="highlight">{{ currentContent.earnings.annual }}</span>
+                    </div>
+                    <div class="section-button">
+                        <button class="next-button-licenses" (click)="onNextLicense()">
+                            {{ currentContent.nextLicense }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <p class="benefits" [@contentAnimation]>
+                {{ currentContent.benefits }}
+            </p>
+        </div>
+    </div>
+</div>

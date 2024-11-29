@@ -8,19 +8,15 @@ html {
   }
 
 .parent-sidebar{
-  
     position: fixed;
     grid-column: 1 / span 12;
     display: grid;
     grid-template-columns: repeat(36, 1fr);
-
     background-color: black;
     border-bottom: 4px solid 7bd9f2;
-    box-shadow: 0 10px 13px rgb(0, 204, 255), 0 0 10px rgba(0, 58, 112, 0.911); 
+    box-shadow: 0 5px 23px #00ffff, 0 0 10px rgb(0, 217, 255); 
     height: 9vh;
     z-index: 100;
-    
- 
 }
 .shadow {
     background-color: red;
@@ -113,6 +109,7 @@ html {
 }
 
 .simulator {
+    
     font-family: "Jost", sans-serif;
     font-size: 1.2em;
     font-weight: 400;
@@ -127,8 +124,13 @@ html {
 }
 
 .btn-inicio   {
-    background-color: black;
-    border: 1px solid rgb(68, 68, 68);
+    background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0) 0%, 
+    rgba(97, 97, 97, 0) 14%,
+    rgba(22, 22, 22, 0.377) 50%,
+    rgba(85, 85, 85, 0.329) 100%
+);
+    border: 1px solid transparent;
     border-radius: 40px ;
     border-radius: 20px 0px 0px 20px;
     color: white;
@@ -136,10 +138,15 @@ html {
 }
 
 .btn-register   {
-    
-    background-color: black;
-    border: 1px solid rgb(68, 68, 68);
+    background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0) 0%, 
+    rgba(97, 97, 97, 0) 14%,
+    rgba(22, 22, 22, 0.377) 50%,
+    rgba(85, 85, 85, 0.329) 100%
+);
+    border: 1px solid transparent;
     border-radius: 0px 20px 20px 0px;
+    border-left: 1px solid rgb(61, 61, 61);
     color: white;
     width: 180px;
 }
@@ -160,17 +167,24 @@ html {
     color: rgb(146, 146, 146);
  }
 .element-simulator  {
+    background: linear-gradient(to bottom, 
+    rgba(146, 146, 146, 0) 0%, 
+    rgba(97, 97, 97, 0) 14%,
+    rgba(22, 22, 22, 0.377) 50%,
+    rgba(85, 85, 85, 0.329) 100%
+);
     margin: 10px;
     width: 200px;
     background-color: black;
     color:rgb(146, 146, 146);
-    border: 1px solid rgb(95, 95, 95);
+    border: 1px solid transparent;
     border-radius: 20px ;
 }
+
 .btn-inicio:hover { 
     color: white;
     background: url('/assets/image/hover.svg') center/contain no-repeat;
-
+    background-size: 220%; 
     p{
         color: white;
     }
@@ -178,12 +192,15 @@ html {
  .btn-register:hover {
     color: white;
     background: url('/assets/image/hover.svg') center/contain no-repeat;
+    background-size: 220%; 
     p{
         color: white;
     }
  }
 .element-simulator:hover  {
     background: url('/assets/image/hover.svg') center/contain no-repeat;
+    
+    background-size: 220%; 
     p{
         color: white;
     }

@@ -1,11 +1,10 @@
 import { Component, HostListener } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-simulator-investor',
-  templateUrl: './simulator-investor.component.html',
-  styleUrls: ['./simulator-investor.component.scss'],
+  selector: 'app-simulator-promoter',
+  templateUrl: './simulator-promoter.component.html',
+  styleUrls: ['./simulator-promoter.component.scss'],
   animations: [
     trigger('fadeAnimation', [
       transition(':enter', [
@@ -18,17 +17,13 @@ import { Router } from '@angular/router';
     ])
   ]
 })
-export class SimulatorInvestorComponent {
+export class SimulatorPromoterComponent {
   isCardVisible: boolean = false;
   showCard2: boolean = false;
-  showLicenses: boolean = false;
-
-  constructor(private router: Router) {}
 
   showInfo() {
     this.isCardVisible = true;
     this.showCard2 = false;
-    this.showLicenses = false;
     document.body.style.overflow = 'hidden';
     document.querySelector('.parent-body-simulator-capa-1')?.classList.add('blur-background');
   }
@@ -36,19 +31,12 @@ export class SimulatorInvestorComponent {
   hideInfo() {
     this.isCardVisible = false;
     this.showCard2 = false;
-    this.showLicenses = false;
     document.body.style.overflow = 'auto';
     document.querySelector('.parent-body-simulator-capa-1')?.classList.remove('blur-background');
   }
 
   showNextCard() {
-    if (this.router.url === '/simulator-promoter') {
-      this.showCard2 = true;
-      this.showLicenses = false;
-    } else if (this.router.url === '/simulator-investor') {
-      this.showLicenses = true;
-      this.showCard2 = false;
-    }
+    this.showCard2 = true;
   }
 
   @HostListener('document:keydown.escape')

@@ -1,0 +1,48 @@
+<div class="modal-container">
+    <div class="modal-content">
+        <!-- Header -->
+        <div class="parent-header">
+            <div class="modal-header">
+                <h2>{{ cardContent.title }}</h2>
+                <button class="close-button" (click)="onClose()">✕</button>
+            </div>
+        </div>
+
+        <!-- Body -->
+        <div class="modal-body">
+            <p class="description">
+                {{ cardContent.description }}
+            </p>
+
+            <!-- Card Section -->
+            <div class="card-section">
+                <div class="card">
+                    <img [src]="cardContent.image" [alt]="cardContent.title">
+                </div>
+
+                <!-- Earnings Section -->
+                <div class="earnings">
+                    <h3>Ganancias</h3>
+                    <div class="earnings-item">
+                        <span>Semanal:</span>
+                        <span class="highlight">{{ cardContent.earnings.weekly }}</span>
+                    </div>
+                    <div class="earnings-item">
+                        <span>Mensual:</span>
+                        <span class="highlight">{{ cardContent.earnings.monthly }}</span>
+                    </div>
+                    <div class="earnings-item">
+                        <span>Anual:</span>
+                        <span class="highlight">{{ cardContent.earnings.annual }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="benefits">
+                {{ cardContent.benefits }}
+            </p>
+
+            <button class="next-button" (click)="onNext()">Siguiente ></button>
+        </div>
+    </div>
+</div>
