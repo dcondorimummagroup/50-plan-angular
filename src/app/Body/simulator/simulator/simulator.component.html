@@ -17,4 +17,22 @@
                 </div>
         </div>
 </div>
+
+<div class="card-overlay" *ngIf="isCardVisible" (click)="hideInfo()">
+    <div class="card-wrapper" (click)="$event.stopPropagation()">
+        <app-card 
+            *ngIf="!showCard2 && !showLicenses"
+            (closeCard)="hideInfo()"
+            (nextCard)="showNextCard()">
+        </app-card>
+        <app-card-2 
+            *ngIf="showCard2"
+            (closeCard)="hideInfo()"
+            (previousCard)="showPreviousCard()">
+        </app-card-2>
+        <app-licenses
+            *ngIf="showLicenses"
+            (closeEvent)="hideInfo()">
+        </app-licenses>
+    </div>
 </div>

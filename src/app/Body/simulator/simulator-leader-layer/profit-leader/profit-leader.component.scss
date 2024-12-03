@@ -1,0 +1,795 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+
+
+/* Cuerpo*/
+
+.parent-body-simulator-capa-1 {
+    font-family: "Jost", sans-serif;
+    background-color: transparent;
+    height: 120vh;
+
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    place-items: center;
+    position: relative; // Añadir esto
+    isolation: isolate; // Añadir esto
+    overflow: hidden; // Opcional, para contener la imagen
+    transition: filter 0.3s ease;
+}
+
+.parent-body-simulator-capa-1::before {
+    content: '';
+    position: absolute;
+    inset: 0; // Simplifica top, right, bottom, left
+    width: 100%;
+    height: 100%;
+    background-image: url('/assets/image/fondo-simulator.webp');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.4);
+    backdrop-filter: blur(5);
+    z-index: -1;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.block-1 {
+    grid-column: 2 / span 10;
+    grid-row: 4 / span 4;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(18, 1fr);
+    justify-items: center;
+    background-color: rgba(43, 43, 43, 0.705);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+[class^="block-1-box-"] {
+    text-align: center;
+    width: 390px;
+    height: 20vh;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: all 0.3s ease;
+    
+   
+}
+
+/* Estilos específicos para cada box */
+.block-1-box-1 {
+
+    grid-column: 3 / span 2;
+    grid-row: 6 / span 4;
+    width: 390px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, 
+            rgba(0, 25, 31, 0.096) 0%,
+            rgba(0, 0, 0, 0) 30%
+        );
+        pointer-events: none;
+    }
+}
+
+
+.block-1-box-1-title{
+    margin-left: 16px;
+    margin-top: 30px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 1 /span 1  ;
+    color: rgb(0, 217, 255);
+    font-size: 1.8em;
+    text-align: left;
+}
+
+.block-1-box-1-amount{
+    margin-left: 16px;
+    margin-top: 10px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 2 /span 1  ;
+    font-weight: 500;
+    color: rgb(0, 217, 255);
+    text-align: left;
+    font-size: 4em;
+}
+
+
+
+.block-1-box-2 {
+
+    grid-column: 6 / span 2;
+    grid-row: 6 / span 4;
+    border-left: 2px solid rgb(82, 82, 82);
+    width: 390px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.block-1-box-2-title{
+
+    margin-top: 30px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 1 /span 1  ;
+    color: rgb(255, 255, 255);
+    font-size: 1.8em;
+    text-align: center;
+}
+
+.block-1-box-2-amount{
+    margin-top: 10px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 2 /span 1  ;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 4em;
+}
+
+
+.block-1-box-3 {
+    grid-column: 9 / span 2;
+    grid-row: 6 / span 4;
+    border-left: 2px solid rgb(82, 82, 82);
+    width: 390px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.block-1-box-3-title{
+
+    margin-top: 30px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 1 /span 1  ;
+    color: rgb(255, 255, 255);
+    font-size: 1.8em;
+    text-align: center;
+}
+
+.block-1-box-3-amount{
+    margin-top: 10px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 2 /span 1  ;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 4em;
+}
+
+.block-1-box-4 {
+    grid-column: 12 / span 2;
+    grid-row: 6 / span 4;
+    border-left: 2px solid rgb(82, 82, 82);
+    display: grid;
+    grid-template-columns: repeat( 10, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    place-items: left;
+    gap: 10px;
+}
+
+.block-1-box-4-text-1
+{
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+    border-left: 2px solid rgb(82, 82, 82);
+    width: 390px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.block-1-box-4-title{
+
+    margin-top: 30px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 1 /span 1  ;
+    color: rgb(255, 255, 255);
+    font-size: 1.8em;
+    text-align: center;
+}
+
+.block-1-box-4-amount{
+    margin-top: 10px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 2 /span 1  ;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 4em;
+}
+
+
+.block-2 {
+    grid-column: 2 / span 10;
+    grid-row: 9 / span 4;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(18, 1fr);
+    justify-items: center;
+    background-color: rgba(43, 43, 43, 0.705);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+[class^="block-2-box-"] {
+    text-align: center;
+    width: 390px;
+    height: 20vh;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: all 0.3s ease;
+}
+
+/* Estilos específicos para cada box */
+.block-2-box-1 {
+
+    grid-column: 3 / span 2;
+    grid-row: 6 / span 4;
+    width: 390px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, 
+            rgba(0, 25, 31, 0.096) 0%,
+            rgba(0, 0, 0, 0) 30%
+        );
+        pointer-events: none;
+    }
+    
+}
+
+.block-2-box-1-title{
+    margin-left: 16px;
+    margin-top: 16px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 1 /span 1  ;
+    color: rgb(0, 217, 255);
+    font-size: 1.8em;
+    text-align: left;
+}
+
+.block-2-box-1-amount{
+    margin-left: 16px;
+    margin-top: 30px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 2 /span 1  ;
+    font-weight: 500;
+    color: rgb(0, 217, 255);
+    text-align: left;
+    font-size: 4em;
+}
+
+
+.block-2-box-2 {
+   
+    grid-column: 6 / span 2;
+    grid-row: 6 / span 4;
+    border-left: 2px solid rgb(82, 82, 82);
+    width: 390px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.block-2-box-2-title{
+
+    margin-top: 30px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 1 /span 1  ;
+    color: rgb(255, 255, 255);
+    font-size: 1.8em;
+    text-align: center;
+}
+
+.block-2-box-2-amount{
+    margin-top: 10px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 2 /span 1  ;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 4em;
+}
+
+.block-2-box-3 {
+
+    grid-column: 9 / span 2;
+    grid-row: 6 / span 4;
+    border-left: 2px solid rgb(82, 82, 82);;
+}
+
+.block-2-box-3-title{
+
+    margin-top: 30px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 1 /span 1  ;
+    color: rgb(255, 255, 255);
+    font-size: 1.8em;
+    text-align: center;
+}
+
+.block-2-box-3-amount{
+    margin-top: 10px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 2 /span 1  ;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 4em;
+}
+
+.block-2-box-4 {
+
+    grid-column: 12 / span 2;
+    grid-row: 6 / span 4;
+    border-left: 2px solid rgb(82, 82, 82);
+}
+
+
+.block-2-box-4-title{
+
+    margin-top: 30px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 1 /span 1  ;
+    color: rgb(255, 255, 255);
+    font-size: 1.8em;
+    text-align: center;
+}
+
+.block-2-box-4-amount{
+    margin-top: 10px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 2 /span 1  ;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 4em;
+}
+
+//block 3 
+
+
+.block-3 {
+    grid-column: 2 / span 10;
+    grid-row: 14 / span 4;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(18, 1fr);
+    justify-items: center;
+    background-color: rgba(43, 43, 43, 0.705);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+[class^="block-3-box-"] {
+    text-align: center;
+    width: 390px;
+    height: 20vh;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: all 0.3s ease;
+    
+   
+}
+
+/* Estilos específicos para cada box */
+.block-3-box-1 {
+
+    grid-column: 3 / span 2;
+    grid-row: 6 / span 4;
+    width: 390px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, 
+            rgba(0, 25, 31, 0.096) 0%,
+            rgba(0, 0, 0, 0) 30%
+        );
+        pointer-events: none;
+    }
+}
+
+
+.block-3-box-1-title{
+    margin-left: 16px;
+    margin-top: 30px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 1 /span 1  ;
+    color: rgb(0, 217, 255);
+    font-size: 1.8em;
+    text-align: left;
+}
+
+.block-3-box-1-amount{
+    margin-left: 16px;
+    margin-top: 30px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 2 /span 1  ;
+    font-weight: 500;
+    color: rgb(0, 217, 255);
+    text-align: left;
+    font-size: 4em;
+}
+
+
+
+.block-3-box-2 {
+
+    grid-column: 6 / span 2;
+    grid-row: 6 / span 4;
+    border-left: 2px solid rgb(82, 82, 82);
+    width: 390px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.block-3-box-2-title{
+
+    margin-top: 30px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 1 /span 1  ;
+    color: rgb(255, 255, 255);
+    font-size: 1.8em;
+    text-align: center;
+}
+
+.block-3-box-2-amount{
+    margin-top: 10px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 2 /span 1  ;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 4em;
+}
+
+
+.block-3-box-3 {
+    grid-column: 9 / span 2;
+    grid-row: 6 / span 4;
+    border-left: 2px solid rgb(82, 82, 82);
+    width: 390px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.block-3-box-3-title{
+
+    margin-top: 30px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 1 /span 1  ;
+    color: rgb(255, 255, 255);
+    font-size: 1.8em;
+    text-align: center;
+}
+
+.block-3-box-3-amount{
+    margin-top: 10px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 2 /span 1  ;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 4em;
+}
+
+.block-3-box-4 {
+    grid-column: 12 / span 2;
+    grid-row: 6 / span 4;
+    border-left: 2px solid rgb(82, 82, 82);
+    display: grid;
+    grid-template-columns: repeat( 10, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    place-items: left;
+    gap: 10px;
+}
+
+.block-3-box-4-text-1
+{
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+    border-left: 2px solid rgb(82, 82, 82);
+    width: 390px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.block-3-box-4-title{
+
+    margin-top: 30px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 1 /span 1  ;
+    color: rgb(255, 255, 255);
+    font-size: 1.8em;
+    text-align: center;
+}
+
+.block-3-box-4-amount{
+    margin-top: 10px;
+    height: 40px;
+    width: 400px;
+    grid-column: 1/ span 5;
+    grid-row: 2 /span 1  ;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 4em;
+}
+
+
+
+
+
+
+// Variedades 
+.button-simulation {
+     height: auto;
+     background-color: transparent ;
+     grid-column: 1 /span 15;
+     grid-row: 14 / span 1;
+     border: 2px solid aqua;
+     border-radius: 20px ;
+     width: 400px;
+}
+
+.button-text {
+    padding: 0;
+    margin: 10px;
+    text-align: center;
+    color: white;
+    font-size: 1.1em;
+}
+
+.button-simulation:hover {
+    background: linear-gradient(to top, 
+    rgba(0, 217, 255, 0.856) 0%, 
+    rgba(0, 217, 255, 0.521) 14%,
+    rgba(0, 29, 34, 0.521) 80%,
+    rgba(26, 26, 26, 0.205) 100%
+);
+    color: black ;
+}
+
+
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.exclamation-mark {
+    grid-column: 11 / span 2;
+    grid-row: 19 / span 2;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid rgb(0, 225, 255);
+    background-color: transparent;
+    display: grid;
+    place-items: center;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1000;
+    font-size: 2.9em;
+    margin-top: 44px;
+    padding-top: 0px;
+    color: white;
+}
+.text-i {
+    margin-top: 0px;
+    padding-top: 0px;
+    font-size: 1.2em;
+
+}
+
+.exclamation-mark:hover {
+    grid-column: 11 / span 2;
+    grid-row: 13 / span 2;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid rgb(0, 225, 255);
+    background-color: rgb(32, 32, 32);
+    display: grid;
+    place-items: center;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1000;
+    font-size: 2.9em;
+    margin-top: 44px;
+    padding-top: 0px;
+    color: white;
+}
+
+.blur-background {
+  filter: blur(50px);
+  transition: filter 0.3s ease;
+}
+
+.card-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000; // Asegura que esté por encima del contenido desenfocado
+  
+  .card-wrapper {
+    filter: none !important; // Evita que se aplique el desenfoque
+    position: relative;
+    z-index: 1001; // Un nivel más alto que el overlay
+  }
+}
+
+.card-wrapper {
+  position: relative;
+}
+
+app-card, app-card-2 {
+  position: absolute;
+  width: 100%;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+}
+
+.subtitle-block-1 {
+    grid-column: 1 / span 4;
+    grid-row: 3 / span 1;
+    font-size: 1.8em;
+    text-align: start;
+    color: rgb(255, 255, 255);
+ 
+    margin-left: 180px;
+    font-weight: 500;
+}
+.subtitle-block-2 {
+    grid-column: 1 / span 4;
+    grid-row: 8 / span 1;
+    font-size: 1.8em;
+    text-align: start;
+    color: rgb(255, 255, 255);
+
+    margin-left: 180px;
+    font-weight: 500;
+}
+
+.subtitle-block-3 {
+    grid-column: 1 / span 4;
+    grid-row: 13 / span 1;
+    font-size: 1.8em;
+    text-align: start;
+    color: rgb(255, 255, 255);
+ 
+    margin-left: 180px;
+    font-weight: 500;
+}

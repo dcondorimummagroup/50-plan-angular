@@ -9,7 +9,7 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto 1fr auto;
-    background-color: rgb(17, 17, 17);
+    background-color: rgba(0, 0, 0, 0.185);
     position: fixed;
     top: 50%;
     left: 50%;
@@ -25,6 +25,7 @@
     animation: modalEnter 0.3s ease-out;
     
     &.closing {
+      color: white;
       animation: modalExit 0.3s ease-out forwards;
     }
   
@@ -34,7 +35,7 @@
         grid-template-columns: 1fr auto;
         align-items: center;
         padding: 1rem 2rem;
-        background-color: black;
+        background-color: rgba(0, 0, 0, 0);
         position: relative;
         border-radius: 20px ;
         // Quitamos el box-shadow general para evitar interferencia con el brillo
@@ -110,7 +111,7 @@
   
       .description {
         text-align: center;
-        color: #929292;
+        color: white;
         font-family: "Jost", sans-serif;
       }
   
@@ -128,9 +129,6 @@
           transition: transform 0.3s ease, box-shadow 0.3s ease;
   
           &:hover {
-
-            
-            
             .card-image {
               transform: scale(1.05);
               box-shadow: 0 10px 10px rgba(37, 37, 37, 0.26);
@@ -228,7 +226,7 @@
   
       .simulator-cta {
         text-align: center;
-        color: #929292;
+        color: white;
         font-family: "Jost", sans-serif;
       }
   
@@ -361,4 +359,8 @@
         opacity: 0;
         backdrop-filter: blur(0);
     }
+}
+
+span{
+  color: white;
 }

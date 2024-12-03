@@ -1,8 +1,8 @@
-<div class="modal-container" [@cardAnimation]>
+<div class="modal-container" [class.closing]="isClosing">
     <div class="modal-content">
         <!-- Header -->
         <div class="parent-header">
-            <div class="modal-header" [@contentAnimation]>
+            <div class="modal-header">
                 <h2>{{ currentContent.title }}</h2>
                 <button class="close-button" (click)="onClose()">✕</button>
             </div>
@@ -10,22 +10,26 @@
 
         <!-- Body -->
         <div class="modal-body">
-            <p class="description" [@contentAnimation]>
+            <p class="description">
                 {{ currentContent.description }}
             </p>
 
             <!-- Card Section -->
-            <div class="card-section" [@contentAnimation]>
+            <div class="card-section">
                 <div class="card">
                     <img [src]="currentContent.image" [alt]="currentContent.title">
                     <div class="section-button">
-                        <div class="investment-range-1">
+                        <div [ngClass]="{
+                            'investment-range-1': isPromoterRoute && currentLicense === 'alfa',
+                            'investment-range-2': isPromoterRoute && currentLicense === 'beta',
+                            'investment-range-3': isLeaderRoute && currentLicense === 'gamma',
+                            'investment-range-4': isLeaderRoute && currentLicense === 'delta'
+                        }">
                             <span class="investment-range-title">Inversión (USD)</span>
                             <span class="investment-range-text">{{ currentContent.investmentRange }}</span>
                         </div>
                     </div>
                 </div>
-
                 <!-- Earnings Section -->
                 <div class="earnings">
                     <h3>Ganancias</h3>
@@ -41,17 +45,34 @@
                         <span>Anual:</span>
                         <span class="highlight">{{ currentContent.earnings.annual }}</span>
                     </div>
-                    <div class="section-button">
-                        <button class="next-button-licenses" (click)="onNextLicense()">
+                    <div class="navigation-buttons">
+                        <button 
+                            *ngIf="showPreviousButton()" 
+                            class="prev-button" 
+                            (click)="onPreviousLicense()"
+                        >
+                            <span class="button-icon">←</span>
+                            Anterior
+                        </button>
+                        <button 
+                            *ngIf="showNextButton()" 
+                            class="next-button-licenses" 
+                            (click)="onNextLicense()"
+                        >
                             {{ currentContent.nextLicense }}
                         </button>
                     </div>
                 </div>
             </div>
-
-            <p class="benefits" [@contentAnimation]>
+            <p class="benefits">
                 {{ currentContent.benefits }}
             </p>
+          
+        </div>
+        <div class="card-navigation-buttons">
+            <button class="prev-card-button" (click)="onPreviousCard()">
+                <span class="button-icon">←</span> Anterior
+            </button>
         </div>
     </div>
 </div>

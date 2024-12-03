@@ -1,0 +1,57 @@
+<div class="parent-body-simulator-capa-1" >
+    <div class="block-1" >
+        <div class="block-1-box-1">
+            <div class="block-1-box-1-title">Capital + rendimiento anual:</div>
+            <div class="block-1-box-1-amount">${{formatAmount(totalCapital)}}</div>
+        </div>
+        <div class="block-1-box-2">
+            <div class="block-1-box-2-title">Semanal</div>
+            <div class="block-1-box-2-amount">${{formatAmount(weeklyAmount)}}</div>
+        </div>
+        <div class="block-1-box-3">
+            <div class="block-1-box-3-title">Mensual</div>
+            <div class="block-1-box-3-amount">${{formatAmount(monthlyAmount)}}</div>
+        </div>
+        <div class="block-1-box-4">
+            <div class="block-1-box-4-title">Anual</div>
+            <div class="block-1-box-4-amount">${{formatAmount(yearlyAmount)}}</div>
+        </div>
+    </div>
+        
+    <div class="block-2" >
+        <div class="block-2-box-1">
+            <div class="block-2-box-1-title">Capital + rendimiento anual:</div>
+            <div class="block-2-box-1-amount">${{formatAmount(totalCapital)}}</div>
+        </div>
+        <div class="block-2-box-2">
+            <div class="block-2-box-2-title">Semanal</div>
+            <div class="block-2-box-2-amount">${{formatAmount(weeklyAmount)}}</div>
+        </div>
+        <div class="block-2-box-3">
+            <div class="block-2-box-3-title">Mensual</div>
+            <div class="block-2-box-3-amount">${{formatAmount(monthlyAmount)}}</div>
+        </div>
+        <div class="block-2-box-4">
+            <div class="block-2-box-4-title">Anual</div>
+            <div class="block-2-box-4-amount">${{formatAmount(yearlyAmount)}}</div>
+        </div>
+    </div>
+    
+    <button class="exclamation-mark" (click)="showInfo()"> <p class="text-i">¡</p> </button>
+
+</div>
+
+<div class="card-overlay" *ngIf="isCardVisible" (click)="hideInfo()">
+    <div class="card-wrapper" (click)="$event.stopPropagation()">
+        <app-card 
+            *ngIf="!showCard2 && !showLicenses"
+            (closeCard)="hideInfo()"
+            (nextCard)="showNextCard()">
+        </app-card>
+       
+        <app-licenses
+            *ngIf="showLicenses"
+            (closeEvent)="hideInfo()">
+        </app-licenses>
+    </div>
+</div>

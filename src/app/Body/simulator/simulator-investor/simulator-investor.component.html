@@ -1,0 +1,81 @@
+<div class="parent-body-simulator-capa-1" >
+    <div class="block-1" >
+        <div class="block-1-box-1" >   
+                <div [routerLink]="['/simulator-investor']"  class="icon-1" routerLinkActive="active" ></div>
+                <div  [routerLink]="['/simulator-promoter']" routerLinkActive="active" class="icon-2" ></div>
+                <div [routerLink]="['/simulator-leader']" routerLinkActive="active" class="icon-3" ></div>
+            <div class="text-invent" >
+                Inversionista
+            </div>
+        </div>
+        <div class="block-1-box-2" >
+            <div class="box-2-title" >
+                $ Inversión (USD):
+            </div>
+            <div class="box-2-number" >
+                <div class="input-container">
+                    <input 
+                        type="number" 
+                        class="amount" 
+                        value="100.00" 
+                        step="0.01" 
+                        min="0" 
+                        (input)="updateInvestment($event)"
+                    >
+                    <div class="input-overlay">
+                        <span class="integer"></span>
+                        <span class="decimal"></span>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div class="block-1-box-3" >
+           <div class="box-3-card" [ngStyle]="{
+  'background-image': 'url(/assets/image/' + currentCard + '-b.webp)'
+}"></div>
+        </div>
+        <div class="block-1-box-4" >
+            <div class="block-1-box-4-text-1">Semanal:</div>
+            <div class="amount-percentaje-1">{{weeklyPercentage}}%</div>
+            <div class="block-1-box-4-text-2">Mensual:</div>
+            <div class="amount-percentaje-2">{{monthlyPercentage}}%</div>
+            <div class="block-1-box-4-text-3">Anual:</div>
+            <div class="amount-percentaje-3">{{yearlyPercentage}}%</div>
+        </div>
+    </div>
+    <div class="block-2" >
+        <div class="block-2-box-1">
+            <div class="block-2-box-1-title">Capital + rendimiento anual:</div>
+            <div class="block-2-box-1-amount">${{totalCapital}}</div>
+        </div>
+        <div class="block-2-box-2">
+            <div class="block-2-box-2-title">Semanal</div>
+            <div class="block-2-box-2-amount">${{weeklyAmount}}</div>
+        </div>
+        <div class="block-2-box-3">
+            <div class="block-2-box-3-title">Mensual</div>
+            <div class="block-2-box-3-amount">${{monthlyAmount}}</div>
+        </div>
+        <div class="block-2-box-4">
+            <div class="block-2-box-4-title">Anual</div>
+            <div class="block-2-box-4-amount">${{yearlyAmount}}</div>
+        </div>
+    </div>
+    
+    <button class="exclamation-mark" (click)="showInfo()"> <p class="text-i">¡</p> </button>
+
+</div>
+
+<div class="card-overlay" *ngIf="isCardVisible" (click)="hideInfo()">
+    <div class="card-wrapper" (click)="$event.stopPropagation()">
+        <app-card 
+            *ngIf="!showCard2 && !showLicenses"
+            (closeCard)="hideInfo()"
+            (nextCard)="showNextCard()">
+        </app-card>
+        <app-licenses
+            *ngIf="showLicenses"
+            (closeEvent)="hideInfo()">
+        </app-licenses>
+    </div>
+</div>

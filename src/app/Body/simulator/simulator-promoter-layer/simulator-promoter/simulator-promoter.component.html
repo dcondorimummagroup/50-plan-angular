@@ -70,9 +70,13 @@
         </div>
 
     </div>
+    <div class="button-simulation" (click)="toggleSimulator()">
+        <p class="button-text">{{ showSimulator ? 'Ocultar simulador' : 'Simular' }}</p>
+    </div>
     <button class="exclamation-mark" (click)="showInfo()" > <p class="text-i" >¡</p> </button>
 
 </div>
+<app-profit-promoter *ngIf="showSimulator" class="simulator-section"></app-profit-promoter>
 
 <div class="card-overlay" *ngIf="isCardVisible" (click)="hideInfo()">
     <div class="card-wrapper" (click)="$event.stopPropagation()">
@@ -83,9 +87,9 @@
             [@fadeAnimation]>
         </app-card>
         <app-card-2 
-            *ngIf="showCard2"
-            (closeCard)="hideInfo()"
-            [@fadeAnimation]>
-        </app-card-2>
+        *ngIf="showCard2"
+        (closeCard)="hideInfo()"
+        (previousCard)="showPreviousCard()">
+    </app-card-2>
     </div>
 </div>

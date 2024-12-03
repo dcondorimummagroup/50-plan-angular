@@ -6,16 +6,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ViewStartComponent } from './view-start/view-start.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { SimulatorComponent } from './simulator/simulator.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { SimulatorInvestorComponent } from './simulator-investor/simulator-investor.component';
+import { SimulatorComponent } from './Body/simulator/simulator/simulator.component';
+import { LoginComponent } from './Body/login/login.component';
+import { RegisterComponent } from './Body/register/register.component';
+import { SimulatorInvestorComponent } from './Body/simulator/simulator-investor/simulator-investor.component';
 import { LicensesComponent } from './shared/licenses/licenses.component';
 import { LicensesSimulatorComponent } from './shared/licenses-simulator/licenses-simulator.component';
-import { SimulatorPromoterComponent } from './simulator-promoter/simulator-promoter.component';
-import { SimulatorLeaderComponent } from './simulator-leader/simulator-leader.component';
+import { SimulatorPromoterComponent } from './Body/simulator/simulator-promoter-layer/simulator-promoter/simulator-promoter.component';
+import { SimulatorLeaderComponent } from './Body/simulator/simulator-leader-layer/simulator-leader/simulator-leader.component';
 import { CardComponent } from './shared/card/card.component';
 import { Card2Component } from './shared/card-2/card-2.component';
+import { ProfitLeaderComponent } from './Body/simulator/simulator-leader-layer/profit-leader/profit-leader.component';
+import { ProfitPromoterComponent } from './Body/simulator/simulator-promoter-layer/profit-promoter/profit-promoter.component';
+import { OrbitCardPromoterComponent } from './Body/simulator/simulator-promoter-layer/orbit-card-promoter/orbit-card-promoter.component';
+import { OrbitCardLeaderComponent } from './Body/simulator/simulator-leader-layer/orbit-cards/orbit-card-leader/orbit-card-leader.component';
+import { FormsModule } from '@angular/forms';
+import { OrbitCardLeader2Component } from './Body/simulator/simulator-leader-layer/orbit-cards/orbit-card-leader-2/orbit-card-leader-2.component';
+
 
 @NgModule({
   declarations: [
@@ -32,11 +39,19 @@ import { Card2Component } from './shared/card-2/card-2.component';
     SimulatorLeaderComponent,
     CardComponent,
     Card2Component,
+    ProfitLeaderComponent,
+    ProfitPromoterComponent,
+    OrbitCardPromoterComponent,
+    OrbitCardLeaderComponent,
+    OrbitCardLeader2Component,
+
+
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

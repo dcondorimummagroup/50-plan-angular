@@ -9,22 +9,70 @@
     justify-content: center;
     align-items: center;
     backdrop-filter: blur(5px);
-    
+    padding: 0;
+    margin: 0;
+    animation: modalEnter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+
+    &.closing {
+        animation: fadeOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    transition: filter 0.3s ease;
+}
+
+@keyframes modalEnter {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        backdrop-filter: blur(5px);
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        backdrop-filter: blur(5px);
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+        transform: scale(0.98);
+    }
 }
 
 .modal-content {
     background: #13131349;
     border-radius: 10px;
     width: 50%;
-    height: 76%;
+    height: 83%;
     border: 1px solid #00f0ff;
     color: white;
-    transition: transform 0.3s ease-out;
+    animation: contentSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.1);
+    transition: transform 0.3s ease;
     
     &:hover {
         transform: translateY(-2px);
     }
 }
+
+@keyframes contentSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .parent-header {
     border-bottom: 1px solid rgb(0, 230, 247);
 }
@@ -37,7 +85,9 @@
     margin: 4px;
 
     margin-inline: 60px;
-
+    animation: contentSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation-delay: 0.1s;
+    animation-fill-mode: both;
 }
 
 .modal-header h2 {
@@ -65,19 +115,22 @@
 .description {
     font-size: 1.3rem;
     margin: 20px;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-bottom: 20px;
     font-weight: 400;
     line-height: 1.5;
+    animation: contentSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
 }
 
 .card-section {
     display: flex;
-
     margin: 20px;
-  
     height: 240px;
- 
+    animation: contentSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation-delay: 0.3s;
+    animation-fill-mode: both;
 }
 
 .card {
@@ -148,6 +201,9 @@
     font-size: 1.3rem;
     font-weight: 400;
     line-height: 1.5;
+    animation: contentSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation-delay: 0.4s;
+    animation-fill-mode: both;
 }
 
 .next-button:hover {
@@ -160,10 +216,7 @@
     to { opacity: 1; }
 }
 
-.modal-container {
-    animation: fadeIn 0.3s ease;
-    margin: 20px;
-}
+
 h3 {
     margin: 4px;
     margin-top: 20px;
@@ -206,7 +259,7 @@ h3 {
             rgba(0, 240, 255, 0.2),
             transparent
         );
-        transition: transform 0.5s ease;
+        transition: transform 0.3s ease;
     }
 }
 
@@ -228,9 +281,10 @@ h3 {
 }
 
 .earnings {
+    
     .section-button {
         margin-top: 76px;
-        background-color: #050505;
+      
         color: white;
         border-radius: 20px;
     }
@@ -238,6 +292,7 @@ h3 {
 
 .investment-range-1  {
     background: linear-gradient(to top, rgb(9, 114, 146), rgb(15, 26, 31));
+    width: 300px;
     padding: 12px;
     border-radius: 5px;
     font-size: 0.8rem;
@@ -258,3 +313,231 @@ h3 {
       display: block;
     }
   }
+  .investment-range-2  {
+    background: linear-gradient(to top, rgb(117, 117, 117), rgb(58, 58, 58));
+    width: 300px;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    text-align: center;
+    color: white;
+    font-family: "Jost", sans-serif;
+    border-radius: 20px;
+    .investment-range-title,
+    .investment-range-text {
+        font-size: 1.1rem;
+    margin-top: 4px;
+      display: block;
+    }
+  }
+
+  .investment-range-3  {
+    width: 300px;
+    background: linear-gradient(to top, rgb(184, 140, 59), rgb(78, 53, 14));
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    text-align: center;
+    color: white;
+    font-family: "Jost", sans-serif;
+    border-radius: 20px;
+    .investment-range-title,
+    .investment-range-text {
+        font-size: 1.1rem;
+    margin-top: 4px;
+      display: block;
+    }
+  }
+  .investment-range-4  {
+    width: 300px;
+    background: linear-gradient(to top, rgb(20, 20, 20), rgb(39, 39, 39));
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    text-align: center;
+    color: white;
+    font-family: "Jost", sans-serif;
+    border-radius: 20px;
+    .investment-range-title,
+    .investment-range-text {
+        font-size: 1.1rem;
+    margin-top: 4px;
+      display: block;
+    }
+  }
+
+
+  .navigation-buttons {
+    display: flex;
+  
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 60px; // Alineado con el resto de elementos
+    padding: 0 20px;
+    gap: 5px;
+
+    .prev-button,
+    .next-button-licenses {
+        background: none;
+        border: 1px solid #00f0ff;
+        color: #00f0ff;
+        width: 180px;
+        padding: 18px 15px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-family: "Jost", sans-serif;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+  
+            width: 300px;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(0, 240, 255, 0.2),
+                transparent
+            );
+            transition: transform 0.3s ease;
+        }
+
+        &:hover {
+            background: rgba(0, 240, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 240, 255, 0.2);
+        }
+    }
+
+    .prev-button {
+        &:before {
+            left: 100%;
+        }
+
+        &:hover:before {
+            transform: translateX(-200%);
+        }
+
+        .button-icon {
+            margin-right: 8px;
+        }
+    }
+
+    .next-button-licenses {
+        &:before {
+            left: -100%;
+        }
+
+        &:hover:before {
+            transform: translateX(100%);
+        }
+
+        &::after {
+            content: '→';
+            margin-left: 8px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        &:hover::after {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+    }
+}
+
+.card-navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 60px;
+    margin-top: 10px;
+    animation: contentSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation-delay: 0.3s;
+    animation-fill-mode: both;
+}
+
+.prev-card-button {
+    background: none;
+    border: 1px solid #00f0ff;
+    color: #00f0ff;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+    position: relative;
+    overflow: hidden;
+    
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(0, 240, 255, 0.2),
+            transparent
+        );
+        transition: transform 0.3s ease;
+    }
+    
+    &:hover {
+        &:before {
+            transform: translateX(200%);
+        }
+    }
+
+    .button-icon {
+        margin-right: 8px;
+    }
+}
+.next-card-button {
+    background: none;
+    border: 1px solid #00f0ff;
+    color: #00f0ff;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+    position: relative;
+    overflow: hidden;
+    
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(0, 240, 255, 0.2),
+            transparent
+        );
+        transition: transform 0.3s ease;
+    }
+    
+    &:hover {
+        &:before {
+            transform: translateX(200%);
+        }
+    }
+
+    .button-icon {
+        margin-right: 8px;
+    }
+}
+
+.next-card-button {
+    float: right;
+}

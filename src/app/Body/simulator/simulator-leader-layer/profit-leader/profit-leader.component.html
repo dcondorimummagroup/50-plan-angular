@@ -1,0 +1,81 @@
+<div class="parent-body-simulator-capa-1" >
+    <div class="subtitle-block-1" >Propia Inversión</div>
+    <div class="block-1" >
+        <div class="block-1-box-1">
+            <div class="block-1-box-1-title">Capital + rendimiento anual:</div>
+            <div class="block-1-box-1-amount">${{formatAmount(totalCapital)}}</div>
+        </div>
+        <div class="block-1-box-2">
+            <div class="block-1-box-2-title">Semanal</div>
+            <div class="block-1-box-2-amount">${{formatAmount(weeklyAmount)}}</div>
+        </div>
+        <div class="block-1-box-3">
+            <div class="block-1-box-3-title">Mensual</div>
+            <div class="block-1-box-3-amount">${{formatAmount(monthlyAmount)}}</div>
+        </div>
+        <div class="block-1-box-4">
+            <div class="block-1-box-4-title">Anual</div>
+            <div class="block-1-box-4-amount">${{formatAmount(yearlyAmount)}}</div>
+        </div>
+    </div>
+    <div class="subtitle-block-2" >Afiliados Directos</div>  
+    <div class="block-2">
+        <div class="block-2-box-1">
+            <div class="block-2-box-1-title">Capital + rendimiento anual (Órbita 1):</div>
+            <div class="block-2-box-1-amount">${{formatAmount(orbit1TotalCapital)}}</div>
+        </div>
+        <div class="block-2-box-2">
+            <div class="block-2-box-2-title">Semanal</div>
+            <div class="block-2-box-2-amount">${{formatAmount(orbit1WeeklyAmount)}}</div>
+        </div>
+        <div class="block-2-box-3">
+            <div class="block-2-box-3-title">Mensual</div>
+            <div class="block-2-box-3-amount">${{formatAmount(orbit1MonthlyAmount)}}</div>
+        </div>
+        <div class="block-2-box-4">
+            <div class="block-2-box-4-title">Anual</div>
+            <div class="block-2-box-4-amount">${{formatAmount(orbit1YearlyAmount)}}</div>
+        </div>
+    </div>
+<div class="subtitle-block-3" >Afiliados Indirectos</div>
+    <div class="block-3">
+        <div class="block-3-box-1">
+            <div class="block-3-box-1-title">Capital + rendimiento anual (Órbita 2 - 10):</div>
+            <div class="block-3-box-1-amount">${{formatAmount(orbit2TotalCapital)}}</div>
+        </div>
+        <div class="block-3-box-2">
+            <div class="block-3-box-2-title">Semanal</div>
+            <div class="block-3-box-2-amount">${{formatAmount(orbit2WeeklyAmount)}}</div>
+        </div>
+        <div class="block-3-box-3">
+            <div class="block-3-box-3-title">Mensual</div>
+            <div class="block-3-box-3-amount">${{formatAmount(orbit2MonthlyAmount)}}</div>
+        </div>
+        <div class="block-3-box-4">
+            <div class="block-3-box-4-title">Anual</div>
+            <div class="block-3-box-4-amount">${{formatAmount(orbit2YearlyAmount)}}</div>
+        </div>
+    </div>
+
+    
+    <button class="scroll-top-button" (click)="scrollToTop()">
+        <span class="arrow-up">↑</span>
+    </button>
+    <button class="exclamation-mark" (click)="showInfo()"> <p class="text-i">¡</p> </button>
+
+</div>
+
+<div class="card-overlay" *ngIf="isCardVisible" (click)="hideInfo()">
+    <div class="card-wrapper" (click)="$event.stopPropagation()">
+        <app-card 
+            *ngIf="!showCard2 && !showLicenses"
+            (closeCard)="hideInfo()"
+            (nextCard)="showNextCard()">
+        </app-card>
+       
+        <app-licenses
+            *ngIf="showLicenses"
+            (closeEvent)="hideInfo()">
+        </app-licenses>
+    </div>
+</div>
