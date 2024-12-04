@@ -1,6 +1,10 @@
 import { Component, ViewChild, ElementRef, HostListener, EventEmitter, Output } from '@angular/core';
 import { InvestmentService } from '../../../../services/investment.service';
-import { OrbitService } from 'src/app/services/leader-system/orbit/orbit.service';
+
+import { Orbit1Service } from 'src/app/services/leader-system/orbit/orbit1/orbit1.service';
+import { Orbit2Service } from 'src/app/services/leader-system/orbit/orbit2/orbit2.service';
+import { Orbit3Service } from 'src/app/services/leader-system/orbit/orbit3/orbit3.service';
+import { OrbitOthersService } from 'src/app/services/leader-system/orbit/orbitOthers/orbit-others.service';
 
 @Component({
   selector: 'app-simulator-leader',
@@ -14,8 +18,15 @@ export class SimulatorLeaderComponent {
   showErrorMessage = false;
   errorMessage = '';
   private readonly ORBIT_USERS_KEY = 'orbit_users'; 
+  private readonly ORBIT2_USERS_KEY = 'orbit2_users'; 
+  private readonly ORBIT3_USERS_KEY = 'orbit3_users'; 
+  private readonly ORBIT4_USERS_KEY = 'orbit4_users'; 
 
-   constructor(private orbitService: OrbitService) {}
+   constructor(private orbitService: Orbit1Service , 
+    private orbit2Service: Orbit2Service ,
+     private orbit3Service: Orbit3Service,
+     private orbit4Service: OrbitOthersService,
+    ) {}
 
    ngOnInit() {
     // Recuperar datos del localStorage
@@ -36,8 +47,18 @@ export class SimulatorLeaderComponent {
 
   isCardVisible: boolean = false;
   showCard2: boolean = false;
+
+  // Orbit Cards
   isOrbitCardVisible: boolean = false; 
   isOrbitCardVisible2: boolean = false; 
+  isOrbitCardVisible3: boolean = false; 
+  isOrbitCardVisible4: boolean = false; 
+  isOrbitCardVisible5: boolean = false; 
+  isOrbitCardVisible6: boolean = false; 
+  isOrbitCardVisible7: boolean = false; 
+  isOrbitCardVisible8: boolean = false; 
+  isOrbitCardVisible9: boolean = false; 
+  isOrbitCardVisible10: boolean = false; 
   // Propiedades para la inversión
   currentInvestment: number = 100.00;
   currentCard: string = 'alfa';
@@ -160,9 +181,18 @@ export class SimulatorLeaderComponent {
   }
 
   private resetOrbitData(): void {
+    // Eliminar datos del localStorage uno por uno
     localStorage.removeItem(this.ORBIT_USERS_KEY);
+    localStorage.removeItem(this.ORBIT2_USERS_KEY);
+    localStorage.removeItem(this.ORBIT3_USERS_KEY);
+    localStorage.removeItem(this.ORBIT4_USERS_KEY);
+  
+    // Resetear los servicios
     this.orbitService.resetOrbitInvestment();
-    console.log('Datos de órbita reseteados');
+    this.orbit2Service.resetOrbitInvestment();
+    this.orbit3Service.resetOrbitInvestment();
+    this.orbit4Service.resetOrbitInvestment();
+ 
   }
 
   handleScrollUp() {
@@ -186,30 +216,9 @@ export class SimulatorLeaderComponent {
     document.querySelector('.parent-body-simulator-capa-1')?.classList.remove('blur-background');
   }
   
-  closeHideOrbitCard() {
-    this.isOrbitCardVisible = false;
-    document.body.style.overflow = 'auto';
-    document.querySelector('.parent-body-simulator-capa-1')?.classList.remove('blur-background');
-    document.querySelector('#sidebar')?.classList.remove('blur-background');
-}
-  hideOrbitCard() {
-    this.isOrbitCardVisible = true; 
-        document.body.classList.add('blur-background');
-        document.querySelector('.parent-body-simulator-capa-1')?.classList.add('blur-background');
-    document.querySelector('#sidebar')?.classList.add('blur-background');
-  }
-  hideOrbitCard2() {
-    this.isOrbitCardVisible2 = true; 
-        document.body.classList.add('blur-background');
-        document.querySelector('.parent-body-simulator-capa-1')?.classList.add('blur-background');
-    document.querySelector('#sidebar')?.classList.add('blur-background');
-  }
-  closeHideOrbitCard2() {
-    this.isOrbitCardVisible2 = false;
-    document.body.style.overflow = 'auto';
-    document.querySelector('.parent-body-simulator-capa-1')?.classList.remove('blur-background');
-    document.querySelector('#sidebar')?.classList.remove('blur-background');
-}
+  
+ 
+  
 
   showNextCard() {
     this.showCard2 = true;
@@ -225,4 +234,133 @@ export class SimulatorLeaderComponent {
       this.hideInfo();
     }
   }
+
+   // Hide Orbit Cards
+
+   hideOrbitCard() {
+    this.isOrbitCardVisible = true; 
+        document.body.classList.add('blur-background');
+        document.querySelector('.parent-body-simulator-capa-1')?.classList.add('blur-background');
+    document.querySelector('#sidebar')?.classList.add('blur-background');
+  }
+  hideOrbitCard2() {
+    this.isOrbitCardVisible2 = true; 
+        document.body.classList.add('blur-background');
+        document.querySelector('.parent-body-simulator-capa-1')?.classList.add('blur-background');
+    document.querySelector('#sidebar')?.classList.add('blur-background');
+  }
+  hideOrbitCard3() {
+    this.isOrbitCardVisible3 = true; 
+        document.body.classList.add('blur-background');
+        document.querySelector('.parent-body-simulator-capa-1')?.classList.add('blur-background');
+    document.querySelector('#sidebar')?.classList.add('blur-background');
+  }
+  hideOrbitCard4() {
+    this.isOrbitCardVisible4 = true; 
+        document.body.classList.add('blur-background');
+        document.querySelector('.parent-body-simulator-capa-1')?.classList.add('blur-background');
+    document.querySelector('#sidebar')?.classList.add('blur-background');
+  }
+  hideOrbitCard5() {
+    this.isOrbitCardVisible5 = true; 
+        document.body.classList.add('blur-background');
+        document.querySelector('.parent-body-simulator-capa-1')?.classList.add('blur-background');
+    document.querySelector('#sidebar')?.classList.add('blur-background');
+  }
+  hideOrbitCard6() {
+    this.isOrbitCardVisible6 = true; 
+        document.body.classList.add('blur-background');
+        document.querySelector('.parent-body-simulator-capa-1')?.classList.add('blur-background');
+    document.querySelector('#sidebar')?.classList.add('blur-background');
+  }
+  hideOrbitCard7() {
+    this.isOrbitCardVisible7 = true; 
+        document.body.classList.add('blur-background');
+        document.querySelector('.parent-body-simulator-capa-1')?.classList.add('blur-background');
+    document.querySelector('#sidebar')?.classList.add('blur-background');
+  }
+  hideOrbitCard8() {
+    this.isOrbitCardVisible8 = true; 
+        document.body.classList.add('blur-background');
+        document.querySelector('.parent-body-simulator-capa-1')?.classList.add('blur-background');
+    document.querySelector('#sidebar')?.classList.add('blur-background');
+  }
+  hideOrbitCard9() {
+    this.isOrbitCardVisible9 = true; 
+        document.body.classList.add('blur-background');
+        document.querySelector('.parent-body-simulator-capa-1')?.classList.add('blur-background');
+    document.querySelector('#sidebar')?.classList.add('blur-background');
+  }
+  hideOrbitCard10() {
+    this.isOrbitCardVisible10 = true; 
+        document.body.classList.add('blur-background');
+        document.querySelector('.parent-body-simulator-capa-1')?.classList.add('blur-background');
+    document.querySelector('#sidebar')?.classList.add('blur-background');
+  }
+
+
+   // Close Orbit Cards
+
+  closeHideOrbitCard() {
+    this.isOrbitCardVisible = false;
+    document.body.style.overflow = 'auto';
+    document.querySelector('.parent-body-simulator-capa-1')?.classList.remove('blur-background');
+    document.querySelector('#sidebar')?.classList.remove('blur-background');
+    }
+  closeHideOrbitCard2() {
+      this.isOrbitCardVisible2 = false;
+      document.body.style.overflow = 'auto';
+      document.querySelector('.parent-body-simulator-capa-1')?.classList.remove('blur-background');
+      document.querySelector('#sidebar')?.classList.remove('blur-background');
+  }
+  closeHideOrbitCard3() {
+    this.isOrbitCardVisible3 = false;
+    document.body.style.overflow = 'auto';
+    document.querySelector('.parent-body-simulator-capa-1')?.classList.remove('blur-background');
+    document.querySelector('#sidebar')?.classList.remove('blur-background');
+    }
+  closeHideOrbitCard4() {
+      this.isOrbitCardVisible4 = false;
+      document.body.style.overflow = 'auto';
+      document.querySelector('.parent-body-simulator-capa-1')?.classList.remove('blur-background');
+      document.querySelector('#sidebar')?.classList.remove('blur-background');
+  }
+  closeHideOrbitCard5() {
+    this.isOrbitCardVisible5 = false;
+    document.body.style.overflow = 'auto';
+    document.querySelector('.parent-body-simulator-capa-1')?.classList.remove('blur-background');
+    document.querySelector('#sidebar')?.classList.remove('blur-background');
+    }
+  closeHideOrbitCard6() {
+      this.isOrbitCardVisible6 = false;
+      document.body.style.overflow = 'auto';
+      document.querySelector('.parent-body-simulator-capa-1')?.classList.remove('blur-background');
+      document.querySelector('#sidebar')?.classList.remove('blur-background');
+  }
+  closeHideOrbitCard7() {
+    this.isOrbitCardVisible7 = false;
+    document.body.style.overflow = 'auto';
+    document.querySelector('.parent-body-simulator-capa-1')?.classList.remove('blur-background');
+    document.querySelector('#sidebar')?.classList.remove('blur-background');
+    }
+  closeHideOrbitCard8() {
+      this.isOrbitCardVisible8 = false;
+      document.body.style.overflow = 'auto';
+      document.querySelector('.parent-body-simulator-capa-1')?.classList.remove('blur-background');
+      document.querySelector('#sidebar')?.classList.remove('blur-background');
+  }
+  closeHideOrbitCard9() {
+    this.isOrbitCardVisible9 = false;
+    document.body.style.overflow = 'auto';
+    document.querySelector('.parent-body-simulator-capa-1')?.classList.remove('blur-background');
+    document.querySelector('#sidebar')?.classList.remove('blur-background');
+    }
+  closeHideOrbitCard10() {
+      this.isOrbitCardVisible10 = false;
+      document.body.style.overflow = 'auto';
+      document.querySelector('.parent-body-simulator-capa-1')?.classList.remove('blur-background');
+      document.querySelector('#sidebar')?.classList.remove('blur-background');
+  }
+
+
 }

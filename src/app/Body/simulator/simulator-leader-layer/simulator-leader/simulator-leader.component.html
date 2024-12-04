@@ -71,23 +71,32 @@
         </div>
         <div class="block-2-box-4" >
             <div  class="orbit-1" >
-                <button class="orbit-button-1" (click)="hideOrbitCard()">
+                <button class="orbit-button-1" 
+                (click)="hideOrbitCard3()"
+                [disabled]="isOrbitCardVisible"
+                [ngClass]="{'disabled-orbit': isOrbitCardVisible}">
                     3
-                 </button> 
+                </button>
             </div>    
         </div>
         <div class="block-2-box-5" >
             <div  class="orbit-1" >
-                <button class="orbit-button-1" (click)="hideOrbitCard()">
-                   4
-                 </button> 
+                <button class="orbit-button-1" 
+                (click)="hideOrbitCard4()"
+                [disabled]="isOrbitCardVisible"
+                [ngClass]="{'disabled-orbit': isOrbitCardVisible}">
+                    4
+                </button>
             </div>  
         </div>
         <div class="block-2-box-6" >
             <div  class="orbit-1" >
-                <button class="orbit-button-1" (click)="hideOrbitCard()">
+                <button class="orbit-button-1" 
+                (click)="hideOrbitCard5()"
+                [disabled]="isOrbitCardVisible"
+                [ngClass]="{'disabled-orbit': isOrbitCardVisible}">
                     5
-                 </button> 
+                </button>
             </div>    
         </div>
 
@@ -141,5 +150,90 @@
         <app-orbit-card-leader-2
             (closeModal)="closeHideOrbitCard2()">
         </app-orbit-card-leader-2>
+    </div>
+</div>
+
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible3" 
+     (click)="closeHideOrbitCard3()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-leader-3
+            (closeModal)="closeHideOrbitCard3()">
+        </app-orbit-card-leader-3>
+    </div>
+</div>
+
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible4" 
+     (click)="closeHideOrbitCard4()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-leader-4
+            (closeModal)="closeHideOrbitCard4()">
+        </app-orbit-card-leader-4>
+    </div>
+</div>
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible5" 
+     (click)="closeHideOrbitCard5()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-leader-5
+            (closeModal)="closeHideOrbitCard5()">
+        </app-orbit-card-leader-5>
+    </div>
+</div>
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible6" 
+     (click)="closeHideOrbitCard6()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-leader-6
+            (closeModal)="closeHideOrbitCard6()">
+        </app-orbit-card-leader-6>
+    </div>
+</div>
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible7" 
+     (click)="closeHideOrbitCard7()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-leader-7
+            (closeModal)="closeHideOrbitCard7()">
+        </app-orbit-card-leader-7>
+    </div>
+</div>
+
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible8" 
+     (click)="closeHideOrbitCard8()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-leader-8
+            (closeModal)="closeHideOrbitCard8()">
+        </app-orbit-card-leader-8>
+    </div>
+</div>
+
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible9" 
+     (click)="closeHideOrbitCard9()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-leader-9
+            (closeModal)="closeHideOrbitCard9()">
+        </app-orbit-card-leader-9>
+    </div>
+</div>
+
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible10" 
+     (click)="closeHideOrbitCard10()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-leader-10
+            (closeModal)="closeHideOrbitCard10()">
+        </app-orbit-card-leader-10>
     </div>
 </div>

@@ -1,6 +1,6 @@
 <div class="orbit-modal">
     <div class="modal-header">
-        <h2>Órbita 1</h2>
+        <h2>Órbita 3 (Referidos Indirectos)</h2>
         <button class="close-btn" (click)="closeHideOrbitCard()">×</button>
     </div>
     
@@ -33,12 +33,15 @@
                 <button class="delete-btn" (click)="removeUser(i)">×</button>
             </div>
         </div>
+        
+      
     </div>
    
+
     <div class="modal-footer">
           <button class="add-btn" (click)="addUser()">+</button>
-
-        <p class="info-text">Para desbloquear la Órbita 1, es necesario tener 6 usuarios en esta Órbita.</p>
+        
+        <p class="info-text">Para desbloquear la Órbita 3, es necesario tener 3 usuarios en esta Órbita.</p>
         <p class="error-message" *ngIf="showErrorMessage">{{ errorMessage }}</p>
         <button class="apply-btn" (click)="applyInvestments()">Aplicar</button>
     </div>

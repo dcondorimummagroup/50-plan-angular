@@ -5,7 +5,7 @@ import { OrbitUser } from 'src/app/types/orbit';
 @Injectable({
   providedIn: 'root'
 })
-export class OrbitService {
+export class Orbit2Service {
   private investmentAmount = new BehaviorSubject<number>(100);
   currentAmount = this.investmentAmount.asObservable();
 
@@ -14,14 +14,26 @@ export class OrbitService {
 
   // Constantes
   private readonly MINIMUM_ORBIT_AMOUNT = 24000;
-  readonly ORBIT_RATE_1 = {
-    weekly: '0.625',
-    monthly: '2.5',
+  readonly ORBIT_RATE_2 = {
+    weekly: '0.25',
+    monthly: '1',
     yearly: '30'
   };
 
-  private readonly ORBIT_USERS_KEY = 'orbit_users';
-  private readonly ORBIT_INVESTMENT_KEY = 'orbitInvestment';
+  
+
+  readonly ORBIT_RATE_4= {
+    weekly: '0.05',
+    monthly: '0.2',
+    yearly: '30'
+  };
+
+
+  // Keys específicas para Órbita 2
+  private readonly ORBIT2_USERS_KEY = 'orbit2_users';
+  private readonly ORBIT2_INVESTMENT_KEY = 'orbit2Investment';
+
+  constructor() {}
 
   updateInvestment(amount: number) {
     this.investmentAmount.next(amount);
@@ -29,30 +41,30 @@ export class OrbitService {
 
   updateOrbitInvestment(amount: number) {
     this.orbitInvestmentAmount.next(amount);
+    localStorage.setItem(this.ORBIT2_INVESTMENT_KEY, amount.toString());
   }
 
   resetOrbitInvestment(): void {
     this.orbitInvestmentAmount.next(0);
-    localStorage.removeItem(this.ORBIT_USERS_KEY);
-    localStorage.removeItem(this.ORBIT_INVESTMENT_KEY);
+    localStorage.removeItem(this.ORBIT2_USERS_KEY);
+    localStorage.removeItem(this.ORBIT2_INVESTMENT_KEY);
   }
 
   saveOrbitData(users: OrbitUser[], totalAmount: number) {
-    localStorage.setItem(this.ORBIT_USERS_KEY, JSON.stringify(users));
-    localStorage.setItem(this.ORBIT_INVESTMENT_KEY, totalAmount.toString());
+    localStorage.setItem(this.ORBIT2_USERS_KEY, JSON.stringify(users));
+    localStorage.setItem(this.ORBIT2_INVESTMENT_KEY, totalAmount.toString());
     this.orbitInvestmentAmount.next(totalAmount);
   }
 
   getOrbitUsers(): OrbitUser[] {
-    const savedUsers = localStorage.getItem(this.ORBIT_USERS_KEY);
+    const savedUsers = localStorage.getItem(this.ORBIT2_USERS_KEY);
     return savedUsers ? JSON.parse(savedUsers) : [];
   }
 
-  getOrbitRate1() {
-    return this.ORBIT_RATE_1;
+  getOrbitRate2() {
+    return this.ORBIT_RATE_2;
   }
-
-  // Nuevos métodos auxiliares
+  // Métodos auxiliares
   getCurrentInvestment(): number {
     return this.orbitInvestmentAmount.getValue();
   }
@@ -61,15 +73,29 @@ export class OrbitService {
     const currentAmount = this.getCurrentInvestment();
     return currentAmount >= this.MINIMUM_ORBIT_AMOUNT;
   }
-
   getMinimumAmount(): number {
     return this.MINIMUM_ORBIT_AMOUNT;
   }
-
   getOrbitErrorMessage(): string | undefined {
     const currentAmount = this.getCurrentInvestment();
     return currentAmount < this.MINIMUM_ORBIT_AMOUNT 
       ? `El monto total debe ser mayor a ${this.MINIMUM_ORBIT_AMOUNT}. Monto actual: ${currentAmount}`
       : undefined;
+  }
+  // Método para cargar datos iniciales
+  loadSavedInvestment(): void {
+    const savedAmount = localStorage.getItem(this.ORBIT2_INVESTMENT_KEY);
+    if (savedAmount) {
+      this.orbitInvestmentAmount.next(Number(savedAmount));
+    }
+  }
+  // Método para verificar si hay datos guardados
+  hasSavedData(): boolean {
+    return localStorage.getItem(this.ORBIT2_USERS_KEY) !== null;
+  }
+  // Método para obtener el total invertido
+  getTotalInvestment(): number {
+    const users = this.getOrbitUsers();
+    return users.reduce((total, user) => total + user.investment, 0);
   }
 }

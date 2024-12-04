@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { OthersOrbitService } from './others-orbit.service';
+import { Orbit2Service } from './orbit2.service';
 
-describe('OthersOrbitService', () => {
-  let service: OthersOrbitService;
+describe('Orbit2Service', () => {
+  let service: Orbit2Service;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(OthersOrbitService);
+    service = TestBed.inject(Orbit2Service);
   });
 
   it('should be created', () => {

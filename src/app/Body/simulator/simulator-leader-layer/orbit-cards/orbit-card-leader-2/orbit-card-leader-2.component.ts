@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output, OnInit } from '@angular/core';
-import { OthersOrbitService } from 'src/app/services/leader-system/othersOrbit/others-orbit.service';
+import { Orbit2Service } from 'src/app/services/leader-system/orbit/orbit2/orbit2.service';
 import { OrbitUser } from 'src/app/types/orbit';
 
 @Component({
@@ -14,14 +14,12 @@ export class OrbitCardLeader2Component implements OnInit {
   errorMessage: string = '';
   
   users: OrbitUser[] = [
-    { id: 1, name: 'Manuel', investment: 4000 },
-    { id: 2, name: 'Javier', investment: 4000 },
-    { id: 3, name: 'Juan', investment: 4000},
+
   ];
 
   private totalInvestment: number = 0;
 
-  constructor(private othersOrbitService: OthersOrbitService) {}
+  constructor(private othersOrbitService: Orbit2Service) {}
 
   ngOnInit() {
     this.loadSavedData();

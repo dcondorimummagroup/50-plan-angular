@@ -22,6 +22,14 @@ import { OrbitCardPromoterComponent } from './Body/simulator/simulator-promoter-
 import { OrbitCardLeaderComponent } from './Body/simulator/simulator-leader-layer/orbit-cards/orbit-card-leader/orbit-card-leader.component';
 import { FormsModule } from '@angular/forms';
 import { OrbitCardLeader2Component } from './Body/simulator/simulator-leader-layer/orbit-cards/orbit-card-leader-2/orbit-card-leader-2.component';
+import { OrbitCardLeader3Component } from './Body/simulator/simulator-leader-layer/orbit-cards/orbit-card-leader-3/orbit-card-leader-3.component';
+import { OrbitCardLeader4Component } from './Body/simulator/simulator-leader-layer/orbit-cards/orbit-card-leader-4/orbit-card-leader-4.component';
+import { OrbitCardLeader5Component } from './Body/simulator/simulator-leader-layer/orbit-cards/orbit-card-leader-5/orbit-card-leader-5.component';
+import { OrbitCardLeader6Component } from './Body/simulator/simulator-leader-layer/orbit-cards/orbit-card-leader-6/orbit-card-leader-6.component';
+import { OrbitCardLeader7Component } from './Body/simulator/simulator-leader-layer/orbit-cards/orbit-card-leader-7/orbit-card-leader-7.component';
+import { OrbitCardLeader8Component } from './Body/simulator/simulator-leader-layer/orbit-cards/orbit-card-leader-8/orbit-card-leader-8.component';
+import { OrbitCardLeader9Component } from './Body/simulator/simulator-leader-layer/orbit-cards/orbit-card-leader-9/orbit-card-leader-9.component';
+import { OrbitCardLeader10Component } from './Body/simulator/simulator-leader-layer/orbit-cards/orbit-card-leader-10/orbit-card-leader-10.component';
 
 
 @NgModule({
@@ -44,8 +52,14 @@ import { OrbitCardLeader2Component } from './Body/simulator/simulator-leader-lay
     OrbitCardPromoterComponent,
     OrbitCardLeaderComponent,
     OrbitCardLeader2Component,
-
-
+    OrbitCardLeader3Component,
+    OrbitCardLeader4Component,
+    OrbitCardLeader5Component,
+    OrbitCardLeader6Component,
+    OrbitCardLeader7Component,
+    OrbitCardLeader8Component,
+    OrbitCardLeader9Component,
+    OrbitCardLeader10Component
   ],
   imports: [
     BrowserModule,
