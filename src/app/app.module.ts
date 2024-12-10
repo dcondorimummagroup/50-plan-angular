@@ -37,6 +37,9 @@ import { CarouselCardsComponent } from './carousel/carousel-cards/carousel-cards
 import { ViewStartMobileComponent } from './view-start-mobile/view-start-mobile.component';
 import { CarouselNosotrosComponent } from './carousel/carousel-nosotros/carousel-nosotros.component';
 import { CarouselVideoComponent } from './carousel/carousel-video/carousel-video.component';
+import { SimulatorMobileInvestorComponent } from './mobile-simulator/simulator-mobile-investor/simulator-mobile-investor.component';
+import { SimulatorMobileLeaderComponent } from './mobile-simulator/simulator-mobile-leader/simulator-mobile-leader.component';
+import { SimulatorMobilePromoterComponent } from './mobile-simulator/simulator-mobile-promoter/simulator-mobile-promoter.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +76,9 @@ import { CarouselVideoComponent } from './carousel/carousel-video/carousel-video
     ViewStartMobileComponent,
     CarouselNosotrosComponent,
     CarouselVideoComponent,
+    SimulatorMobileInvestorComponent,
+    SimulatorMobileLeaderComponent,
+    SimulatorMobilePromoterComponent,
   ],
   imports: [
     BrowserModule,

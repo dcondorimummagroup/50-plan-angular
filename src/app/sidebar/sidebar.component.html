@@ -1,43 +1,77 @@
 <div class="parent">
-    <div class="parent-sidebar">
-      <div class="sidebar">
-        <!-- Logo -->
-        <div class="sidebar-element-logo">
-          <img (click)="goToSection('logo')" class="image-logo" src="/assets/image/logo.webp" alt="logo">
-        </div>
-        
-        <!-- Navegación a secciones -->
-        <div class="sidebar-element-1">
-          <button (click)="goToSection('nosotros')" class="text-element">Nosotros</button>
-        </div>
-        <div class="sidebar-element-2">
-          <button (click)="goToSection('estrategia')" class="text-element">Estrategia</button>
-        </div>
-        <div class="sidebar-element-3">
-          <button (click)="goToSection('licencias')" class="text-element">Licencias</button>
-        </div>
-        <div class="sidebar-element-4">
-          <button (click)="goToSection('clientes')" class="text-element">Clientes</button>
-        </div>
-        
-        <!-- Simulator -->
-        <div class="sidebar-element-simulator">
-          <button [routerLink]="['/simulator']" class="element-simulator">
-            <p class="simulator">Simulator</p>
-          </button>
-        </div>
-        
-        <!-- Autenticación -->
-        <div class="sidebar-element-inicio">
-          <button class="btn-inicio" (click)="goToLogin()">
-            <p class="inicio">Iniciar Sesión</p>
-          </button>
-        </div>
-        <div class="sidebar-element-register">
-          <button class="btn-register" (click)="goToRegister()">
-            <p class="register">Registrarse</p>
-          </button>
-        </div>
+  <div class="parent-sidebar">
+    <div class="sidebar">
+      <div class="sidebar-element-logo">
+        <img (click)="goToSection('logo', $event)" class="image-logo" src="/assets/image/logo.webp" alt="logo">
+      </div>
+
+      <div class="sidebar-element-0">
+        <button (click)="toggleMenu($event)" class="menu-button" [class.open]="isMenuOpen">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- Agregar estos elementos de navegación -->
+      <div class="sidebar-element-1">
+        <button (click)="goToSection('nosotros', $event)" class="text-element">Nosotros</button>
+      </div>
+      <div class="sidebar-element-2">
+        <button (click)="goToSection('estrategia', $event)" class="text-element">Estrategia</button>
+      </div>
+      <div class="sidebar-element-3">
+        <button (click)="goToSection('licencias', $event)" class="text-element">Licencias</button>
+      </div>
+      <div class="sidebar-element-4">
+        <button (click)="goToSection('clientes', $event)" class="text-element">Clientes</button>
+      </div>
+
+      <div class="sidebar-element-simulator">
+        <button [routerLink]="['/simulator']" class="element-simulator">
+          <p class="simulator">Simulador</p>
+        </button>
+      </div>
+
+      <div class="sidebar-element-inicio">
+        <button class="btn-inicio" (click)="goToLogin($event)">
+          <p class="inicio">Iniciar Sesión</p>
+        </button>
+      </div>
+      <div class="sidebar-element-register">
+        <button class="btn-register" (click)="goToRegister($event)">
+          <p class="register">Registrarse</p>
+        </button>
       </div>
     </div>
   </div>
+</div>
+
+<div class="side-menu" [class.open]="isMenuOpen">
+  <div class="menu-header">
+    <div class="header-content">
+      <img class="menu-logo" src="/assets/image/logo.webp" alt="logo">
+      <button (click)="toggleMenu($event)" class="close-button">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+  <div class="menu-content">
+    <!-- Agregar los items de navegación -->
+   
+
+    <div class="simulator-option" [routerLink]="['/simulator']" (click)="toggleMenu($event)">
+      <i class="fas fa-cube"></i>
+      <span>Simulador</span>
+    </div>
+
+    <div class="auth-buttons">
+      <button (click)="goToLogin($event)" class="menu-item">Iniciar sesión</button>
+      <button (click)="goToRegister($event)" class="menu-item">Registrarse</button>
+    </div>
+  </div>
+</div>
+
+<!-- Overlay -->
+<div class="menu-overlay" [class.visible]="isMenuOpen" (click)="toggleMenu($event)"></div>

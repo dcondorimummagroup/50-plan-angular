@@ -193,3 +193,18 @@
     height: 50px;
 }
 
+@media (max-width: 768px) {
+    .parent-body-simulator {
+        display: none; // Ocultar todo el contenedor principal
+    }
+
+    .text-simulator-3 {
+        font-size: 2em;
+    }
+
+    app-carousel-simulator {
+        display: block; // Asegúrate de que el carrusel esté visible
+        width: 100%; // Ajusta el tamaño según sea necesario
+        height: auto; // Mantén la proporción
+    }
+}

@@ -1,23 +1,27 @@
-<div class="parent-body-simulator" >
-    <p class="text-simulator-1" >Aquí aprenderás cómo funciona el</p>
-    <p class="text-simulator-2" >simulador y nuestra estrategia financiera</p>
-    <p class="text-simulator-3" >Para empezar, selecciona un rango inicial:</p>
-    <div class="parent-body-simulator-boxes" >
-        <div [routerLink]="['/simulator-investor']" class="body-simulator-box-1" >  
+<!-- Contenido principal para pantallas grandes -->
+<section class="parent-body-simulator">
+    <p class="text-simulator-1">Aquí aprenderás cómo funciona el</p>
+    <p class="text-simulator-2">simulador y nuestra estrategia financiera</p>
+    <p class="text-simulator-3">Para empezar, selecciona un rango inicial:</p>
+    <div class="parent-body-simulator-boxes">
+        <div [routerLink]="['/simulator-investor']" class="body-simulator-box-1"></div>
+        <div [routerLink]="['/simulator-promoter']" class="body-simulator-box-2"></div>
+        <div [routerLink]="['/simulator-leader']" class="body-simulator-box-3"></div>
+        <div class="box-generic">
+            <div class="box-generic-title">Inversionista</div>
+            <div class="bar-1"></div>
+            <div class="box-generic-text">
+                Presencia el crecimiento de tu capital gracias al arbitraje financiero. 
+                Las ganancias dependerán de tu licencia.
+            </div>
         </div>
-        <div [routerLink]="['/simulator-promoter']"  class="body-simulator-box-2" >
-        </div>
-        <div [routerLink]="['/simulator-leader']" class="body-simulator-box-3" >
-        </div>
-        <div class="box-generic" >
-                <div class="box-generic-title" >Inversionista</div>
-                <div  class="bar-1" ></div>
-                <div class="box-generic-text" >
-                    Presencia el crecimiento de tu capital gracias al arbitraje financiero. Las ganancias dependerán de tu licencia.
-                </div>
-        </div>
-</div>
+    </div>
+</section>
 
+<!-- Carrusel para pantallas pequeñas -->
+<app-carousel-simulator class="mobile-carousel"></app-carousel-simulator>
+
+<!-- Overlay de tarjetas -->
 <div class="card-overlay" *ngIf="isCardVisible" (click)="hideInfo()">
     <div class="card-wrapper" (click)="$event.stopPropagation()">
         <app-card 

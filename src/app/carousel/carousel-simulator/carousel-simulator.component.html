@@ -1,1 +1,49 @@
-<p>carousel-simulator works!</p>
+
+<div class="generic-container">
+    <div class="body-6-sub-title" >Para empezar, selecciona un rango inicial:</div>
+    <div #carouselContainer class="carousel-container">
+        
+        <div class="item-1" data-index="0">
+            <div class="box-1" >
+                <div class="icon-1" ></div>
+                <div class="title-1" >Inversionista</div>
+                <div class="box-text-1" >
+                  Presencia el crecimiento de tu capital gracias al arbitraje financiero. 
+                  Las ganancias dependerán de tu licencia.
+                </div>
+                <button [routerLink]="['/simulator-investor']" class="button-1">
+                    ir >
+                </button>
+            </div>
+        </div>
+        <div class="item-2" data-index="1">
+            <div class="box-2" >
+                <div class="icon-2" ></div>
+                <div class="title-1">Promotor</div>
+                <div class="box-text-1" >
+                    Gana en base a tu propia inversión y de referidos hasta la órbita 5, después de cumplir los requerimientos.
+                </div>
+                <button [routerLink]="['/simulator-promoter']" class="button-1">
+                    ir >
+                </button>
+            </div>
+        </div>
+        <div class="item-3" data-index="2">
+            <div class="box-3" >
+                <div class="icon-3" ></div>
+                <div class="title-1" >Lider</div>
+                <div class="box-text-1" [routerLink]="['/simulator-lider']" >
+                    Reservado para los más visionarios, desbloquea el potencial de nuestra estrategia y desbloquea el cobro de hasta 2 Órbitas.
+                </div>
+                <button class="button-1">
+                    ir >
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="carousel-dots">
+        <span class="dot" [class.active]="isActive(0)" (click)="goToSlide(0)"></span>
+        <span class="dot" [class.active]="isActive(1)" (click)="goToSlide(1)"></span>
+        <span class="dot" [class.active]="isActive(2)" (click)="goToSlide(2)"></span>
+    </div>
+</div>

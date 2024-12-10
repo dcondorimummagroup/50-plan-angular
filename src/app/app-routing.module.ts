@@ -17,6 +17,9 @@ import { CarouselStrategyComponent } from './carousel/carousel-strategy/carousel
 import { CarouselCustomersComponent } from './carousel/carousel-customers/carousel-customers.component';
 import { CarouselSimulatorComponent } from './carousel/carousel-simulator/carousel-simulator.component';
 import { ViewStartMobileComponent } from './view-start-mobile/view-start-mobile.component';
+import { SimulatorMobileInvestorComponent } from './mobile-simulator/simulator-mobile-investor/simulator-mobile-investor.component';
+import { SimulatorMobileLeaderComponent } from './mobile-simulator/simulator-mobile-leader/simulator-mobile-leader.component';
+import { SimulatorMobilePromoterComponent } from './mobile-simulator/simulator-mobile-promoter/simulator-mobile-promoter.component';
 
 const routes: Routes = [
   { path: '', component: ViewStartComponent },
@@ -36,6 +39,9 @@ const routes: Routes = [
   { path: 'carousel-customers', component: CarouselCustomersComponent},
   { path: 'carousel-simulator', component: CarouselSimulatorComponent},
   { path: 'view-start-mobile', component: ViewStartMobileComponent},
+  { path: 'simulator-mobile-investor', component: SimulatorMobileInvestorComponent},
+  { path: 'simulator-mobile-leader', component: SimulatorMobileLeaderComponent},
+  { path: 'simulator-mobile-promoter', component: SimulatorMobilePromoterComponent},
 ];
 
 @NgModule({

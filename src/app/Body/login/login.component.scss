@@ -218,3 +218,150 @@
     grid-column: 4 /span 6;
     grid-row: 12 / span 2
 }
+
+
+@media (max-width: 1024px) {
+    .div-container {
+      width: 50vw;
+      grid-column: 4 / span 6;
+    }
+  
+    .input-text-1,
+    .input-text-2 {
+      width: 25vw;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .parent-login {
+      margin-top: 70px;
+      grid-template-columns: repeat(6, 1fr);
+    }
+  
+    .div-container {
+      width: 80vw;
+      grid-column: 2 / span 4;
+      height: 70vh;
+    }
+  
+    .box-icon {
+      grid-column: 3 / span 8;
+      height: 120px;
+      width: 120px;
+    }
+  
+    .icon {
+      height: 70px;
+      width: 70px;
+    }
+  
+    .input-text-1,
+    .input-text-2 {
+      width: 60vw;
+      height: 45px;
+    }
+  
+    .box-text-1,
+    .box-text-2 {
+      grid-column: 2 / span 10;
+    }
+  
+    .box-button {
+      grid-column: 3 / span 8;
+      width: 180px;
+      height: 45px;
+    }
+  
+    .box-text-4 {
+      grid-column: 2 / span 10;
+      text-align: center;
+      font-size: 0.9em;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .parent-login {
+      margin-top: 60px;
+      grid-template-columns: repeat(4, 1fr);
+    }
+  
+    .div-container {
+      width: 90vw;
+      grid-column: 1 / span 4;
+      padding: 20px;
+    }
+  
+    .box-icon {
+      grid-column: 2 / span 10;
+      height: 100px;
+      width: 100px;
+    }
+  
+    .icon {
+      height: 60px;
+      width: 60px;
+    }
+  
+    .input-text-1,
+    .input-text-2 {
+      width: 75vw;
+      height: 40px;
+      font-size: 14px;
+    }
+  
+    .box-text-1,
+    .box-text-2 {
+      grid-column: 1 / span 12;
+    }
+  
+    .box-button {
+      grid-column: 2 / span 10;
+      width: 160px;
+      height: 40px;
+      font-size: 14px;
+    }
+  
+    .box-text-4 {
+      grid-column: 1 / span 12;
+      font-size: 0.8em;
+      
+      .text-login,
+      .text-login-register {
+        display: block;
+        text-align: center;
+        margin: 5px 0;
+      }
+    }
+  }
+  
+  // Ajustes adicionales para pantallas muy pequeñas
+  @media (max-width: 320px) {
+    .div-container {
+      height: 80vh;
+    }
+  
+    .input-text-1,
+    .input-text-2 {
+      width: 85vw;
+    }
+  
+    .box-button {
+      width: 140px;
+    }
+  }
+  
+  // Ajustes para altura
+  @media (max-height: 600px) {
+    .div-container {
+      height: 85vh;
+    }
+  
+    .box-icon {
+      margin-bottom: 10px;
+    }
+  
+    .box-text-1,
+    .box-text-2 {
+      margin-bottom: 5px;
+    }
+  }
