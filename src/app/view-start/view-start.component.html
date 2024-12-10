@@ -1,150 +1,150 @@
 
-    <div id="logo" class="parent">
-        <div class="column-left"></div>
-        <div class="column-right"></div>
-      
-        <div class="circle-1">
-            <div class="circle-sub-1"></div>
-            <div class="circle-sub-2"></div>
+<div id="logo" class="parent">
+    <div class="column-left"></div>
+    <div class="column-right"></div>
+  
+    <div class="circle-1">
+        <div class="circle-sub-1"></div>
+        <div class="circle-sub-2"></div>
+    </div>
+
+    <div  class="parent-body-1" >
+        <div class="body-text-element-1" >
+            Invierte en 
         </div>
-        
-        <div class="circle-2"></div>
-        <div  class="parent-body-1" >
-            <div class="body-text-element-1" >
-                Invierte en 
-            </div>
-            <div class="body-text-element-2" >
-                Startups Mundiales 
-            </div>
-            <div class="body-text-element-3" >
-                con un solo click
-            </div>
-            <div class="body-button-1" >
-                <p class="element-button" >Descargar Presentación</p>
-            </div>
-            <div class="body-button-2" >
-                <p class="element-button" >Listado de Wallets</p> 
-            </div>
+        <div class="body-text-element-2" >
+            Startups Mundiales 
         </div>
-        <div id="nosotros" class="parent-body-2" >
-            <div class="body-2-element-1" >
-                <img src="/assets/image/75.webp" alt="">
-            </div>
-            <div class="body-2-element-2" >
-                Transacciones
-            </div>
-            <div class="body-2-element-3" >
-                Completadas y realizadas cada viernes, y además
-            </div>
-            <div class="body-2-element-4" >
-                de un bono cada fin de mes.
-            </div>     
+        <div class="body-text-element-3" >
+            con un solo click
         </div>
-        <div id="estrategia"  class="parent-body-3" >
-                <div class="body-3-sub-title" > Estrategia </div>
-                <div class="line-1" >ol</div>
-                <div class="body-3-box-1" >
-                        <div class="icon-1" ></div>
-                        <div class="box-text-1" >
-                            Desbloquea un Flujo Constante de Ganancias: Maximiza los Ingresos
-                        </div>
-                </div>
-                <div class="body-3-box-2" >
-                        <div class="icon-2" ></div>
-                        <div class="box-text-1" >
-                            Pon tu capital a trabajar con la orientación de expertos
-                        </div>
-                </div>
-                <div class="body-3-box-3" >
-                        <div class="icon-3" ></div>
-                        <div class="box-text-1" >
-                            Haz que tu dinero trabaje más inteligentemente, no más duro.
-                        </div>
-                </div>
-             
-                <div class="line-2" >ol</div>
+        <div class="body-button-1" >
+            <p class="element-button" >Descargar Presentación</p>
         </div>
-            <!-- Tus secciones existentes -->
-            <div id="licencias" class="parent-body-4">
-              <div class="body-4-sub-title">Licencias de Inversión</div>
-              
-              <!-- Boxes con eventos click -->
-              <div class="body-4-box-1" (click)="showLicenses(1)"></div>
-              <div class="body-4-box-2" (click)="showLicenses(2)"></div>
-              <div class="body-4-box-3" (click)="showLicenses(3)"></div>
-              <div class="body-4-box-4" (click)="showLicenses(4)"></div>
-              
-              <img class="image-planeta" src="/assets/image/planeta.webp" alt="">
+        <div class="body-button-2" >
+            <p class="element-button" >Listado de Wallets</p> 
+        </div>
+    </div>
+    <div id="nosotros" class="parent-body-2" >
+        <div class="body-2-element-1" >
+            <img src="/assets/image/75.webp" alt="">
+        </div>
+        <div class="body-2-element-2" >
+            Transacciones
+        </div>
+        <div class="body-2-element-3" >
+            Completadas y realizadas cada viernes, y además
+        </div>
+        <div class="body-2-element-4" >
+            de un bono cada fin de mes.
+        </div>     
+    </div>
+    <div id="estrategia"  class="parent-body-3" >
+            <div class="body-3-sub-title" > Estrategia </div>
+            <div class="line-1" >ol</div>
+            <div class="body-3-box-1" >
+                    <div class="icon-1" ></div>
+                    <div class="box-text-1" >
+                        Desbloquea un Flujo Constante de Ganancias: Maximiza los Ingresos
+                    </div>
             </div>
+            <div class="body-3-box-2" >
+                    <div class="icon-2" ></div>
+                    <div class="box-text-1" >
+                        Pon tu capital a trabajar con la orientación de expertos
+                    </div>
+            </div>
+            <div class="body-3-box-3" >
+                    <div class="icon-3" ></div>
+                    <div class="box-text-1" >
+                        Haz que tu dinero trabaje más inteligentemente, no más duro.
+                    </div>
+            </div>
+         
+            <div class="line-2" >ol</div>
+    </div>
+        <!-- Tus secciones existentes -->
+        <div id="licencias" class="parent-body-4">
+          <div class="body-4-sub-title">Licencias de Inversión</div>
           
-            <!-- Overlay para las licencias -->
-            <div class="overlay" *ngIf="isLicensesVisible" (click)="hideLicenses()">
-                <div class="modal-wrapper" (click)="$event.stopPropagation()">
-                  <app-licenses 
-                    [selectedBox]="selectedBoxId"
-                    (closeEvent)="hideLicenses()">
-                  </app-licenses>
-                </div>
-              </div>
-        <div id="clientes" class="parent-body-5" >
-            <div class="body-5-sub-title" >Testimonios</div>
-            <div class="rectangle">
-                <input type="checkbox" id="video-toggle" class="video-checkbox">
-                <label for="video-toggle" class="rectangle-movie"></label>
-                <div class="video-container">
-                    <iframe
-                    src="https://www.youtube.com/embed/zEcYZi_46TA?autoplay=0&mute=0&enablejsapi=1&rel=0"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
-                </div>
-            </div>
-            <button  class="button-next" >Siguiente ></button>
-            <img class="body-5-circle" src="/assets/image/circulos.webp" alt="">
+          <!-- Boxes con eventos click -->
+          <div class="body-4-box-1" (click)="showLicenses(1)"></div>
+          <div class="body-4-box-2" (click)="showLicenses(2)"></div>
+          <div class="body-4-box-3" (click)="showLicenses(3)"></div>
+          <div class="body-4-box-4" (click)="showLicenses(4)"></div>
+          
+          <img class="image-planeta" src="/assets/image/planeta.webp" alt="">
         </div>
-        <div class="parent-body-6" >
-            <div class="body-6-sub-title" >Inversores satisfechos</div>
-            
-            <div class="body-6-box-1" >
-                <div class="image-test-1" ></div>
-                <div class="body-6-box-1-title" >Giancarlo</div>
-                <div  class="bar-1" ></div>
-                <div class="body-6-box-1-text" >
+      
+        <!-- Overlay para las licencias -->
+        <div class="overlay" *ngIf="isLicensesVisible" (click)="hideLicenses()">
+            <div class="modal-wrapper" (click)="$event.stopPropagation()">
+              <app-licenses 
+                [selectedBox]="selectedBoxId"
+                (closeEvent)="hideLicenses()">
+              </app-licenses>
+            </div>
+          </div>
+    <div id="clientes" class="parent-body-5" >
+        <div class="body-5-sub-title" >Testimonios</div>
+        <div class="rectangle">
+            <input type="checkbox" id="video-toggle" class="video-checkbox">
+            <label for="video-toggle" class="rectangle-movie"></label>
+            <div class="video-container">
+                <iframe
+                src="https://www.youtube.com/embed/zEcYZi_46TA?autoplay=0&mute=0&enablejsapi=1&rel=0"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+            </div>
+        </div>
+        <button  class="button-next" >Siguiente ></button>
+        <img class="body-5-circle" src="/assets/image/circulos.webp" alt="">
+    </div>
+    <div class="parent-body-6" >
+        <div class="body-6-sub-title" >Inversores satisfechos</div>
+        
+        <div class="body-6-box-1" >
+            <div class="image-test-1" ></div>
+            <div class="body-6-box-1-title" >Giancarlo</div>
+            <div  class="bar-1" ></div>
+            <div class="body-6-box-1-text" >
+                Descubrí el arbitraje financiero y mis inversiones ahora crecen
+                significativamente gracias a esta estrategia. Desde que me uní a un equipo de expertos,
+                he logrado resultados excepcionales en mi cartera, dándome más confianza y entusiasmo por 
+                el futuro financiero.
+            </div>
+        </div>
+        <div class="body-6-box-2" >
+            <div class="image-test-2" ></div>
+                <div class="body-6-box-2-title" >Eduard</div>
+                <div  class="bar-2" ></div>
+                <div class="body-6-box-2-text" >
                     Descubrí el arbitraje financiero y mis inversiones ahora crecen
                     significativamente gracias a esta estrategia. Desde que me uní a un equipo de expertos,
                     he logrado resultados excepcionales en mi cartera, dándome más confianza y entusiasmo por 
                     el futuro financiero.
                 </div>
-            </div>
-            <div class="body-6-box-2" >
-                <div class="image-test-2" ></div>
-                    <div class="body-6-box-2-title" >Eduard</div>
-                    <div  class="bar-2" ></div>
-                    <div class="body-6-box-2-text" >
-                        Descubrí el arbitraje financiero y mis inversiones ahora crecen
-                        significativamente gracias a esta estrategia. Desde que me uní a un equipo de expertos,
-                        he logrado resultados excepcionales en mi cartera, dándome más confianza y entusiasmo por 
-                        el futuro financiero.
-                    </div>
-            </div>
-            <div class="body-6-box-3" >
-                <div class="image-test-3" ></div>
-                    <div class="body-6-box-3-title" >Chema</div>
-                    <div  class="bar-3" ></div>
-                    <div class="body-6-box-3-text" >
-                        Descubrí el arbitraje financiero y mis inversiones ahora crecen
-                        significativamente gracias a esta estrategia. Desde que me uní a un equipo de expertos,
-                        he logrado resultados excepcionales en mi cartera, dándome más confianza y entusiasmo por 
-                        el futuro financiero.
-                    </div>
-            </div>
-           
         </div>
-        <div class="parent-body-7" >
+        <div class="body-6-box-3" >
+            <div class="image-test-3" ></div>
+                <div class="body-6-box-3-title" >Chema</div>
+                <div  class="bar-3" ></div>
+                <div class="body-6-box-3-text" >
+                    Descubrí el arbitraje financiero y mis inversiones ahora crecen
+                    significativamente gracias a esta estrategia. Desde que me uní a un equipo de expertos,
+                    he logrado resultados excepcionales en mi cartera, dándome más confianza y entusiasmo por 
+                    el futuro financiero.
+                </div>
         </div>
+       
     </div>
-    <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" class="whatsapp-float">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
-    </a>
+    <div class="parent-body-7" >
+    </div>
+</div>
+<a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" class="whatsapp-float">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
+</a>
+<app-view-start-mobile> </app-view-start-mobile>

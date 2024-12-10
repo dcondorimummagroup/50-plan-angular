@@ -1,0 +1,217 @@
+@media (max-width: 768px) {
+    .generic-container {
+        margin-top: 60px;
+        position: relative;
+        width: 100vw;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .carousel-container {
+        width: 120%;
+        height: 340px;
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        scrollbar-width: none;
+    }
+
+    .body-3-sub-title {
+        text-align: center;
+        margin-bottom: 3.4rem;
+        font-family: "Jost", sans-serif;
+        font-weight: 800;
+        font-size: 1.7em;
+        color: white;    
+        width: 100%;          
+    }
+
+    .item-1,
+    .item-2,
+    .item-3 {    
+        width: 100%;
+        height: 100%;
+        flex-shrink: 0;
+        scroll-snap-align: start;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+     
+    }
+    .video-checkbox:checked ~ .video-container {
+        display: block;
+    }
+    
+    #video-toggle-1:checked ~ .video-container,
+    #video-toggle-2:checked ~ .video-container {
+        display: block;
+    }
+    
+
+    .box-1,
+    .box-2,
+    .box-3 {
+        text-align: center;
+        width:80% ;
+        height: 340px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contai;
+ 
+    }
+
+    [class^="icon-"] {
+        margin-top: 40px;
+        width: 100%;
+        height: 60px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: invert(100%);
+    }
+
+    .icon-1 { background-image: url('/assets/image/icono-ia.svg'); }
+    .icon-2 { background-image: url('/assets/image/icono-flujo.svg'); }
+    .icon-3 { background-image: url('/assets/image/icono-trabajo.svg'); }
+
+    .box-text-1 {
+        margin-top: 40px;
+        font-family: "Jost", sans-serif;
+        font-weight: 300;
+        font-size: 0.9em;
+        color: white;
+        margin-inline: 20px;
+
+    }
+    .rectangle {
+
+        background-color: rgb(0, 41, 46);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+    
+    .rectangle-movie {
+        background-color: rgb(0, 41, 46);
+        height: 100%;
+        width: 40%;
+        border-left: #002527 2px solid;
+        border-right: 2px solid rgb(12, 36, 48);
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    
+    .video-checkbox {
+        display: none;
+    }
+    
+    /* Nuevo ícono de play */
+    .rectangle-movie::before {
+        content: '';
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .rectangle-movie::after {
+        content: '';
+        position: absolute;
+        border-style: solid;
+        border-width: 20px 0 20px 35px;
+        border-color: transparent transparent transparent #ffffff;
+        transition: all 0.3s ease;
+    }
+    
+    /* Efecto hover */
+    .rectangle-movie:hover::before {
+        background-color: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+    }
+    
+    .rectangle-movie:hover::after {
+        transform: scale(1.1);
+    }
+    
+    .video-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease; 
+        z-index: 20; // Añadido
+        display: flex; // Añadido
+        justify-content: center; // Añadido
+        align-items: center; // Añadido
+    }
+    
+    .video-container iframe {
+        width: 100% !important; // Forzar ancho
+        height: 100% !important; // Forzar alto
+        border: none;
+        position: absolute; // Añadido
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    
+    .video-checkbox:checked ~ .video-container {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .video-checkbox:checked ~ .rectangle-movie {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .carousel-dots {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: calc(100% - 40px);
+        justify-content: center;
+        display: flex;
+        gap: 8px;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.2);
+        border-radius: 20px;
+        
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            
+            &.active {
+                background-color: rgb(0, 183, 255);
+                transform: scale(1.2);
+            }
+        }
+    }
+}

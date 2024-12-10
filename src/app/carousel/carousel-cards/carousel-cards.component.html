@@ -1,0 +1,25 @@
+
+<div class="generic-container">
+    <div class="body-4-sub-title" > Licencias de Inversión</div>
+    <div #carouselContainer class="carousel-container">
+        
+        <div class="item-1" data-index="0">
+            <div class="box-1" (click)="showLicenses(1)"></div>
+        </div>
+        <div class="item-2" data-index="1">
+            <div class="box-2" (click)="showLicenses(2)"></div>
+        </div>
+        <div class="item-3" data-index="2">
+            <div class="box-3" (click)="showLicenses(3)"></div>
+        </div>
+        <div class="item-4" data-index="3">
+            <div class="box-4" (click)="showLicenses(4)"></div>
+        </div>
+    </div>
+    <div class="carousel-dots">
+        <span class="dot" [class.active]="isActive(0)" (click)="goToSlide(0)"></span>
+        <span class="dot" [class.active]="isActive(1)" (click)="goToSlide(1)"></span>
+        <span class="dot" [class.active]="isActive(2)" (click)="goToSlide(2)"></span>
+        <span class="dot" [class.active]="isActive(3)" (click)="goToSlide(3)"></span>
+    </div>
+</div>

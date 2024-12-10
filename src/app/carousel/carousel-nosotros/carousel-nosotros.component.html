@@ -1,0 +1,39 @@
+
+<div class="generic-container">
+
+    <div #carouselContainer class="carousel-container">
+        
+        <div class="item-1" data-index="0">
+            <div class="box-1" >
+                <div class="icon-1" ></div>
+                <div class="title-1" >Años de Experiencia</div>
+                <div class="box-text-1" >
+                    Acompañando a miles de usuarios en su viaje a la autonomía de su capital.
+                </div>
+            </div>
+        </div>
+        <div class="item-2" data-index="1">
+            <div class="box-2" >
+                <div class="icon-2" ></div>
+                <div class="title-1">Transacciones</div>
+                <div class="box-text-1" >
+                    Completadas y realizadas cada viernes, y además de un bono cada fin de mes.
+                </div>
+            </div>
+        </div>
+        <div class="item-3" data-index="2">
+            <div class="box-3" >
+                <div class="icon-3" ></div>
+                <div class="title-1" >De dólares en transacciones</div>
+                <div class="box-text-1" >
+                    Reafirmando el compromiso que tenemos con nuestros clientes, y la tasa de éxito asegurada
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="carousel-dots">
+        <span class="dot" [class.active]="isActive(0)" (click)="goToSlide(0)"></span>
+        <span class="dot" [class.active]="isActive(1)" (click)="goToSlide(1)"></span>
+        <span class="dot" [class.active]="isActive(2)" (click)="goToSlide(2)"></span>
+    </div>
+</div>

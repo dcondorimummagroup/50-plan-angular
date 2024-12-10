@@ -11,6 +11,7 @@
     z-index: -1;
     background-image: url('/assets/image/fondo.webp');
     background-color: #000000;
+    overflow-x: hidden; // Previene scroll horizontal
 }
 
 .column-left {
@@ -884,11 +885,7 @@
         rotateX(5deg) 
         translateZ(10px) 
         scale(1.01);
-    box-shadow: 
-        15px 15px 25px rgba(44, 44, 44, 0.1),
-        -2px -2px 10px rgba(255,255,255,0.05),
-        0 5px 15px rgba(0,0,0,0.05);
-    
+
     &::before {
         opacity: 1;
         animation: shineEffect 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
@@ -973,10 +970,6 @@
         rotateX(5deg) 
         translateZ(10px) 
         scale(1.01);
-    box-shadow: 
-        15px 15px 25px rgba(44, 44, 44, 0.1),
-        -2px -2px 10px rgba(255,255,255,0.05),
-        0 5px 15px rgba(0,0,0,0.05);
     
     &::before {
         opacity: 1;
@@ -1009,8 +1002,6 @@
 /* Efectos hover */
 [class^="body-4-box-"]:hover {
     filter: brightness(1.2); /* Hace el SVG más brillante */
-    background-color: rgba(255, 255, 255, 0.1); /* Agrega un sutil fondo */
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); /* Agrega un sutil brillo */
     cursor: pointer;
 }
 
@@ -1358,6 +1349,11 @@
 
 
 
+@media (max-width: 768px) {
+    .parent{
+        display: none;
+    }
+ }
 
 
 

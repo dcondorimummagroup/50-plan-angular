@@ -12,6 +12,12 @@ import { CardComponent } from './shared/card/card.component';
 import { Card2Component } from './shared/card-2/card-2.component';
 import { OrbitCardLeaderComponent } from './Body/simulator/simulator-leader-layer/orbit-cards/orbit-card-leader/orbit-card-leader.component';
 import { OrbitCardPromoterComponent } from './Body/simulator/simulator-promoter-layer/orbit-card-promoter/orbit-card-promoter.component';
+import { CarouselCardsComponent } from './carousel/carousel-cards/carousel-cards.component';
+import { CarouselStrategyComponent } from './carousel/carousel-strategy/carousel-strategy.component';
+import { CarouselCustomersComponent } from './carousel/carousel-customers/carousel-customers.component';
+import { CarouselSimulatorComponent } from './carousel/carousel-simulator/carousel-simulator.component';
+import { ViewStartMobileComponent } from './view-start-mobile/view-start-mobile.component';
+
 const routes: Routes = [
   { path: '', component: ViewStartComponent },
   { path: 'simulator', component: SimulatorComponent },
@@ -25,6 +31,11 @@ const routes: Routes = [
   { path: 'card-2', component: Card2Component },
   { path: 'orbit-card-leader', component: OrbitCardLeaderComponent},
   { path: 'orbit-card-promoter', component: OrbitCardPromoterComponent},
+  { path: 'carousel-cards', component: CarouselCardsComponent},
+  { path: 'carousel-strategy', component: CarouselStrategyComponent},
+  { path: 'carousel-customers', component: CarouselCustomersComponent},
+  { path: 'carousel-simulator', component: CarouselSimulatorComponent},
+  { path: 'view-start-mobile', component: ViewStartMobileComponent},
 ];
 
 @NgModule({

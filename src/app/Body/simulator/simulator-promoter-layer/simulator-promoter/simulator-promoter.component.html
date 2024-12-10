@@ -13,7 +13,20 @@
                 $ Inversión (USD):
             </div>
             <div class="box-2-number" >
-                <p class="amount" > 100 .00</p>
+                <div class="input-container">
+                    <input 
+                        type="number" 
+                        class="amount" 
+                        value="100.00" 
+                        step="0.01" 
+                        min="0" 
+                        (input)="updateInvestment($event)"
+                    >
+                    <div class="input-overlay">
+                        <span class="integer"></span>
+                        <span class="decimal"></span>
+                    </div>
+                </div>
             </div> 
         </div>
         <div class="block-1-box-3" >

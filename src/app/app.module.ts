@@ -30,7 +30,13 @@ import { OrbitCardLeader7Component } from './Body/simulator/simulator-leader-lay
 import { OrbitCardLeader8Component } from './Body/simulator/simulator-leader-layer/orbit-cards/orbit-card-leader-8/orbit-card-leader-8.component';
 import { OrbitCardLeader9Component } from './Body/simulator/simulator-leader-layer/orbit-cards/orbit-card-leader-9/orbit-card-leader-9.component';
 import { OrbitCardLeader10Component } from './Body/simulator/simulator-leader-layer/orbit-cards/orbit-card-leader-10/orbit-card-leader-10.component';
-
+import { CarouselStrategyComponent } from './carousel/carousel-strategy/carousel-strategy.component';
+import { CarouselCustomersComponent } from './carousel/carousel-customers/carousel-customers.component';
+import { CarouselSimulatorComponent } from './carousel/carousel-simulator/carousel-simulator.component';
+import { CarouselCardsComponent } from './carousel/carousel-cards/carousel-cards.component';
+import { ViewStartMobileComponent } from './view-start-mobile/view-start-mobile.component';
+import { CarouselNosotrosComponent } from './carousel/carousel-nosotros/carousel-nosotros.component';
+import { CarouselVideoComponent } from './carousel/carousel-video/carousel-video.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +65,14 @@ import { OrbitCardLeader10Component } from './Body/simulator/simulator-leader-la
     OrbitCardLeader7Component,
     OrbitCardLeader8Component,
     OrbitCardLeader9Component,
-    OrbitCardLeader10Component
+    OrbitCardLeader10Component,
+    CarouselCardsComponent,
+    CarouselStrategyComponent,
+    CarouselCustomersComponent,
+    CarouselSimulatorComponent,
+    ViewStartMobileComponent,
+    CarouselNosotrosComponent,
+    CarouselVideoComponent,
   ],
   imports: [
     BrowserModule,
