@@ -45,7 +45,11 @@
     grid-template-columns: repeat(15, 1fr);
     grid-template-rows: repeat(16, 1fr);
     justify-items: center;
-    background-color: rgba(43, 43, 43, 0.705);
+    background: linear-gradient(
+        145deg,
+        rgba(27, 27, 27, 0.61),
+        transparent
+    );
     border-radius: 30px;
     backdrop-filter: blur(10px);
 }
@@ -459,7 +463,7 @@
     grid-column: 2 / span 10;
     grid-row: 11 / span 2;
     width: 100%;
-    height: 354px;
+    height: 380px;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(18, 1fr);
@@ -469,7 +473,11 @@
     position: relative; /* Necesario para backdrop-filter */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    
+    background: linear-gradient(
+        145deg,
+        rgba(27, 27, 27, 0.61),
+        transparent
+    );
     /* Opcional: añadir más efectos */
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }

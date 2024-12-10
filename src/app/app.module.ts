@@ -18,7 +18,6 @@ import { CardComponent } from './shared/card/card.component';
 import { Card2Component } from './shared/card-2/card-2.component';
 import { ProfitLeaderComponent } from './Body/simulator/simulator-leader-layer/profit-leader/profit-leader.component';
 import { ProfitPromoterComponent } from './Body/simulator/simulator-promoter-layer/profit-promoter/profit-promoter.component';
-import { OrbitCardPromoterComponent } from './Body/simulator/simulator-promoter-layer/orbit-card-promoter/orbit-card-promoter.component';
 import { OrbitCardLeaderComponent } from './Body/simulator/simulator-leader-layer/orbit-cards/orbit-card-leader/orbit-card-leader.component';
 import { FormsModule } from '@angular/forms';
 import { OrbitCardLeader2Component } from './Body/simulator/simulator-leader-layer/orbit-cards/orbit-card-leader-2/orbit-card-leader-2.component';
@@ -44,7 +43,7 @@ import { OrbitCardPromoter2Component } from './Body/simulator/simulator-promoter
 import { OrbitCardPromoter3Component } from './Body/simulator/simulator-promoter-layer/orbit-cards/orbit-card-promoter-3/orbit-card-promoter-3.component';
 import { OrbitCardPromoter4Component } from './Body/simulator/simulator-promoter-layer/orbit-cards/orbit-card-promoter-4/orbit-card-promoter-4.component';
 import { OrbitCardPromoter5Component } from './Body/simulator/simulator-promoter-layer/orbit-cards/orbit-card-promoter-5/orbit-card-promoter-5.component';
-
+import { OrbitCardPromoterComponent } from './Body/simulator/simulator-promoter-layer/orbit-cards/orbit-card-promoter/orbit-card-promoter.component';
 @NgModule({
   declarations: [
     AppComponent,
