@@ -4,15 +4,36 @@
     <p class="text-simulator-2">simulador y nuestra estrategia financiera</p>
     <p class="text-simulator-3">Para empezar, selecciona un rango inicial:</p>
     <div class="parent-body-simulator-boxes">
+        <!-- Boxes principales -->
         <div [routerLink]="['/simulator-investor']" class="body-simulator-box-1"></div>
         <div [routerLink]="['/simulator-promoter']" class="body-simulator-box-2"></div>
         <div [routerLink]="['/simulator-leader']" class="body-simulator-box-3"></div>
-        <div class="box-generic">
+
+        <!-- Box genérico 1 -->
+        <div class="box-generic-1">
             <div class="box-generic-title">Inversionista</div>
             <div class="bar-1"></div>
             <div class="box-generic-text">
                 Presencia el crecimiento de tu capital gracias al arbitraje financiero. 
                 Las ganancias dependerán de tu licencia.
+            </div>
+        </div>
+
+        <!-- Box genérico 2 -->
+        <div class="box-generic-2">
+            <div class="box-generic-title">Promotor</div>
+            <div class="bar-1"></div>
+            <div class="box-generic-text">
+                Gana en base a tu propia inversión y de referidos hasta la órbita 5, después de cumplir los requerimientos.
+            </div>
+        </div>
+
+        <!-- Box genérico 3 -->
+        <div class="box-generic-3">
+            <div class="box-generic-title">Lider</div>
+            <div class="bar-1"></div>
+            <div class="box-generic-text">
+                Reservado para los más visionarios, desbloquea el potencial de nuestra estrategia y desbloquea el cobro de hasta 2 Órbitas.
             </div>
         </div>
     </div>

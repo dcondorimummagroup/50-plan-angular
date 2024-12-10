@@ -129,9 +129,9 @@
 
 
 /* Mostrar box-generic en hover para cualquiera de los boxes */
-.body-simulator-box-1:hover ~ .box-generic,
-.body-simulator-box-2:hover ~ .box-generic,
-.body-simulator-box-3:hover ~ .box-generic {
+.body-simulator-box-1:hover ~ .box-generic-1,
+.body-simulator-box-2:hover ~ .box-generic-2,
+.body-simulator-box-3:hover ~ .box-generic-3 {
     display: grid;
     margin-top: 0;
     grid-row: 2 / span 2;
@@ -151,9 +151,9 @@
 }
 
 /* Mostrar elementos internos cuando cualquier box tiene hover */
-.body-simulator-box-1:hover ~ .box-generic .box-generic-title,
-.body-simulator-box-2:hover ~ .box-generic .box-generic-title,
-.body-simulator-box-3:hover ~ .box-generic .box-generic-title {
+.body-simulator-box-1:hover ~ .box-generic-1 .box-generic-title,
+.body-simulator-box-2:hover ~ .box-generic-2 .box-generic-title,
+.body-simulator-box-3:hover ~ .box-generic-3 .box-generic-title {
     display: block;
     margin-top: 2px;
     grid-column: 2/ span 2;
@@ -165,9 +165,9 @@
     margin-left: 40px;
 }
 
-.body-simulator-box-1:hover ~ .box-generic .box-generic-text,
-.body-simulator-box-2:hover ~ .box-generic .box-generic-text,
-.body-simulator-box-3:hover ~ .box-generic .box-generic-text {
+.body-simulator-box-1:hover ~ .box-generic-1 .box-generic-text,
+.body-simulator-box-2:hover ~ .box-generic-2 .box-generic-text,
+.body-simulator-box-3:hover ~ .box-generic-3 .box-generic-text {
     display: block;
     margin-left: 40px;
     margin-top: 6px;
@@ -179,9 +179,9 @@
     font-weight: 300;
 }
 
-.body-simulator-box-1:hover ~ .box-generic .bar-1,
-.body-simulator-box-2:hover ~ .box-generic .bar-1,
-.body-simulator-box-3:hover ~ .box-generic .bar-1 {
+.body-simulator-box-1:hover ~ .box-generic-1 .bar-1,
+.body-simulator-box-2:hover ~ .box-generic-2 .bar-1,
+.body-simulator-box-3:hover ~ .box-generic-3 .bar-1 {
     display: block;
     grid-column: 1/ span 6;
     grid-row: 3 / span 2;
