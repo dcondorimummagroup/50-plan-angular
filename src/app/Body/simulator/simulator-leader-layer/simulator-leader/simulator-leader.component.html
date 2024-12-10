@@ -5,7 +5,7 @@
                 <div  [routerLink]="['/simulator-promoter']" routerLinkActive="active" class="icon-2" ></div>
                 <div [routerLink]="['/simulator-leader']" routerLinkActive="active" class="icon-3" ></div>
             <div class="text-invent" >
-                Lider
+                Promotor
             </div>
         </div>
         <div class="block-1-box-2" >
@@ -115,7 +115,7 @@
  
 </div>
 
-<app-profit-leader *ngIf="showSimulator" class="simulator-section"></app-profit-leader>
+<app-profit-promoter *ngIf="showSimulator" class="simulator-section"></app-profit-promoter>
 <div class="card-overlay" *ngIf="isCardVisible" (click)="hideInfo()">
     <div class="card-wrapper" (click)="$event.stopPropagation()">
         <app-card 
@@ -135,9 +135,9 @@
      (click)="closeHideOrbitCard()">
     <div class="card-wrapper" 
          (click)="$event.stopPropagation()">
-        <app-orbit-card-leader
+        <app-orbit-card-promoter
             (closeModal)="closeHideOrbitCard()">
-        </app-orbit-card-leader>
+        </app-orbit-card-promoter>
     </div>
 </div>
 
@@ -147,9 +147,9 @@
      (click)="closeHideOrbitCard2()">
     <div class="card-wrapper" 
          (click)="$event.stopPropagation()">
-        <app-orbit-card-leader-2
+        <app-orbit-card-promoter-2
             (closeModal)="closeHideOrbitCard2()">
-        </app-orbit-card-leader-2>
+        </app-orbit-card-promoter-2>
     </div>
 </div>
 
@@ -158,9 +158,9 @@
      (click)="closeHideOrbitCard3()">
     <div class="card-wrapper" 
          (click)="$event.stopPropagation()">
-        <app-orbit-card-leader-3
+        <app-orbit-card-promoter-3
             (closeModal)="closeHideOrbitCard3()">
-        </app-orbit-card-leader-3>
+        </app-orbit-card-promoter-3>
     </div>
 </div>
 
@@ -169,9 +169,9 @@
      (click)="closeHideOrbitCard4()">
     <div class="card-wrapper" 
          (click)="$event.stopPropagation()">
-        <app-orbit-card-leader-4
+        <app-orbit-card-promoter-4
             (closeModal)="closeHideOrbitCard4()">
-        </app-orbit-card-leader-4>
+        </app-orbit-card-promoter-4>
     </div>
 </div>
 <div class="card-overlay" 
@@ -179,61 +179,8 @@
      (click)="closeHideOrbitCard5()">
     <div class="card-wrapper" 
          (click)="$event.stopPropagation()">
-        <app-orbit-card-leader-5
+        <app-orbit-card-promoter-5
             (closeModal)="closeHideOrbitCard5()">
-        </app-orbit-card-leader-5>
-    </div>
-</div>
-<div class="card-overlay" 
-     *ngIf="isOrbitCardVisible6" 
-     (click)="closeHideOrbitCard6()">
-    <div class="card-wrapper" 
-         (click)="$event.stopPropagation()">
-        <app-orbit-card-leader-6
-            (closeModal)="closeHideOrbitCard6()">
-        </app-orbit-card-leader-6>
-    </div>
-</div>
-<div class="card-overlay" 
-     *ngIf="isOrbitCardVisible7" 
-     (click)="closeHideOrbitCard7()">
-    <div class="card-wrapper" 
-         (click)="$event.stopPropagation()">
-        <app-orbit-card-leader-7
-            (closeModal)="closeHideOrbitCard7()">
-        </app-orbit-card-leader-7>
-    </div>
-</div>
-
-<div class="card-overlay" 
-     *ngIf="isOrbitCardVisible8" 
-     (click)="closeHideOrbitCard8()">
-    <div class="card-wrapper" 
-         (click)="$event.stopPropagation()">
-        <app-orbit-card-leader-8
-            (closeModal)="closeHideOrbitCard8()">
-        </app-orbit-card-leader-8>
-    </div>
-</div>
-
-<div class="card-overlay" 
-     *ngIf="isOrbitCardVisible9" 
-     (click)="closeHideOrbitCard9()">
-    <div class="card-wrapper" 
-         (click)="$event.stopPropagation()">
-        <app-orbit-card-leader-9
-            (closeModal)="closeHideOrbitCard9()">
-        </app-orbit-card-leader-9>
-    </div>
-</div>
-
-<div class="card-overlay" 
-     *ngIf="isOrbitCardVisible10" 
-     (click)="closeHideOrbitCard10()">
-    <div class="card-wrapper" 
-         (click)="$event.stopPropagation()">
-        <app-orbit-card-leader-10
-            (closeModal)="closeHideOrbitCard10()">
-        </app-orbit-card-leader-10>
+        </app-orbit-card-promoter-5>
     </div>
 </div>

@@ -1,0 +1,45 @@
+<div class="orbit-modal">
+    <div class="modal-header">
+        <h2>Órbita 1</h2>
+        <button class="close-btn" (click)="closeHideOrbitCard()">×</button>
+    </div>
+    
+    <div class="modal-content">
+        <div class="table-header">
+            <div class="col">#</div>
+            <div class="col">Afiliado</div>
+            <div class="col">Inversión ($)</div>
+            <div class="col"></div>
+        </div>
+        
+        <div class="table-row" *ngFor="let user of users; let i = index">
+            <div class="col">{{user.id}}</div>
+            <div class="col">
+                <input 
+                    type="text" 
+                    [(ngModel)]="user.name" 
+                    placeholder="Nombre del afiliado"
+                    class="input-field">
+            </div>
+            <div class="col">
+                <input 
+                    type="number" 
+                    [(ngModel)]="user.investment" 
+                    (ngModelChange)="onInvestmentChange()"
+                    class="input-field"
+                    min="0">
+            </div>
+            <div class="col">
+                <button class="delete-btn" (click)="removeUser(i)">×</button>
+            </div>
+        </div>
+    </div>
+   
+    <div class="modal-footer">
+          <button class="add-btn" (click)="addUser()">+</button>
+
+        <p class="info-text">Para desbloquear la Órbita 5, es necesario tener 5 referidos directos.</p>
+        <p class="error-message" *ngIf="showErrorMessage">{{ errorMessage }}</p>
+        <button class="apply-btn" (click)="applyInvestments()">Aplicar</button>
+    </div>
+</div>

@@ -1,33 +1,40 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { Orbit4Service } from 'src/app/services/leader-system/orbit/orbit4/orbit4.service';
-import { OrbitOthersService } from 'src/app/services/leader-system/orbit/orbitOthers/orbit-others.service';
-import { OrbitUser } from 'src/app/types/orbit';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+
+import { Orbit2PromoterService } from 'src/app/services/promoter-system/orbit/orbit2/orbit2-promoter.service';
+
+interface OrbitUser  {
+  id: number;
+  name: string;
+  investment: number;
+}
 
 @Component({
-  selector: 'app-orbit-card-leader-4',
-  templateUrl: './orbit-card-leader-4.component.html',
-  styleUrls: ['./orbit-card-leader-4.component.scss']
+  selector: 'app-orbit-card-promoter-2',
+  templateUrl: './orbit-card-promoter-2.component.html',
+  styleUrls: ['./orbit-card-promoter-2.component.scss']
 })
-export class OrbitCardLeader4Component {
+export class OrbitCardPromoter2Component implements OnInit {
+  
   @Output() closeModal = new EventEmitter<void>();
 
   showErrorMessage: boolean = false;
   errorMessage: string = '';
   
-  users: OrbitUser[] = [
+  users: OrbitUser[]= [
+   
 
   ];
 
   private totalInvestment: number = 0;
 
-  constructor(private othersOrbitService: Orbit4Service ) {}
+  constructor(private orbitService: Orbit2PromoterService) {}
 
   ngOnInit() {
     this.loadSavedData();
   }
 
   private loadSavedData(): void {
-    const savedUsers = this.othersOrbitService.getOrbitUsers();
+    const savedUsers = this.orbitService.getOrbitUsers();
     if (savedUsers.length > 0) {
       this.users = savedUsers;
       this.calculateTotalInvestment();
@@ -35,16 +42,22 @@ export class OrbitCardLeader4Component {
   }
 
   private saveData(): void {
-    this.othersOrbitService.saveOrbitData(this.users, this.totalInvestment);
+    this.orbitService.saveOrbitData(this.users, this.totalInvestment);
   }
 
   applyInvestments(): void {
+    if (this.users.length < 2) {
+      this.showErrorMessage = true;
+      this.errorMessage = `Se requieren 2 usuarios. Actualmente hay ${this.users.length}`;
+      return;
+    }
+
     this.showErrorMessage = false;
-    this.othersOrbitService.updateOrbitInvestment(this.totalInvestment);
+    this.orbitService.updateOrbitInvestment(this.totalInvestment);
     this.saveData();
     
-    console.log('Total de Órbita 2 enviado:', this.totalInvestment);
-    console.log('Usuarios Órbita 2 guardados:', this.users);
+    console.log('Total de Órbita 1 enviado:', this.totalInvestment);
+    console.log('Usuarios guardados:', this.users);
     
     this.closeModal.emit();
   }
@@ -54,13 +67,13 @@ export class OrbitCardLeader4Component {
       return total + (user.investment || 0);
     }, 0);
     
-    this.othersOrbitService.updateOrbitInvestment(this.totalInvestment);
+    this.orbitService.updateOrbitInvestment(this.totalInvestment);
     
-    console.log('Inversiones Órbita 2:', this.users.map(u => ({
+    console.log('Inversiones Órbita 1:', this.users.map(u => ({
       nombre: u.name,
       monto: u.investment
     })));
-    console.log('Total calculado Órbita 2:', this.totalInvestment);
+    console.log('Total calculado:', this.totalInvestment);
   }
 
   closeHideOrbitCard() {
@@ -85,7 +98,7 @@ export class OrbitCardLeader4Component {
     this.users.push({
       id: newId,
      name: this.getRandomName(),
-      investment: 4000
+     investment: 100
     });
     this.calculateTotalInvestment();
     this.saveData();

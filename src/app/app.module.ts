@@ -40,6 +40,10 @@ import { CarouselVideoComponent } from './carousel/carousel-video/carousel-video
 import { SimulatorMobileInvestorComponent } from './mobile-simulator/simulator-mobile-investor/simulator-mobile-investor.component';
 import { SimulatorMobileLeaderComponent } from './mobile-simulator/simulator-mobile-leader/simulator-mobile-leader.component';
 import { SimulatorMobilePromoterComponent } from './mobile-simulator/simulator-mobile-promoter/simulator-mobile-promoter.component';
+import { OrbitCardPromoter2Component } from './Body/simulator/simulator-promoter-layer/orbit-cards/orbit-card-promoter-2/orbit-card-promoter-2.component';
+import { OrbitCardPromoter3Component } from './Body/simulator/simulator-promoter-layer/orbit-cards/orbit-card-promoter-3/orbit-card-promoter-3.component';
+import { OrbitCardPromoter4Component } from './Body/simulator/simulator-promoter-layer/orbit-cards/orbit-card-promoter-4/orbit-card-promoter-4.component';
+import { OrbitCardPromoter5Component } from './Body/simulator/simulator-promoter-layer/orbit-cards/orbit-card-promoter-5/orbit-card-promoter-5.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +83,10 @@ import { SimulatorMobilePromoterComponent } from './mobile-simulator/simulator-m
     SimulatorMobileInvestorComponent,
     SimulatorMobileLeaderComponent,
     SimulatorMobilePromoterComponent,
+    OrbitCardPromoter2Component,
+    OrbitCardPromoter3Component,
+    OrbitCardPromoter4Component,
+    OrbitCardPromoter5Component,
   ],
   imports: [
     BrowserModule,

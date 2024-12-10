@@ -116,23 +116,50 @@ export class SimulatorLeaderComponent {
     totalInvestment: number; 
     errorMessage?: string 
   } {
-    const savedUsers = localStorage.getItem(this.ORBIT_USERS_KEY);
-    const users = savedUsers ? JSON.parse(savedUsers) : [];
-    const totalInvestment = users.reduce((sum: number, user: any) => sum + (user.investment || 0), 0);
-
-    let errorMessage = '';
-    if (users.length < 6) {
-      errorMessage = `Es necesario tener 6 referidos y un flujo total de $24k en la órbita 1 para generar ganancias como Lider.`;
-    } else if (totalInvestment < 24000) {
-      errorMessage = `Es necesario tener 6 referidos y un flujo total de $24k en la órbita 1 para generar ganancias como Lider.`;
+    try {
+      // Obtener y validar usuarios
+      const savedUsers = localStorage.getItem(this.ORBIT_USERS_KEY);
+      let users: any[] = [];
+  
+      // Intentar parsear los datos
+      if (savedUsers) {
+        try {
+          const parsedUsers = JSON.parse(savedUsers);
+          users = Array.isArray(parsedUsers) ? parsedUsers : [];
+        } catch (error) {
+          console.error('Error al parsear usuarios:', error);
+          users = [];
+        }
+      }
+  
+      // Calcular la inversión total de manera segura
+      const totalInvestment = users.reduce((sum: number, user: any) => {
+        const investment = typeof user?.investment === 'number' ? user.investment : 0;
+        return sum + investment;
+      }, 0);
+  
+      // Validar condiciones para Líder
+      let errorMessage = '';
+      if (users.length < 6 || totalInvestment < 24000) {
+        errorMessage = `Es necesario tener 6 referidos y un flujo total de $24k en la órbita 1 para generar ganancias como Líder.`;
+      }
+  
+      return {
+        isValid: users.length >= 6 && totalInvestment >= 24000,
+        users,
+        totalInvestment,
+        errorMessage
+      };
+  
+    } catch (error) {
+      console.error('Error en validateOrbitData:', error);
+      return {
+        isValid: false,
+        users: [],
+        totalInvestment: 0,
+        errorMessage: 'Error al procesar los datos de usuarios'
+      };
     }
-
-    return {
-      isValid: users.length >= 6 && totalInvestment >= 24000,
-      users,
-      totalInvestment,
-      errorMessage
-    };
   }
 
   isValidToSimulate(): boolean {
@@ -215,9 +242,6 @@ export class SimulatorLeaderComponent {
     document.body.style.overflow = 'auto';
     document.querySelector('.parent-body-simulator-capa-1')?.classList.remove('blur-background');
   }
-  
-  
- 
   
 
   showNextCard() {
