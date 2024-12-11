@@ -3,11 +3,11 @@
         padding-top: 10px;
         font-family: "Jost", sans-serif;
         background-color: transparent;
-        height: 150vh;
+        height: 250vh;
         width: 100%;
         display: grid;
         grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: repeat(16, 1fr);
+        grid-template-rows: repeat(3, 1fr);
         place-items: center;
         position: relative; // Añadir esto
         isolation: isolate; // Añadir esto
@@ -16,16 +16,18 @@
         position: relative; // Aseguramos el posicionamiento
         overflow-x: hidden; // Prevenimos scroll horizontal
         background-color: rgba(31, 31, 31, 0.123);
+        gap: 50px;
     
     }
+
+    
     .block-1{
         grid-column: 1 / span 1;
         grid-row: 1 / span 1;
         display: grid;
         grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: repeat(16, 1fr);
+        grid-template-rows: repeat(10, 1fr);
         place-items: center;
-
     }
     .icon-1, .icon-2, .icon-3 {
         width: 80%;  // Mismo valor que el height
@@ -321,6 +323,7 @@
         font-weight: 300;
     }
     .currency{
+        margin-top: 10px;
         place-items: center;
         display: flex;
         justify-content: center;
@@ -330,40 +333,194 @@
         color: #fff;
         font-size: 1.8em;
         font-weight: bold;
-        font-weight: 300;
+        color: #00c3ff;
         text-align: start;
         height: 100px;
         width: 100%;
     }
+    .toggle-button{
+        grid-column: 1 / span 1;
+        grid-row: 2/ span 1;
+        display: grid;
+        background-color: transparent;
+        border: none;
+        color: #fff;
+        height: 100%;
+        width: 100%;
+        place-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .block-2{
+        grid-column: 1 / span 1;
+        grid-row: 3/ span 1;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+        place-items: center;
+        gap: 40px;
+        background-color: rgba(59, 59, 59, 0.336);
+        padding: 10px;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        border-radius: 40px;
+    }
     .block-2-box-1-title {
+        margin: 6px;
         place-items: center;
         display: flex;
         justify-content: center;
         align-items: center;
         grid-column: 1 / span 3;
-        grid-row: 13/ span 1;
-        color: #fff;
+        grid-row: 1/ span 1;
+        color: #00c3ff;
         font-size: 1.8em;
         font-weight: bold;
         font-weight: 300;
         text-align: start;
-        height: 100px;
+        height: 100%;
         width: 100%;
-        background-color: orange;
+        place-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    .block-2-box-1-amount{
+        margin: 6px;
+        grid-column: 1 / span 3;
+        grid-row: 2 / span 1;
+        height: 100%;
+        width: 100%;
+        place-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 1.8em;
+        font-weight: bold;
+        font-weight: 600;
+        text-align: start;
+        border-bottom: 1px solid #6d6d6d;
+        padding-bottom: 10px;
+    }
+    .block-2-box-2-title {
+        margin: 6px;
+        place-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-column: 1 / span 3;
+        grid-row: 3 / span 1;
+        color: #00c3ff;
+        font-size: 1.8em;
+        font-weight: bold;
+        font-weight: 300;
+        text-align: start;
+        height: 100%;
+        width: 100%;
         place-items: center;
         display: flex;
         justify-content: center;
         align-items: center;
     }
-    .block-2-box-1-amount{
+    .block-2-box-2-amount{
+        margin: 6px;
         grid-column: 1 / span 3;
-        grid-row: 14 / span 1;
-        background-color: rgb(0, 255, 76);
-        height: 100px;
+        grid-row: 4 / span 1;
+        height: 100%;
         width: 100%;
         place-items: center;
         display: flex;
         justify-content: center;
         align-items: center;
+        color: #fff;
+        font-size: 1.8em;
+        font-weight: bold;
+        font-weight: 600;
+        text-align: start;
+        border-bottom: 1px solid #6d6d6d;
+        padding-bottom: 10px;
+    }
+    .block-2-box-3-title {
+        margin: 6px;
+        place-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-column: 1 / span 3;
+        grid-row: 5 / span 1;
+        color: #00c3ff;
+        font-size: 1.8em;
+        font-weight: bold;
+        font-weight: 300;
+        text-align: start;
+        height: 100%;
+        width: 100%;
+        place-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+ 
+    }
+    .block-2-box-3-amount{
+        margin: 6px;
+        grid-column: 1 / span 3;
+        grid-row: 6 / span 1;
+        height: 100%;
+        width: 100%;
+        place-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 1.8em;
+        font-weight: bold;
+        font-weight: 600;
+        text-align: start;
+        border-bottom: 1px solid #6d6d6d;
+        padding-bottom: 10px;
+    }
+    .block-2-box-4-title {
+        margin: 6px;
+        place-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-column: 1 / span 3;
+        grid-row: 7 / span 1;
+        color: #00c3ff;
+        font-size: 1.8em;
+        font-weight: bold;
+        font-weight: 300;
+        text-align: start;
+        height: 100%;
+        width: 100%;
+        place-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+     
+   
+    }
+    .block-2-box-4-amount{
+        margin: 6px;
+        grid-column: 1 / span 3;
+        grid-row: 8 / span 1;
+        height: 100%;
+        width: 100%;
+        place-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        font-size: 1.8em;
+        font-weight: bold;
+        font-weight: 600;
+        text-align: start;
+        border-bottom: 1px solid #6d6d6d;
+        padding-bottom: 10px;
     }
 }

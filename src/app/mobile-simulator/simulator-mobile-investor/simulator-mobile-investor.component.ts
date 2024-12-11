@@ -107,5 +107,7 @@ export class SimulatorMobileInvestorComponent {
       
       this.totalCapital = (value + parseFloat(this.yearlyAmount)).toFixed(2);
     }
+   
   }
+
 }
