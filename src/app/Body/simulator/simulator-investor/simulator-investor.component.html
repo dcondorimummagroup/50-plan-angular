@@ -63,8 +63,9 @@
     </div>
     
     <button class="exclamation-mark" (click)="showInfo()"> <p class="text-i">¡</p> </button>
-
 </div>
+<app-simulator-mobile-investor class="mobile-simulator" ></app-simulator-mobile-investor>
+
 
 <div class="card-overlay" *ngIf="isCardVisible" (click)="hideInfo()">
     <div class="card-wrapper" (click)="$event.stopPropagation()">

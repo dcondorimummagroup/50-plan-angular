@@ -46,9 +46,9 @@
     grid-template-columns: repeat(15, 1fr);
     grid-template-rows: repeat(18, 1fr);
     justify-items: center;
-    background-color: rgba(43, 43, 43, 0.705);
-    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(73, 73, 73, 0.438), rgba(24, 24, 24, 0.05));
     backdrop-filter: blur(10px);
+    border-radius: 20px;
 }
 
 [class^="block-1-box-"] {

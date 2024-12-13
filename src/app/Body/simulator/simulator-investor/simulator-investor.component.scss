@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&display=swap');
 
-
-
-
-
 /* Cuerpo*/
 
 .parent-body-simulator-capa-1 {
@@ -52,11 +48,8 @@
     grid-template-columns: repeat(15, 1fr);
     grid-template-rows: repeat(16, 1fr);
     justify-items: center;
-    background: linear-gradient(
-        145deg,
-        rgba(27, 27, 27, 0.61),
-        transparent
-    );
+    background: linear-gradient(145deg, rgba(73, 73, 73, 0.438), rgba(24, 24, 24, 0.05));
+    backdrop-filter: blur(10px);
     border-radius: 30px;
     backdrop-filter: blur(10px);
 }
@@ -208,7 +201,7 @@
 
     grid-column: 5 / span 4;
     grid-row: 6 / span 4;
-    border-left: 2px solid rgb(82, 82, 82);
+  border-left: 2px solid rgba(77, 77, 77, 0.438);
     place-items: center;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -294,7 +287,7 @@
 .block-1-box-3 {
     grid-column: 9 / span 3;
     grid-row: 6 / span 4;
-    border-left: 2px solid rgb(82, 82, 82);
+    border-left: 2px solid rgba(77, 77, 77, 0.438);
     
     /* Agregar estas propiedades para centrar */
     display: grid;
@@ -366,7 +359,7 @@
 .block-1-box-4 {
     grid-column: 12 / span 4;
     grid-row: 6 / span 4;
-    border-left: 2px solid rgb(82, 82, 82);
+    border-left: 2px solid rgba(77, 77, 77, 0.438);
     display: grid;
     grid-template-columns: repeat( 2, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -449,13 +442,10 @@
     grid-template-columns: repeat(15, 1fr);
     grid-template-rows: repeat(18, 1fr);
     justify-items: center;
-    background: linear-gradient(
-        145deg,
-        rgba(27, 27, 27, 0.61),
-        transparent
-    );
-    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(73, 73, 73, 0.438), rgba(24, 24, 24, 0.05));
     backdrop-filter: blur(10px);
+    border-radius: 20px;
+  
 }
 
 [class^="block-2-box-"] {
@@ -525,7 +515,7 @@
    
     grid-column: 6 / span 3;
     grid-row: 6 / span 4;
-    border-left: 2px solid rgb(82, 82, 82);
+    border-left: 2px solid rgba(77, 77, 77, 0.438);
     width: 100%;
     height: 100%;
 
@@ -556,7 +546,7 @@
 .block-2-box-3 {
     grid-column: 9 / span 3;
     grid-row: 6 / span 4;
-    border-left: 2px solid rgb(82, 82, 82);;
+    border-left: 2px solid rgba(77, 77, 77, 0.438);
 }
 
 .block-2-box-3-title{
@@ -587,7 +577,7 @@
 
     grid-column: 12 / span 4;
     grid-row: 6 / span 4;
-    border-left: 2px solid rgb(82, 82, 82);
+    border-left: 2px solid rgba(77, 77, 77, 0.438);
 }
 
 
@@ -815,3 +805,16 @@ background-color: red;
     }
 
 }
+.mobile-simulator {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .parent-body-simulator-capa-1{
+        display: none;
+    }
+    .mobile-simulator {
+        display:block;
+    }
+    
+ }

@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, ElementRef, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,14 +6,19 @@ import { Router } from '@angular/router';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit, OnDestroy {
   isMenuOpen = false;
   private isToggling = false;
+  private menuElement: Element | null = null;
+  private toggleButton: Element | null = null;
+  private menuIcon: Element | null = null;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private elementRef: ElementRef
+  ) {}
 
   toggleMenu(event?: Event): void {
-    // Prevenir múltiples clicks
     if (this.isToggling) return;
     
     if (event) {
@@ -23,32 +28,22 @@ export class SidebarComponent {
 
     this.isToggling = true;
     this.isMenuOpen = !this.isMenuOpen;
-    
-    // Manejar el scroll del body
     document.body.style.overflow = this.isMenuOpen ? 'hidden' : 'auto';
 
-    // Desbloquear después de la animación
-    setTimeout(() => {
-      this.isToggling = false;
-    }, 300);
+    // Reducido a 150ms
+    setTimeout(() => this.isToggling = false, 150);
   }
 
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
-    const menuElement = document.querySelector('.side-menu');
-    const toggleButton = document.querySelector('.menu-button');
-    const menuIcon = document.querySelector('.menu-icon');
+    if (!this.isMenuOpen) return;
+
+    const target = event.target as Node;
     
-    if (this.isMenuOpen && 
-        menuElement && 
-        !menuElement.contains(event.target as Node) &&
-        toggleButton && 
-        !toggleButton.contains(event.target as Node) &&
-        menuIcon &&
-        !menuIcon.contains(event.target as Node)) {
-      requestAnimationFrame(() => {
-        this.toggleMenu();
-      });
+    if (!this.menuElement?.contains(target) && 
+        !this.toggleButton?.contains(target) && 
+        !this.menuIcon?.contains(target)) {
+      this.toggleMenu();
     }
   }
 
@@ -63,78 +58,75 @@ export class SidebarComponent {
     if (this.isToggling) return;
     
     if (event) {
-        event.stopPropagation();
-        event.preventDefault();
+      event.preventDefault();
+      event.stopPropagation();
     }
     
-    // Si estamos en una ruta diferente a home
     if (this.router.url !== '/') {
-        this.router.navigate(['/']).then(() => {
-            setTimeout(() => {
-                this.scrollToSection(section);
-                // Removemos esta línea para que no abra el menú
-                // this.toggleMenu();
-            }, 100);
-        });
+      this.router.navigate(['/'])
+        .then(() => requestAnimationFrame(() => this.scrollToSection(section)));
     } else {
-        this.scrollToSection(section);
-        // Removemos esta línea para que no abra el menú
-        // this.toggleMenu();
+      this.scrollToSection(section);
     }
-}
+  }
 
   private scrollToSection(section: string): void {
     const element = document.getElementById(section);
-    if (element) {
-      const headerOffset = 90;
-      const targetPosition = element.offsetTop - headerOffset;
+    if (!element) return;
+
+    const headerOffset = 90;
+    const targetPosition = element.offsetTop - headerOffset;
+    
+    requestAnimationFrame(() => {
       window.scrollTo({
         top: targetPosition,
         behavior: 'smooth'
       });
-    }
+    });
   }
 
-  goToLogin(event?: Event): void {
+  private navigateAndToggle(route: string, event?: Event): void {
     if (this.isToggling) return;
     
     if (event) {
-        event.stopPropagation();
-        event.preventDefault();
+      event.preventDefault();
+      event.stopPropagation();
     }
     
-    // Solo toggle el menú si está abierto
     if (this.isMenuOpen) {
-        this.toggleMenu();
+      this.toggleMenu();
     }
     
-    this.router.navigate(['/login']);
+    this.router.navigate([route]);
+  }
+
+
+  goToLogin(event?: Event): void {
+    this.navigateAndToggle('/login', event);
   }
 
   goToRegister(event?: Event): void {
-    if (this.isToggling) return;
-    
-    if (event) {
-        event.stopPropagation();
-        event.preventDefault();
-    }
-    
-    // Solo toggle el menú si está abierto
-    if (this.isMenuOpen) {
-        this.toggleMenu();
-    }
-    
-    this.router.navigate(['/register']);
+    this.navigateAndToggle('/register', event);
   }
 
   ngOnInit(): void {
     this.isMenuOpen = false;
     this.isToggling = false;
     document.body.style.overflow = 'auto';
+
+
+    this.menuElement = this.elementRef.nativeElement.querySelector('.side-menu');
+    this.toggleButton = this.elementRef.nativeElement.querySelector('.menu-button');
+    this.menuIcon = this.elementRef.nativeElement.querySelector('.menu-icon');
   }
 
   ngOnDestroy(): void {
     document.body.style.overflow = 'auto';
     this.isToggling = false;
+    
+
+    this.menuElement = null;
+    this.toggleButton = null;
+    this.menuIcon = null;
   }
 }

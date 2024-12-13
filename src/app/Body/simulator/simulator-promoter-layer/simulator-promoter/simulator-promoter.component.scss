@@ -45,13 +45,9 @@
     grid-template-columns: repeat(15, 1fr);
     grid-template-rows: repeat(16, 1fr);
     justify-items: center;
-    background: linear-gradient(
-        145deg,
-        rgba(27, 27, 27, 0.61),
-        transparent
-    );
-    border-radius: 30px;
+    background: linear-gradient(145deg, rgba(73, 73, 73, 0.438), rgba(24, 24, 24, 0.05));
     backdrop-filter: blur(10px);
+    border-radius: 30px;
 }
 
 [class^="block-1-box-"] {
@@ -201,7 +197,7 @@
 
     grid-column: 5 / span 4;
     grid-row: 6 / span 4;
-    border-left: 2px solid rgb(82, 82, 82);
+    border-left: 2px solid rgba(77, 77, 77, 0.438);
     place-items: center;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -287,7 +283,7 @@
 .block-1-box-3 {
     grid-column: 9 / span 3;
     grid-row: 6 / span 4;
-    border-left: 2px solid rgb(82, 82, 82);
+    border-left: 2px solid rgba(77, 77, 77, 0.438);
     
     /* Agregar estas propiedades para centrar */
     display: grid;
@@ -359,7 +355,7 @@
 .block-1-box-4 {
     grid-column: 12 / span 4;
     grid-row: 6 / span 4;
-    border-left: 2px solid rgb(82, 82, 82);
+    border-left: 2px solid rgba(77, 77, 77, 0.438);
     display: grid;
     grid-template-columns: repeat( 2, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -468,16 +464,13 @@
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(18, 1fr);
     justify-items: center;
-    background-color: rgba(34, 34, 34, 0.596); /* Más transparente */
+   
     border-radius: 40px;
     position: relative; /* Necesario para backdrop-filter */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    background: linear-gradient(
-        145deg,
-        rgba(27, 27, 27, 0.61),
-        transparent
-    );
+    background: linear-gradient(145deg, rgba(73, 73, 73, 0.438), rgba(24, 24, 24, 0.05));
+    backdrop-filter: blur(10px);
     /* Opcional: añadir más efectos */
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }

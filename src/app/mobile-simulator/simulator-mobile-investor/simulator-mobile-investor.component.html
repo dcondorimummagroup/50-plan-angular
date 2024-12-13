@@ -1,9 +1,9 @@
 <div class="parent-body-simulator-capa-1" >
    
 <div class="block-1" >
-    <div   class="icon-1" routerLinkActive="active" ></div>
-    <div   routerLinkActive="active" class="icon-2" ></div>
-    <div  routerLinkActive="active" class="icon-3" ></div>
+    <div [routerLink]="['/simulator-investor']" routerLinkActive="active" class="icon-1" ></div>
+    <div  [routerLink]="['/simulator-promoter']" routerLinkActive="active" class="icon-2" ></div>
+    <div [routerLink]="['/simulator-leader']" routerLinkActive="active" class="icon-3" ></div>
     <div class="text-invent" >
         Inversionista
     </div>
@@ -26,12 +26,16 @@
             </div>
         </div>
     </div> 
-    <div class="title-box-3"> Tu licencia: </div>
+    <div class="title-box-3"> Tu licencia</div>
     <div class="block-1-box-3" >
         <div class="box-3-card" [ngStyle]="{
-    'background-image': 'url(/assets/image/' + currentCard + '-b.webp)'
+    'background-image': 'url(/assets/image/' + currentCard + '.svg)'
     }"></div>
     </div>
+ 
+</div>
+
+<div class="block-1-5" >
     <div class="currency" > Ganancias </div>
     <div class="block-1-box-4-text-1">Semanal:</div>
     <div class="amount-percentaje-1">{{weeklyPercentage}}%</div>
@@ -40,24 +44,20 @@
     <div class="block-1-box-4-text-3">Anual:</div>
     <div class="amount-percentaje-3">{{yearlyPercentage}}%</div> 
 </div>
-<div class="block-2" >
-<div class="block-2-box-1-title">Capital + rendimiento anual:</div>
-        <div class="block-2-box-1-amount">${{totalCapital}}</div>
 
+<div class="block-2" >
+        <div class="block-2-box-1-title">Capital + rendimiento anual</div>
+        <div class="block-2-box-1-amount">${{totalCapital}}</div>
 
         <div class="block-2-box-2-title">Semanal</div>
         <div class="block-2-box-2-amount">${{weeklyAmount}}</div>
 
- 
         <div class="block-2-box-3-title">Mensual</div>
         <div class="block-2-box-3-amount">${{monthlyAmount}}</div>
- 
 
         <div class="block-2-box-4-title">Anual</div>
         <div class="block-2-box-4-amount">${{yearlyAmount}}</div>
-
 </div>
      
-
 
 

@@ -11,7 +11,7 @@ export class SimulatorMobileInvestorComponent {
   showCard2: boolean = false;
   showLicenses: boolean = false;
   private isFirstClick = true;
-  currentCard = 'alfa';
+  currentCard = 'i-alfa';
 
   weeklyPercentage = '0.625';
   monthlyPercentage = '2.5';
@@ -77,25 +77,25 @@ export class SimulatorMobileInvestorComponent {
 
     if (!isNaN(value)) {
       if (value >= 6000) {
-        this.currentCard = 'delta';
+        this.currentCard = 'i-delta';
         this.weeklyPercentage = '1.25';
         this.monthlyPercentage = '5';
         this.yearlyPercentage = '60';
       
       } else if (value >= 4000) {
-        this.currentCard = 'gamma';
+        this.currentCard = 'i-gamma';
         this.weeklyPercentage = '1';
         this.monthlyPercentage = '4';
         this.yearlyPercentage = '48';
      
       } else if (value >= 2000) {
-        this.currentCard = 'beta';
+        this.currentCard = 'i-beta';
         this.weeklyPercentage = '0.75';
         this.monthlyPercentage = '3';
         this.yearlyPercentage = '36';
     
       } else {
-        this.currentCard = 'alfa';
+        this.currentCard = 'i-alfa';
         this.weeklyPercentage = '0.625';
         this.monthlyPercentage = '2.5';
         this.yearlyPercentage = '30';
