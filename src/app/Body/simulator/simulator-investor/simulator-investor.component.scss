@@ -6,7 +6,7 @@
     padding-top: 10px;
     font-family: "Jost", sans-serif;
     background-color: transparent;
-    height: 100vh;
+    height: 120vh;
     grid-row: 1 / span 15;
     grid-column: 1 /span 12;
     display: grid;
@@ -298,7 +298,7 @@
 }
 
 .box-3-card {
-    height: 240px;
+    height: 100%;
     width: 100%;
     background-size: contain;
     background-position: center;
@@ -319,6 +319,8 @@
         background-repeat: no-repeat;
         opacity: 0;
         transition: opacity 0.3s ease-in-out;
+        height: 100%;
+        width: 80%;
     }
 
     &.alfa {
@@ -745,76 +747,22 @@ app-card, app-card-2 {
 .fade-exit-active {
   opacity: 0;
 }
-
-
-
-
-@media (max-width: 1320px) {
-    .parent-body-simulator-capa-1 {
-background-color: red;
-
-      height: 100vh;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 10px;
-      gap: 15px;
-      overflow-y: auto;
-      overflow-x: hidden;
-    }
-  
-    .block-1 {
-      width: 95%;
-      height: auto;
-      min-height: 300px;
-      margin: 10px auto;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      padding: 15px;
-      background-color: rgb(117, 133, 113);
-      border-radius: 15px;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(0, 217, 255, 0.2);
-      display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(16, 1fr);
-        height: 100VH;
-    }
-    .icon-1{
-        grid-column: 1 / span 1;
-        grid-row: 1 / span 1;
-    }
-    .icon-2{
-        grid-column: 2 / span 1;
-        grid-row: 1 / span 1;
-    }
-    .icon-3{
-        grid-column: 3 / span 1;
-        grid-row: 1 / span 1;
-    }
-    .block-1-box-1 {
-
-        grid-column: 1 / span 3;
-        grid-row: 6 / span 4;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(5, 1fr);
-        place-items: center;
-    }
-
-}
 .mobile-simulator {
     display: none;
+
 }
 
-@media (max-width: 768px) {
-    .parent-body-simulator-capa-1{
+
+
+
+ @media (max-width: 1320px) {
+    .parent-body-simulator-capa-1 {
         display: none;
     }
-    .mobile-simulator {
-        display:block;
-    }
     
- }
+    .mobile-simulator {
+        display: block;
+    }
+
+}
+

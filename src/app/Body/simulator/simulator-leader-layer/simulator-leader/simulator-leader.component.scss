@@ -904,3 +904,22 @@ app-card, app-card-2 {
     font-size: 1.4em;
     font-weight: 500;
   }
+
+  .mobile-simulator {
+    display: none;
+
+}
+
+
+
+
+ @media (max-width: 1320px) {
+    .parent-body-simulator-capa-1 {
+        display: none;
+    }
+    
+    .mobile-simulator {
+        display: block;
+    }
+
+}

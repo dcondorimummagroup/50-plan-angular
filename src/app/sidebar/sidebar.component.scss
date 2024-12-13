@@ -451,6 +451,8 @@ html {
     .sidebar {
       grid-column: 1 / span 36;
       grid-template-columns: repeat(9, 1fr);
+      place-content: center;
+      place-items: center;
     }
   
     button .text-element {
@@ -458,11 +460,47 @@ html {
     }
   
     .element-simulator {
-      width: 150px;
+      grid-column: 5 / span 2;
+      width: 100%;
     }
   
     .sidebar-element-simulator {
       grid-column: 6 / span 2;
+    }
+  
+    .sidebar-element-inicio {
+      grid-column: 9 / span 1;
+    }
+  
+    .sidebar-element-register {
+      grid-column: 10 / span 1;
+    }
+  
+    .btn-register {
+      width: 140px;
+    }
+    .sidebar-element-logo {
+      margin-left: 25px;
+    }
+  }
+  
+  @media (max-width: 1224px) {
+    .sidebar {
+      grid-template-columns: repeat(8, 1fr);
+    }
+    .sidebar-element-logo {
+      margin-left: 25px;
+    }
+  
+    .element-simulator {
+      width: 100%;
+      grid-column: 5 / span 2;
+
+    }
+  
+    .sidebar-element-simulator {
+      grid-column: 5 / span 2;
+
     }
   
     .sidebar-element-inicio {
@@ -471,32 +509,6 @@ html {
   
     .sidebar-element-register {
       grid-column: 9 / span 1;
-    }
-  
-    .btn-register {
-      width: 140px;
-    }
-  }
-  
-  @media (max-width: 1224px) {
-    .sidebar {
-      grid-template-columns: repeat(8, 1fr);
-    }
-  
-    .element-simulator {
-      width: 80px;
-    }
-  
-    .sidebar-element-simulator {
-      grid-column: 6 / span 1;
-    }
-  
-    .sidebar-element-inicio {
-      grid-column: 7 / span 1;
-    }
-  
-    .sidebar-element-register {
-      grid-column: 8 / span 1;
     }
   }
   
