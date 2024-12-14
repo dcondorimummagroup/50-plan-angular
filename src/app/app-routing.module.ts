@@ -19,6 +19,8 @@ import { ViewStartMobileComponent } from './view-start-mobile/view-start-mobile.
 import { SimulatorMobileInvestorComponent } from './mobile-simulator/simulator-mobile-investor/simulator-mobile-investor.component';
 import { SimulatorMobileLeaderComponent } from './mobile-simulator/simulator-mobile-leader/simulator-mobile-leader.component';
 import { SimulatorMobilePromoterComponent } from './mobile-simulator/simulator-mobile-promoter/simulator-mobile-promoter.component';
+import { MobileOrbitLeaderComponent } from './mobile-orbit/mobile-orbit-leader/mobile-orbit-leader.component';
+import { MobileOrbitPromoterComponent } from './mobile-orbit/mobile-orbit-promoter/mobile-orbit-promoter.component';
 
 const routes: Routes = [
   { path: '', component: ViewStartComponent },
@@ -40,6 +42,8 @@ const routes: Routes = [
   { path: 'simulator-mobile-investor', component: SimulatorMobileInvestorComponent},
   { path: 'simulator-mobile-leader', component: SimulatorMobileLeaderComponent},
   { path: 'simulator-mobile-promoter', component: SimulatorMobilePromoterComponent},
+  { path: 'mobile-orbit-leader', component: MobileOrbitLeaderComponent },
+  { path: 'mobile-orbit-promoter', component: MobileOrbitPromoterComponent },
 ];
 
 @NgModule({

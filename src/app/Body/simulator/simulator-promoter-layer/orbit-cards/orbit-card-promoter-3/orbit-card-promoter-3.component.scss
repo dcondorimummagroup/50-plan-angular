@@ -224,4 +224,19 @@
     }
 }
 
-
+@media (max-width: 1230px) {
+    .orbit-modal {
+        background-color: rgba(0, 0, 0, 0.13);
+        backdrop-filter: blur(40px);
+        border-radius: 12px;
+        color: white;
+        width: 80%;
+        height: 850px;
+        margin: 160px auto;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        border: 1px solid #00f5ff;
+        gap: 20px;
+    
+    }
+}

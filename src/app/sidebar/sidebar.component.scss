@@ -485,6 +485,11 @@ html {
   }
   
   @media (max-width: 1224px) {
+    .image-logo {
+      margin-top: 8px;
+      height: 50px;
+    }
+    
     .sidebar {
       grid-template-columns: repeat(8, 1fr);
     }
@@ -590,6 +595,11 @@ html {
   }
 
   @media (max-width: 1000px) {
+    .image-logo {
+      margin-top: 8px;
+      height: 40px;
+    }
+    
     .parent-sidebar {
       width: 100%;
     }
@@ -718,7 +728,7 @@ html {
     height: 100vh;
     background: linear-gradient(
       135deg,
-      rgba(3, 48, 49, 0.644) 0%,
+      rgba(2, 120, 141, 0.932) 0%,
       rgba(0, 49, 51, 0.479) 100%
     );
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -759,23 +769,7 @@ html {
           background: transparent;
           cursor: pointer;
           
-          span {
-            position: absolute;
-            width: 24px;
-            height: 2px;
-            background: #00d8ff;
-            left: 50%;
-            top: 50%;
-            transition: all 0.3s ease;
-  
-            &:first-child {
-              transform: translate(-50%, -50%) rotate(45deg);
-            }
-  
-            &:last-child {
-              transform: translate(-50%, -50%) rotate(-45deg);
-            }
-          }
+          
   
           &:hover span {
             background: white;
@@ -788,7 +782,7 @@ html {
     .menu-content {
       padding: 30px 25px;
   
-      .menu-item {
+      .menu-item-1 {
         width: 100%;
         padding: 15px 20px;
         margin-bottom: 10px;
@@ -803,17 +797,36 @@ html {
         position: relative;
         overflow: hidden;
   
-        &::before {
-          content: '';
-          position: absolute;
-          left: 0;
-          top: 0;
-          width: 4px;
-          height: 100%;
-          background: #00d8ff;
-          opacity: 0;
-          transition: all 0.3s ease;
+      
+  
+        &:hover {
+          color: white;
+          background: transparent;
+          padding-left: 25px;
+  
+          &::before {
+            opacity: 1;
+          }
         }
+
+      }  .menu-item-1.active {
+        background: rgba(0, 216, 255, 0.1);
+      }
+
+      .menu-item-2 {
+        width: 100%;
+        padding: 15px 20px;
+        margin-bottom: 10px;
+        font-family: "Jost", sans-serif;
+        font-size: 1.2em;
+        color: rgba(255, 255, 255, 0.8);
+
+        border: none;
+        border-radius: 8px;
+        text-align: left;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
   
         &:hover {
           color: white;
@@ -824,6 +837,10 @@ html {
             opacity: 1;
           }
         }
+
+      }
+      .menu-item-2.active {
+        background: rgba(0, 216, 255, 0.1);
       }
   
       .simulator-option {

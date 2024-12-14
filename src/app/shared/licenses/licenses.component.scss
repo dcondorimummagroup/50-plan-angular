@@ -1,5 +1,5 @@
 .description{
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   color: white;
   font-family: "Jost", sans-serif;
 }
@@ -9,14 +9,14 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto 1fr auto;
-    background-color: rgba(0, 0, 0, 0.185);
+    background-color: rgba(0, 0, 0, 0.349);
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border: 1px solid #00ffff;
     width: 80vw;
-    max-width: 1100px;
+    max-width: 800px;
     border-radius: 8px;
     color: white;
     z-index: 1000;
@@ -25,7 +25,7 @@
     animation: modalEnter 0.3s ease-out;
     
     &.closing {
-      color: white;
+      color: #00ffff;
       animation: modalExit 0.3s ease-out forwards;
     }
   
@@ -34,10 +34,10 @@
         display: grid;
         grid-template-columns: 1fr auto;
         align-items: center;
-        padding: 1rem 2rem;
+
         background-color: rgba(0, 0, 0, 0);
         position: relative;
-        border-radius: 20px ;
+    
         // Quitamos el box-shadow general para evitar interferencia con el brillo
         
         &::after {
@@ -79,21 +79,21 @@
       
         h2 {
           font-family: "Jost", sans-serif;
-          margin: 0;
+          margin: 30px;
         }
       
         .close-button {
           background: none;
           border: none;
-          color: white;
+          color: #00ffff;
           font-size: 1.5rem;
           cursor: pointer;
           transition: all 0.3s ease;
-          padding: 8px;
+          padding: 30px;
           border-radius: 50%;
           
           &:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0);
             transform: rotate(90deg);
           }
           
@@ -145,14 +145,14 @@
             background: linear-gradient(to top, rgb(22, 93, 114), rgb(15, 26, 31));
             padding: 12px;
             border-radius: 5px;
-            font-size: 0.8rem;
+            font-size: 0.6rem;
             text-align: center;
             color: white;
             font-family: "Jost", sans-serif;
             border-radius: 20px;
             .investment-range-title,
             .investment-range-text {
-                font-size: 1.1rem;
+              font-size: 0.8rem;
             margin-top: 4px;
               display: block;
             }
@@ -161,14 +161,14 @@
             background: linear-gradient(to top, rgb(117, 117, 117), rgb(58, 58, 58));
             padding: 12px;
             border-radius: 5px;
-            font-size: 0.8rem;
+            font-size: 0.6rem;
             text-align: center;
             color: white;
             font-family: "Jost", sans-serif;
             border-radius: 20px;
             .investment-range-title,
             .investment-range-text {
-                font-size: 1.1rem;
+                font-size: 0.8rem;
             margin-top: 4px;
               display: block;
             }
@@ -177,14 +177,14 @@
             background: linear-gradient(to top, rgb(184, 140, 59), rgb(78, 53, 14));
             padding: 12px;
             border-radius: 5px;
-            font-size: 0.8rem;
+            font-size: 0.6rem;
             text-align: center;
             color: white;
             font-family: "Jost", sans-serif;
             border-radius: 20px;
             .investment-range-title,
             .investment-range-text {
-                font-size: 1.1rem;
+              font-size: 0.8rem;
             margin-top: 4px;
               display: block;
             }
@@ -193,14 +193,14 @@
             background: linear-gradient(to top, rgb(20, 20, 20), rgb(39, 39, 39));
             padding: 12px;
             border-radius: 5px;
-            font-size: 0.8rem;
+            font-size: 0.6rem;
             text-align: center;
             color: white;
             font-family: "Jost", sans-serif;
             border-radius: 20px;
             .investment-range-title,
             .investment-range-text {
-                font-size: 1.1rem;
+              font-size: 0.8rem;
             margin-top: 4px;
               display: block;
             }

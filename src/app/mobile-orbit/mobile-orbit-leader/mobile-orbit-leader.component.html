@@ -1,0 +1,182 @@
+<div class="block-2" >
+ 
+    <div class="block-2-box-1" >   
+       <P class="orbit-text">Órbitas</P> 
+
+    </div>
+    <div class="block-2-box-2" >
+        <div  class="orbit-1" >
+            <button class="orbit-button-1" 
+            (click)="hideOrbitCard()"
+            [disabled]="isOrbitCardVisible2"
+            [ngClass]="{'disabled-orbit': isOrbitCardVisible2}">
+        1
+    </button>
+        </div>   
+    </div>
+    <div class="block-2-box-3" >
+        <div class="orbit-1">
+            <button class="orbit-button-1" 
+                    (click)="hideOrbitCard2()"
+                    [disabled]="isOrbitCardVisible"
+                    [ngClass]="{'disabled-orbit': isOrbitCardVisible}">
+                2
+            </button>
+        </div>     
+    </div>
+    <div class="block-2-box-4" >
+        <div  class="orbit-1" >
+            <button class="orbit-button-1" 
+            (click)="hideOrbitCard3()"
+            [disabled]="isOrbitCardVisible"
+            [ngClass]="{'disabled-orbit': isOrbitCardVisible}">
+                3
+            </button>
+        </div>    
+    </div>
+    <div class="block-2-box-5" >
+        <div  class="orbit-1" >
+            <button class="orbit-button-1" 
+            (click)="hideOrbitCard4()"
+            [disabled]="isOrbitCardVisible"
+            [ngClass]="{'disabled-orbit': isOrbitCardVisible}">
+                4
+            </button>
+        </div>  
+    </div>
+    <div class="block-2-box-6" >
+        <div  class="orbit-1" >
+            <button class="orbit-button-1" 
+            (click)="hideOrbitCard5()"
+            [disabled]="isOrbitCardVisible"
+            [ngClass]="{'disabled-orbit': isOrbitCardVisible}">
+                5
+            </button>
+        </div>    
+    </div>
+
+</div>
+
+
+<app-profit-leader *ngIf="showSimulator" class="simulator-section"></app-profit-leader>
+<div class="card-overlay" *ngIf="isCardVisible" (click)="hideInfo()">
+    <div class="card-wrapper" (click)="$event.stopPropagation()">
+        <app-card 
+            *ngIf="!showCard2"
+            (closeCard)="hideInfo()"
+            (nextCard)="showNextCard()">
+        </app-card>
+        <app-card-2 
+        *ngIf="showCard2"
+        (closeCard)="hideInfo()"
+        (previousCard)="showPreviousCard()">
+    </app-card-2>
+    </div>
+</div>
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible" 
+     (click)="closeHideOrbitCard()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-leader
+            (closeModal)="closeHideOrbitCard()">
+        </app-orbit-card-leader>
+    </div>
+</div>
+
+<!-- Overlay para el segundo modal -->
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible2" 
+     (click)="closeHideOrbitCard2()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-leader-2
+            (closeModal)="closeHideOrbitCard2()">
+        </app-orbit-card-leader-2>
+    </div>
+</div>
+
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible3" 
+     (click)="closeHideOrbitCard3()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-leader-3
+            (closeModal)="closeHideOrbitCard3()">
+        </app-orbit-card-leader-3>
+    </div>
+</div>
+
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible4" 
+     (click)="closeHideOrbitCard4()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-leader-4
+            (closeModal)="closeHideOrbitCard4()">
+        </app-orbit-card-leader-4>
+    </div>
+</div>
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible5" 
+     (click)="closeHideOrbitCard5()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-leader-5
+            (closeModal)="closeHideOrbitCard5()">
+        </app-orbit-card-leader-5>
+    </div>
+</div>
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible6" 
+     (click)="closeHideOrbitCard6()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-leader-6
+            (closeModal)="closeHideOrbitCard6()">
+        </app-orbit-card-leader-6>
+    </div>
+</div>
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible7" 
+     (click)="closeHideOrbitCard7()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-leader-7
+            (closeModal)="closeHideOrbitCard7()">
+        </app-orbit-card-leader-7>
+    </div>
+</div>
+
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible8" 
+     (click)="closeHideOrbitCard8()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-leader-8
+            (closeModal)="closeHideOrbitCard8()">
+        </app-orbit-card-leader-8>
+    </div>
+</div>
+
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible9" 
+     (click)="closeHideOrbitCard9()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-leader-9
+            (closeModal)="closeHideOrbitCard9()">
+        </app-orbit-card-leader-9>
+    </div>
+</div>
+
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible10" 
+     (click)="closeHideOrbitCard10()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-leader-10
+            (closeModal)="closeHideOrbitCard10()">
+        </app-orbit-card-leader-10>
+    </div>
+</div>
