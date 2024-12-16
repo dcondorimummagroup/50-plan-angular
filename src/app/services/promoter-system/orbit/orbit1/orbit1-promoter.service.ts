@@ -7,7 +7,7 @@ import { OrbitUser } from 'src/app/types/orbit';
 })
 export class Orbit1PromoterService {
   // BehaviorSubjects principales
-  private investmentAmount = new BehaviorSubject<number>(1000);
+  private investmentAmount = new BehaviorSubject<number>(100);
   currentAmount = this.investmentAmount.asObservable();
 
   private orbitInvestmentAmount = new BehaviorSubject<number>(0);
@@ -16,8 +16,8 @@ export class Orbit1PromoterService {
   // Constantes
   private readonly MINIMUM_ORBIT_AMOUNT = 1000;
   private readonly STORAGE_KEYS = {
-    USERS: 'orbit_users',
-    INVESTMENT: 'orbitInvestment'
+    USERS: 'orbit_users_promoter',
+    INVESTMENT: 'orbitInvestment_promoter'
   };
 
   readonly ORBIT_RATES = {

@@ -192,6 +192,9 @@
     z-index: 1;
     height: 50px;
 }
+app-carousel-simulator {
+    display: none;
+}
 
 @media (max-width: 1024px) {
     .parent-body-simulator {

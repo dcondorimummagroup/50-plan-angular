@@ -22,8 +22,8 @@ export class Orbit4PromoterService {
 
 
   // Keys específicas para Órbita 4
-  private readonly ORBIT4_USERS_KEY = 'orbit4_users';
-  private readonly ORBIT4_INVESTMENT_KEY = 'orbit4Investment';
+  private readonly ORBIT4_USERS_KEY = 'orbit4_users_promoter';
+  private readonly ORBIT4_INVESTMENT_KEY = 'orbit4Investment_promoter';
 
   constructor() {}
 

@@ -1,6 +1,9 @@
 .description{
-  font-size: 1.1rem;
-  color: white;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+  letter-spacing: 0.5px;
   font-family: "Jost", sans-serif;
 }
 
@@ -9,20 +12,23 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto 1fr auto;
-    background-color: rgba(0, 0, 0, 0.349);
+    background: linear-gradient(145deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.85));
+    backdrop-filter: blur(10px);
     position: fixed;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 1px solid #00ffff;
+    border: 1px solid rgba(0, 255, 255, 0.3);
     width: 80vw;
     max-width: 800px;
-    border-radius: 8px;
     color: white;
     z-index: 1000;
-    border-radius: 20px ;
+    border-radius: 20px;
     margin-top: 40px;
     animation: modalEnter 0.3s ease-out;
+    box-shadow: 
+        0 0 15px rgba(0, 255, 255, 0.2),
+        0 0 30px rgba(0, 255, 255, 0.1);
     
     &.closing {
       color: #00ffff;
@@ -121,17 +127,23 @@
         gap: 1rem;
         
         .license-card {
-          background: transparent;
-          border-radius: 10px;
-          padding: 0.6rem;
-          display: grid;
-          gap: 1rem;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          background: rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(5px);
+          border: 1px solid rgba(0, 255, 255, 0.1);
+          border-radius: 15px;
+          padding: 1rem;
+          transition: all 0.3s ease;
   
           &:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 10px 20px rgba(0, 0, 0, 0.2),
+                0 0 15px rgba(0, 255, 255, 0.2);
+            border-color: rgba(0, 255, 255, 0.3);
+  
             .card-image {
               transform: scale(1.05);
-              box-shadow: 0 10px 10px rgba(37, 37, 37, 0.26);
+              box-shadow: 0 10px 20px rgba(0, 255, 255, 0.1);
             }
           }
   
@@ -143,66 +155,110 @@
   
           .investment-range-1  {
             background: linear-gradient(to top, rgb(22, 93, 114), rgb(15, 26, 31));
-            padding: 12px;
+            padding: 4px;
+       
             border-radius: 5px;
-            font-size: 0.6rem;
+            font-size: 0.4rem;
             text-align: center;
             color: white;
             font-family: "Jost", sans-serif;
             border-radius: 20px;
+            margin: 12px;
             .investment-range-title,
             .investment-range-text {
               font-size: 0.8rem;
             margin-top: 4px;
               display: block;
             }
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+  
+            &:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            }
           }
           .investment-range-2  {
             background: linear-gradient(to top, rgb(117, 117, 117), rgb(58, 58, 58));
-            padding: 12px;
+            padding: 4px;
+       
             border-radius: 5px;
-            font-size: 0.6rem;
+            font-size: 0.4rem;
             text-align: center;
             color: white;
             font-family: "Jost", sans-serif;
             border-radius: 20px;
+            margin: 12px;
             .investment-range-title,
             .investment-range-text {
                 font-size: 0.8rem;
             margin-top: 4px;
               display: block;
             }
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+  
+            &:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            }
           }
           .investment-range-3  {
             background: linear-gradient(to top, rgb(184, 140, 59), rgb(78, 53, 14));
-            padding: 12px;
+            padding: 4px;
+       
             border-radius: 5px;
-            font-size: 0.6rem;
+            font-size: 0.4rem;
             text-align: center;
             color: white;
             font-family: "Jost", sans-serif;
             border-radius: 20px;
+            margin: 12px;
             .investment-range-title,
             .investment-range-text {
               font-size: 0.8rem;
             margin-top: 4px;
               display: block;
             }
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+  
+            &:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            }
           }
           .investment-range-4  {
             background: linear-gradient(to top, rgb(20, 20, 20), rgb(39, 39, 39));
-            padding: 12px;
+            padding: 4px;
+       
             border-radius: 5px;
-            font-size: 0.6rem;
+            font-size: 0.4rem;
             text-align: center;
             color: white;
             font-family: "Jost", sans-serif;
             border-radius: 20px;
+            margin: 12px;
             .investment-range-title,
             .investment-range-text {
               font-size: 0.8rem;
             margin-top: 4px;
               display: block;
+            }
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+  
+            &:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
             }
           }
   
@@ -226,7 +282,7 @@
   
       .simulator-cta {
         text-align: center;
-        color: white;
+        color: rgb(83, 83, 83);
         font-family: "Jost", sans-serif;
       }
   
@@ -246,9 +302,12 @@
           
           &.btn-previous,
           &.btn-ok {
-            background: transparent;
-            border: 1px solid #00ffff;
-            color: #929292;
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            padding: 0.8rem 2.5rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
             
             &::before {
                 content: '';
@@ -287,13 +346,12 @@
           }
           
           &.btn-ok {
-            background: #00ffff;
-            border: none;
-            color: black;
+            background: rgba(0, 255, 255, 0.8);
+            color: rgba(0, 0, 0, 0.8);
             
             &:hover {
-              background: url('/assets/image/hover.svg') center/220% no-repeat;
-              color: white;
+              background: rgba(0, 255, 255, 1);
+              color: rgba(0, 0, 0, 1);
             }
           }
         }
@@ -304,11 +362,13 @@
 @keyframes modalEnter {
     from {
         opacity: 0;
-        transform: translate(-50%, -48%) scale(0.96);
+        transform: translate(-50%, -45%) scale(0.95);
+    
     }
     to {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
+        filter: blur(0);
     }
 }
 
@@ -361,6 +421,3 @@
     }
 }
 
-span{
-  color: white;
-}

@@ -59,7 +59,32 @@ $transition-default: all 0.3s ease-in-out;
   overflow-x: hidden;
   z-index: -4;
 }
+.blur-background {
+  filter: blur(70px);
+  transition: filter 0.3s ease;
+}
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-wrapper {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
 // Círculos y columnas
 .circle {
   &-1 {
@@ -200,7 +225,7 @@ $transition-default: all 0.3s ease-in-out;
     font-family: "Jost", sans-serif;
     font-weight: 400;
     color: white;
-    font-size: 1.2em;
+    font-size: 1em;
     text-align: center;
     border: 2px solid rgb(0, 204, 255);
     border-radius: 40px ;
@@ -227,40 +252,72 @@ $transition-default: all 0.3s ease-in-out;
 }
 
 .body-2-element-1 {
-    grid-column: 9 / span 4;
-    grid-row: 6 / span 6;
-    background-image: url('/assets/image/75.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  grid-column: 8 / span 4;
+  grid-row: 5 / span 6;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+  transform: scale(1);
+
+  &.changing {
+      opacity: 0;
+      transform: scale(1.05);
+  }
 }
+
 .body-2-element-2 {
-    margin-top: 25px;
-    grid-column: 9/ span 4;
-    grid-row: 10/ span 6;
-    text-align: center;
-    font-family: "Jost", sans-serif;
-    font-weight: 800;
-    color: white;
-    font-size: 3.4em;
-    position: relative;
-    z-index: 10;
+  grid-column: 8 / span 4;
+  grid-row: 10 / span 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+  padding: 1.5rem;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+  transform: scale(1);
+  .title {
+      font-size: 2.1rem;
+      font-weight: bold;
+      color: #ffffff;
+      margin: 0;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .text {
+      font-size: 1.4rem;
+      color: #ffffff;
+      margin: 0;
+      line-height: 1.6;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@keyframes slideUp {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.parent-body-2 {
+  .body-2-element-2 {
     
-
+  }
 }
-.body-2-element-3 {
-    text-align: center;
-    font-family: "Jost", sans-serif;
-    font-weight: 400;
-    color: rgb(117, 117, 117);
-    font-size: 2em;
-    position: relative;
-    z-index: 10;
-    grid-column: 9 / span 4;
-    grid-row: 12/ span 1;
-    text-align: center;
-}
-
 
 @media (max-width: 1500px) {
     .body-2-element-1 {
@@ -434,14 +491,14 @@ $transition-default: all 0.3s ease-in-out;
 
 
 .box-text-1{
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .box-text-1 {
 
     font-family: "Jost", sans-serif;
     font-weight: 500;
-    font-size: 1.2em;
+    font-size: 1em;
     color: white;
     margin-inline: 20px;
 }
@@ -473,11 +530,9 @@ $box-shadow-default: 0 5px 15px rgba(0,0,0,0.05), 0 2px 5px rgba(0,0,0,0.03);
 
 @mixin box-hover-effect {
   transform: rotateY(12deg) rotateX(5deg) translateZ(10px) scale(1.01);
-  box-shadow: 
-    15px 15px 25px rgba(44, 44, 44, 0.1),
-    -2px -2px 10px rgba(255,255,255,0.05),
-    0 5px 15px rgba(0,0,0,0.05);
+
 }
+
 
 // Animaciones
 @keyframes fadeIn {
@@ -533,6 +588,7 @@ $box-shadow-default: 0 5px 15px rgba(0,0,0,0.05), 0 2px 5px rgba(0,0,0,0.03);
   text-align: center;
   width: $box-width;
   height: 100%;
+  transform-style: preserve-3d;
   border-radius: 20px;
   background: {
     repeat: no-repeat;
@@ -561,19 +617,21 @@ $box-shadow-default: 0 5px 15px rgba(0,0,0,0.05), 0 2px 5px rgba(0,0,0,0.03);
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.123) 0%,
-      rgba(255,255,255,0) 50%,
-      rgba(44, 44, 44, 0.05) 100%
-    );
+   
     opacity: 0;
-    transition: opacity 0.6s ease;
+    transition: opacity 0.4s ease;
   }
   
   &:hover {
-    @include box-hover-effect;
-    
+    transform: 
+    rotateY(12deg) 
+    rotateX(-2deg) 
+    translateZ(2px) 
+    scale(1.01);
+  box-shadow: 
+    -15px 15px 25px rgba(0, 0, 0, 0.15),
+    2px 2px 10px rgba(255, 255, 255, 0.05);
+
     &::before {
       opacity: 1;
       animation: shineEffect 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
@@ -1065,3 +1123,31 @@ $box-shadow-default: 0 5px 15px rgba(0,0,0,0.05), 0 2px 5px rgba(0,0,0,0.03);
  }
 
 
+.blur-background {
+
+    pointer-events: none;
+ 
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.068);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(65px);
+    transition: filter 0.3s ease;
+}
+
+.modal-wrapper {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+    z-index: 1001; // Mayor que el overlay
+}

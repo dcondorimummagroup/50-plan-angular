@@ -15,7 +15,7 @@
                 <input 
                     type="number" 
                     class="amount" 
-                    value="100.00" 
+                    value="4000.00" 
                     step="0.01" 
                     min="0" 
                     (input)="updateInvestment($event)"
@@ -45,20 +45,8 @@
         <div class="amount-percentaje-3">{{yearlyPercentage}}%</div> 
     </div>
     
-    <div class="block-2" >
-            <div class="block-2-box-1-title">Capital + rendimiento anual</div>
-            <div class="block-2-box-1-amount">${{totalCapital}}</div>
+    <app-mobile-orbit-leader></app-mobile-orbit-leader>     
+ 
+
     
-            <div class="block-2-box-2-title">Semanal</div>
-            <div class="block-2-box-2-amount">${{weeklyAmount}}</div>
-    
-            <div class="block-2-box-3-title">Mensual</div>
-            <div class="block-2-box-3-amount">${{monthlyAmount}}</div>
-    
-            <div class="block-2-box-4-title">Anual</div>
-            <div class="block-2-box-4-amount">${{yearlyAmount}}</div>
-    </div>
-         
-    
-    
-    
+</div>

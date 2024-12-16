@@ -641,41 +641,93 @@
     place-items: center;
 }
 
+
 .orbit-button-1 {
+    // Estilos base
     margin: 0;
     padding: 0;
     z-index: 2;
     margin-left: 4px;
-    color: rgb(15, 15, 15);
     font-family: "Jost", sans-serif;
     font-size: 26px;
-    position: absolute; /* Posicionamiento absoluto */
-    top: 50%; /* Coloca el texto en el centro vertical */
-    left: 50%; /* Coloca el texto en el centro horizontal */
-    transform: translate(-50%, -50%); /* Ajusta la posición exacta al centro */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: all 0.3s ease; // Agregamos transición suave
+
+    // Estado normal
+    color: rgb(15, 15, 15);
     border: 8px solid white;
     background-color: white;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-}
-.orbit-button-1:hover {
-    margin: 0;
-    padding: 0;
-    z-index: 2;
-    margin-left: 4px;
-    color: rgb(255, 255, 255);
-    font-family: "Jost", sans-serif;
-    font-size: 26px;
-    position: absolute; /* Posicionamiento absoluto */
-    top: 50%; /* Coloca el texto en el centro vertical */
-    left: 50%; /* Coloca el texto en el centro horizontal */
-    transform: translate(-50%, -50%); /* Ajusta la posición exacta al centro */
-    border: 1px solid rgb(0, 217, 255);
-    background-color: rgb(36, 36, 36);
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
+
+    // Estado hover normal
+    &:hover:not(.invalid-button):not(.disabled-orbit) {
+        color: rgb(255, 255, 255);
+        border: 1px solid rgb(0, 217, 255);
+        background-color: rgb(36, 36, 36);
+    }
+
+    // Estado inválido
+    &.invalid-button {
+        background-color: #ff4444;
+        border: 8px solid #ff4444;
+        color: rgb(107, 107, 107);
+        cursor: not-allowed;
+
+        &:hover {
+            &::after {
+                content: "Desactiva la órbta 1";
+                position: absolute;
+                bottom: 120%;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgb(24, 24, 24);
+                color: rgb(0, 217, 255);
+                padding: 8px 12px;
+                border-radius: 4px;
+                font-size: 14px;
+                white-space: nowrap;
+                animation: tooltipFadeIn 0.3s ease;
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                bottom: 110%;
+                left: 50%;
+                transform: translateX(-50%);
+                border: 8px solid transparent;
+                border-top-color: rgba(0, 0, 0, 0.795);
+            }
+        }
+    }
+
+    // Estado deshabilitado
+    &.disabled-orbit {
+        opacity: 0.5;
+        cursor: not-allowed;
+        background-color: #cccccc;
+        border: 8px solid #cccccc;
+
+        &:hover {
+            background-color: #cccccc;
+            border: 8px solid #cccccc;
+            color: rgb(15, 15, 15);
+        }
+    }
+
+    // Estado válido
+    &.valid-button {
+        &:hover {
+            background-color: #4CAF50;
+            border: 8px solid #4CAF50;
+            color: white;
+        }
+    }
 }
 
 .exclamation-mark {
@@ -896,6 +948,7 @@ app-card, app-card-2 {
     }
   }
   
+
   .button-text {
     padding: 0;
     margin: 10px;
@@ -933,7 +986,7 @@ app-card, app-card-2 {
         top: 0;
         left: 0;
         width: 100%;
-        height: 100vh;
+        height: 20vh;
         background-color: rgba(0, 0, 0, 0.8); /* Fondo más oscuro para mejor contraste */
         display: flex;
         justify-content: center;

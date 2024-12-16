@@ -22,8 +22,8 @@ export class Orbit2PromoterService {
 
 
   // Keys específicas para Órbita 2
-  private readonly ORBIT2_USERS_KEY = 'orbit2_users';
-  private readonly ORBIT2_INVESTMENT_KEY = 'orbit2Investment';
+  private readonly ORBIT2_USERS_KEY = 'orbit2_users_promoter';
+  private readonly ORBIT2_INVESTMENT_KEY = 'orbit2Investment_promoter';
 
   constructor() {}
 

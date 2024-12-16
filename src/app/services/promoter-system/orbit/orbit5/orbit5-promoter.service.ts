@@ -22,8 +22,8 @@ export class Orbit5PromoterService {
 
 
   // Keys específicas para Órbita 5
-  private readonly ORBIT5_USERS_KEY = 'orbit5_users';
-  private readonly ORBIT5_INVESTMENT_KEY = 'orbit5Investment';
+  private readonly ORBIT5_USERS_KEY = 'orbit5_users_promoter';
+  private readonly ORBIT5_INVESTMENT_KEY = 'orbit5Investment_promoter';
 
   constructor() {}
 

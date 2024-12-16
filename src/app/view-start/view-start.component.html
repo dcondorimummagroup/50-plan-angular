@@ -23,15 +23,11 @@
         </div>
     </div>
     <div id="nosotros" class="parent-body-2" >
-        <div class="body-2-element-1" >
+        <div class="body-2-element-1" [style.background-image]="'url(' + currentImage + ')'"></div>
+        <div class="body-2-element-2">
+            <h2 class="title">{{ currentTitle }}</h2>
+            <p class="text">{{ currentText }}</p>
         </div>
-        <div class="body-2-element-2" >
-            Transacciones
-        </div>
-        <div class="body-2-element-3" >
-            Completadas y realizadas cada viernes, y además
-            de un bono cada fin de mes.
-        </div>     
     </div>
     <div id="estrategia"  class="parent-body-3" >
             <div class="body-3-sub-title" > Estrategia </div>
@@ -94,6 +90,8 @@
             </iframe>
             </div>
         </div>
+      
+    
         <button  class="button-next" >Siguiente ></button>
         <img class="body-5-circle" src="/assets/image/circulos.webp" alt="">
     </div>

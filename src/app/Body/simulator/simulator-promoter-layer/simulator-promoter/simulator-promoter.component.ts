@@ -5,6 +5,11 @@ import { Orbit2Service } from 'src/app/services/leader-system/orbit/orbit2/orbit
 import { Orbit3Service } from 'src/app/services/leader-system/orbit/orbit3/orbit3.service';
 import { Orbit4Service } from 'src/app/services/leader-system/orbit/orbit4/orbit4.service';
 import { OrbitOthersService } from 'src/app/services/leader-system/orbit/orbitOthers/orbit-others.service';
+import { Orbit1PromoterService } from 'src/app/services/promoter-system/orbit/orbit1/orbit1-promoter.service';
+import { Orbit2PromoterService } from 'src/app/services/promoter-system/orbit/orbit2/orbit2-promoter.service';
+import { Orbit3PromoterService } from 'src/app/services/promoter-system/orbit/orbit3/orbit3-promoter.service';
+import { Orbit4PromoterService } from 'src/app/services/promoter-system/orbit/orbit4/orbit4-promoter.service';
+import { Orbit5PromoterService } from 'src/app/services/promoter-system/orbit/orbit5/orbit5-promoter.service';
 
 @Component({
   selector: 'app-simulator-promoter',
@@ -25,26 +30,29 @@ import { OrbitOthersService } from 'src/app/services/leader-system/orbit/orbitOt
 export class SimulatorPromoterComponent {
   @ViewChild('topSection') topSection!: ElementRef;
   @Output() investmentChange = new EventEmitter<number>();
+
+  
   showSimulator = false;
   showErrorMessage = false;
   errorMessage = '';
-  private readonly ORBIT_USERS_KEY = 'orbit_users'; 
-  private readonly ORBIT2_USERS_KEY = 'orbit2_users'; 
-  private readonly ORBIT3_USERS_KEY = 'orbit3_users'; 
-  private readonly ORBIT4_USERS_KEY = 'orbit4_users'; 
-  private readonly ORBIT5_USERS_KEY = 'orbit5_users'; 
+  private readonly ORBIT_USERS_KEY = 'orbit_users_promoter'; 
+  private readonly ORBIT2_USERS_KEY = 'orbit2_users_promoter'; 
+  private readonly ORBIT3_USERS_KEY = 'orbit3_users_promoter'; 
+  private readonly ORBIT4_USERS_KEY = 'orbit4_users_promoter'; 
+  private readonly ORBIT5_USERS_KEY = 'orbit5_users_promoter'; 
 
-   constructor(private orbitService: Orbit1Service , 
-    private orbit2Service: Orbit2Service ,
-    private orbit3Service: Orbit3Service,
-    private orbit4Service: Orbit4Service,
-    private orbit5Service: OrbitOthersService,
+   constructor(private orbitService: Orbit1PromoterService , 
+    private orbit2Service: Orbit2PromoterService,
+    private orbit3Service: Orbit3PromoterService,
+    private orbit4Service: Orbit4PromoterService,
+    private orbit5Service: Orbit5PromoterService,
 
      
     ) {}
 
    ngOnInit() {
     // Recuperar datos del localStorage
+    this.resetOrbitData();
     const savedData = localStorage.getItem('investment_data');
     if (savedData) {
         const data = JSON.parse(savedData);
@@ -76,7 +84,7 @@ export class SimulatorPromoterComponent {
   isOrbitCardVisible9: boolean = false; 
   isOrbitCardVisible10: boolean = false; 
   // Propiedades para la inversión
-  currentInvestment: number = 1000;
+  currentInvestment: number = 0;
   currentCard: string = 'alfa';
   weeklyPercentage: string = '0.625';
   monthlyPercentage: string = '2.5';
@@ -245,7 +253,18 @@ export class SimulatorPromoterComponent {
     this.orbit3Service.resetOrbitInvestment();
     this.orbit4Service.resetOrbitInvestment();
     this.orbit5Service.resetOrbitInvestment();
- 
+  // Resetear valores locales
+  this.currentInvestment = 100;
+  this.currentCard = 'alfa';
+  this.weeklyPercentage = '0.625';
+  this.monthlyPercentage = '2.5';
+  this.yearlyPercentage = '30';
+
+  // Actualizar el servicio con el valor inicial
+  this.orbitService.updateInvestment(this.currentInvestment);
+
+  // Actualizar la vista
+  this.updateInvestment({ target: { value: this.currentInvestment } });
   }
 
   handleScrollUp() {

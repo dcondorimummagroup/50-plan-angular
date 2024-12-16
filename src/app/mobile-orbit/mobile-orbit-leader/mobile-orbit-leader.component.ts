@@ -277,6 +277,7 @@ export class MobileOrbitLeaderComponent {
 
    hideOrbitCard() {
     this.isOrbitCardVisible = true; 
+    document.body.style.overflow = 'hidden'
         document.body.classList.add('blur-background');
         document.querySelector('.parent-body-simulator-capa-1')?.classList.add('blur-background');
     document.querySelector('#sidebar')?.classList.add('blur-background');

@@ -62,9 +62,13 @@
         <div class="block-2-box-3" >
             <div class="orbit-1">
                 <button class="orbit-button-1" 
-                        (click)="hideOrbitCard2()"
-                        [disabled]="isOrbitCardVisible"
-                        [ngClass]="{'disabled-orbit': isOrbitCardVisible}">
+                (click)="hideOrbitCard2()"
+                [disabled]="isOrbitCardVisible || !isValidToSimulate()"
+                [ngClass]="{
+                    'disabled-orbit': isOrbitCardVisible || !isValidToSimulate(),
+                    'invalid-button': !isValidToSimulate(),
+                    'valid-button': isValidToSimulate()
+                }">
                     2
                 </button>
             </div>     
@@ -73,8 +77,13 @@
             <div  class="orbit-1" >
                 <button class="orbit-button-1" 
                 (click)="hideOrbitCard3()"
-                [disabled]="isOrbitCardVisible"
-                [ngClass]="{'disabled-orbit': isOrbitCardVisible}">
+         
+                        [disabled]="isOrbitCardVisible || !isValidToSimulate()"
+                        [ngClass]="{
+                            'disabled-orbit': isOrbitCardVisible || !isValidToSimulate(),
+                            'invalid-button': !isValidToSimulate(),
+                            'valid-button': isValidToSimulate()
+                        }">
                     3
                 </button>
             </div>    
@@ -83,8 +92,12 @@
             <div  class="orbit-1" >
                 <button class="orbit-button-1" 
                 (click)="hideOrbitCard4()"
-                [disabled]="isOrbitCardVisible"
-                [ngClass]="{'disabled-orbit': isOrbitCardVisible}">
+                        [disabled]="isOrbitCardVisible || !isValidToSimulate()"
+                        [ngClass]="{
+                            'disabled-orbit': isOrbitCardVisible || !isValidToSimulate(),
+                            'invalid-button': !isValidToSimulate(),
+                            'valid-button': isValidToSimulate()
+                        }">
                     4
                 </button>
             </div>  
@@ -93,8 +106,12 @@
             <div  class="orbit-1" >
                 <button class="orbit-button-1" 
                 (click)="hideOrbitCard5()"
-                [disabled]="isOrbitCardVisible"
-                [ngClass]="{'disabled-orbit': isOrbitCardVisible}">
+                [disabled]="isOrbitCardVisible || !isValidToSimulate()"
+                [ngClass]="{
+                    'disabled-orbit': isOrbitCardVisible || !isValidToSimulate(),
+                    'invalid-button': !isValidToSimulate(),
+                    'valid-button': isValidToSimulate()
+                }">
                     5
                 </button>
             </div>    

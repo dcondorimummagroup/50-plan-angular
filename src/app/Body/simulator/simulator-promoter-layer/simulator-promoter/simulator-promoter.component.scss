@@ -643,41 +643,93 @@
 }
 
 .orbit-button-1 {
+    // Estilos base
     margin: 0;
     padding: 0;
     z-index: 2;
     margin-left: 4px;
-    color: rgb(15, 15, 15);
     font-family: "Jost", sans-serif;
     font-size: 26px;
-    position: absolute; /* Posicionamiento absoluto */
-    top: 50%; /* Coloca el texto en el centro vertical */
-    left: 50%; /* Coloca el texto en el centro horizontal */
-    transform: translate(-50%, -50%); /* Ajusta la posición exacta al centro */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: all 0.3s ease; // Agregamos transición suave
+
+    // Estado normal
+    color: rgb(15, 15, 15);
     border: 8px solid white;
     background-color: white;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
+
+    // Estado hover normal
+    &:hover:not(.invalid-button):not(.disabled-orbit) {
+        color: rgb(255, 255, 255);
+        border: 1px solid rgb(0, 217, 255);
+        background-color: rgb(36, 36, 36);
+    }
+
+    // Estado inválido
+    &.invalid-button {
+        background-color: #ff4444;
+        border: 8px solid #ff4444;
+        color: rgb(107, 107, 107);
+        cursor: not-allowed;
+
+        &:hover {
+            &::after {
+                content: "Completa la órbita anterior";
+                position: absolute;
+                bottom: 120%;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgb(24, 24, 24);
+                color: rgb(0, 217, 255);
+                padding: 8px 12px;
+                border-radius: 4px;
+                font-size: 14px;
+                white-space: nowrap;
+                animation: tooltipFadeIn 0.3s ease;
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                bottom: 110%;
+                left: 50%;
+                transform: translateX(-50%);
+                border: 8px solid transparent;
+                border-top-color: rgba(0, 0, 0, 0.795);
+            }
+        }
+    }
+
+    // Estado deshabilitado
+    &.disabled-orbit {
+        opacity: 0.5;
+        cursor: not-allowed;
+        background-color: #cccccc;
+        border: 8px solid #cccccc;
+
+        &:hover {
+            background-color: #cccccc;
+            border: 8px solid #cccccc;
+            color: rgb(15, 15, 15);
+        }
+    }
+
+    // Estado válido
+    &.valid-button {
+        &:hover {
+            background-color: #4CAF50;
+            border: 8px solid #4CAF50;
+            color: white;
+        }
+    }
 }
-.orbit-button-1:hover {
-    margin: 0;
-    padding: 0;
-    z-index: 2;
-    margin-left: 4px;
-    color: rgb(255, 255, 255);
-    font-family: "Jost", sans-serif;
-    font-size: 26px;
-    position: absolute; /* Posicionamiento absoluto */
-    top: 50%; /* Coloca el texto en el centro vertical */
-    left: 50%; /* Coloca el texto en el centro horizontal */
-    transform: translate(-50%, -50%); /* Ajusta la posición exacta al centro */
-    border: 1px solid rgb(0, 217, 255);
-    background-color: rgb(36, 36, 36);
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-}
+
 
 .exclamation-mark {
     grid-column: 11 / span 2;
@@ -915,13 +967,58 @@ app-card, app-card-2 {
 
 
 
- @media (max-width: 1320px) {
+@media (max-width: 1320px) {
     .parent-body-simulator-capa-1 {
         display: none;
     }
     
     .mobile-simulator {
         display: block;
+    }
+
+    .blur-background {
+        filter: blur(70px);
+      transition: filter 0.3s ease;
+    }
+    
+    
+    .card-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8); /* Fondo más oscuro para mejor contraste */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 99999; /* Z-index muy alto para asegurar que esté sobre todo */
+    }
+
+    .card-wrapper {
+        position: relative;
+        z-index: 100000;
+        width: 90%;
+        margin: 20px auto;
+        background-color: #131313;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        max-height: 90vh; /* Altura máxima para evitar desbordamiento */
+        overflow-y: auto; /* Permite scroll si el contenido es muy largo */
+    }
+
+    /* Asegúrate de que el contenido del simulador esté por debajo */
+    .mobile-simulator,
+    .button-simulation,
+    .simulator-section {
+        position: relative;
+        z-index: 1; /* Z-index bajo para que esté debajo del overlay */
+    }
+
+    /* Evita que el contenido detrás del overlay sea interactivo */
+    .card-overlay.active ~ * {
+        pointer-events: none;
     }
 
 }

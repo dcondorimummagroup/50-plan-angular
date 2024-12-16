@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -6,10 +6,39 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './view-start.component.html',
   styleUrls: ['./view-start.component.scss']
 })
-export class ViewStartComponent implements OnInit {
+export class ViewStartComponent implements OnInit, OnDestroy {
   // Variables para el overlay de licencias
   isLicensesVisible: boolean = false;
   selectedBoxId: number = 0;
+
+  // Variables nuevas para el carrusel
+  private interval: any;
+  currentIndex = 0;
+  
+  slides = [
+    {
+      title: 'Años de Experiencia',
+      text: 'Acompañando a miles de usuarios en su viaje a la autonomía de su capital.',
+      image: '/assets/image/8.webp'
+    },
+    {
+      title: 'Transacciones',
+      text: 'Completadas y realizadas cada viernes, y además de un bono cada fin de mes.',
+      image: '/assets/image/75.webp'
+    },
+    {
+      title: 'De dólares en transacciones',
+      text: 'Reafirmando el compromiso que tenemos con nuestros clientes, y la tasa de éxito asegurada',
+      image: '/assets/image/20.webp'
+    }
+  ];
+  
+
+  
+  currentTitle = this.slides[0].title;
+  currentText = this.slides[0].text;
+  currentImage = this.slides[0].image;
+
 
   private readonly sections = {
     'logo': 'parent-body-1',
@@ -22,6 +51,10 @@ export class ViewStartComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
+    // Inicializar el carrusel
+    this.startCarousel();
+
+    // Código existente
     this.route.fragment.subscribe(fragment => {
       if (fragment) {
         this.scrollToSection(fragment);
@@ -29,7 +62,23 @@ export class ViewStartComponent implements OnInit {
     });
   }
 
-  // Métodos para el manejo de licencias
+  ngOnDestroy() {
+    // Limpiar el intervalo cuando el componente se destruye
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+  }
+
+  private startCarousel() {
+    this.interval = setInterval(() => {
+      this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+      this.currentTitle = this.slides[this.currentIndex].title;
+      this.currentText = this.slides[this.currentIndex].text;
+      this.currentImage = this.slides[this.currentIndex].image;
+    }, 3000);
+  }
+  
+
   showLicenses(boxId: number) {
     this.selectedBoxId = boxId;
     this.isLicensesVisible = true;
@@ -41,22 +90,11 @@ export class ViewStartComponent implements OnInit {
     document.body.style.overflow = 'auto';
   }
 
-  // Método opcional para recibir datos del componente licenses
-  handleDataFromLicenses(data: any) {
-    console.log('Datos recibidos del componente licenses:', data);
-    // Implementar lógica según necesites
-  }
-
-  // Tus métodos existentes
   private scrollToSection(sectionId: string): void {
     const element = document.getElementById(sectionId);
     if (element) {
       const headerOffset = 90;
-      const currentScroll = window.scrollY;
-      const viewportHeight = window.innerHeight;
       const targetPosition = element.offsetTop;
-      const isScrollingDown = targetPosition > currentScroll;
-
       window.scrollTo({
         top: targetPosition - headerOffset,
         behavior: 'smooth'
@@ -66,8 +104,6 @@ export class ViewStartComponent implements OnInit {
 
   private getCurrentSection(): string {
     const scrollPosition = window.scrollY;
-    const viewportHeight = window.innerHeight;
-    
     return Object.entries(this.sections).find(([_, className]) => {
       const element = document.querySelector(`.${className}`);
       if (element) {
@@ -78,7 +114,6 @@ export class ViewStartComponent implements OnInit {
     })?.[0] || 'logo';
   }
 
-  // Método opcional para manejar la selección específica de cada box
   handleBoxSelection(boxId: number) {
     switch(boxId) {
       case 1:

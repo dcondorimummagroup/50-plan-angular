@@ -22,8 +22,8 @@ export class Orbit3PromoterService {
 
 
   // Keys específicas para Órbita 3
-  private readonly ORBIT3_USERS_KEY = 'orbit3_users';
-  private readonly ORBIT3_INVESTMENT_KEY = 'orbit3Investment';
+  private readonly ORBIT3_USERS_KEY = 'orbit3_users_promoter';
+  private readonly ORBIT3_INVESTMENT_KEY = 'orbit3Investment_promoter';
 
   constructor() {}
 

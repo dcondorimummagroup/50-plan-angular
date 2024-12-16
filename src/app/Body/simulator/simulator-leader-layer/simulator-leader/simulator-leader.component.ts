@@ -29,6 +29,7 @@ export class SimulatorLeaderComponent {
     ) {}
 
    ngOnInit() {
+    this.resetOrbitData();
     // Recuperar datos del localStorage
     const savedData = localStorage.getItem('investment_data');
     if (savedData) {
@@ -263,6 +264,7 @@ export class SimulatorLeaderComponent {
 
    hideOrbitCard() {
     this.isOrbitCardVisible = true; 
+    document.body.style.overflow = 'auto';
         document.body.classList.add('blur-background');
         document.querySelector('.parent-body-simulator-capa-1')?.classList.add('blur-background');
     document.querySelector('#sidebar')?.classList.add('blur-background');
@@ -317,6 +319,7 @@ export class SimulatorLeaderComponent {
   }
   hideOrbitCard10() {
     this.isOrbitCardVisible10 = true; 
+    document.body.style.overflow = 'hidden';
         document.body.classList.add('blur-background');
         document.querySelector('.parent-body-simulator-capa-1')?.classList.add('blur-background');
     document.querySelector('#sidebar')?.classList.add('blur-background');
