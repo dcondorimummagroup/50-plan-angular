@@ -1,0 +1,29 @@
+<div class="modal-overlay" *ngIf="isOpen" (click)="onOverlayClick($event)">
+    <div class="modal-container" (click)="$event.stopPropagation()">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+        <div class="circle circle-4"></div>
+     
+    <button class="close-button" (click)="closeModal()">X</button>
+
+      <div class="modal-content">
+                <div class="modal-header">
+                    {{title}}
+                </div>
+            
+            <div class="modal-body">
+                <p>Estimados afiliados,</p>
+                <p>
+                Les informamos que el período de registros en la plataforma de 50Plan ha concluido. 
+                Aquellos que no hayan realizado su registro dentro de los plazos establecidos, 
+                incluyendo el período adicional de 5 días otorgado a partir del 14 de diciembre, 
+                no podrán completar su registro hasta nuevo aviso.
+                </p>
+                <p>Agradecemos su comprensión y atención.</p>
+                <p>Atentamente,<br>Equipo de Gestión de Afiliados 50Plan</p>
+            </div>
+        </div>
+        <img  class="image-logo" src="/assets/image/logo.webp" alt="logo">
+    </div>
+</div>

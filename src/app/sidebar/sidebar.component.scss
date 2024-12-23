@@ -12,7 +12,7 @@ html {
     display: grid;
     grid-template-columns: repeat(36, 1fr);
     background-color: black;
-    border-bottom: 4px solid #7bd9f2;
+    border-bottom: 4px solid #16cdff;
     box-shadow: 0 5px 23px #00ffff, 0 0 10px rgb(0, 217, 255);
     height: 10vh;
     z-index: 100;
@@ -77,6 +77,17 @@ html {
   .sidebar-element-inicio,
   .sidebar-element-register {
     grid-column: span 1;
+  }
+
+  .sidebar-element-1:hover,
+  .sidebar-element-2:hover,
+  .sidebar-element-3:hover,
+  .sidebar-element-4:hover,
+  .sidebar-element-simulator:hover,
+  .sidebar-element-inicio:hover,
+  .sidebar-element-register:hover {
+
+    color: rgb(0, 176, 230);
   }
   
   .sidebar-element-inicio {

@@ -46,6 +46,7 @@ import { OrbitCardPromoter5Component } from './Body/simulator/simulator-promoter
 import { OrbitCardPromoterComponent } from './Body/simulator/simulator-promoter-layer/orbit-cards/orbit-card-promoter/orbit-card-promoter.component';
 import { MobileOrbitLeaderComponent } from './mobile-orbit/mobile-orbit-leader/mobile-orbit-leader.component';
 import { MobileOrbitPromoterComponent } from './mobile-orbit/mobile-orbit-promoter/mobile-orbit-promoter.component';
+import { StartCardComponent } from './shared/start-card/start-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,6 +91,7 @@ import { MobileOrbitPromoterComponent } from './mobile-orbit/mobile-orbit-promot
     OrbitCardPromoter5Component,
     MobileOrbitLeaderComponent,
     MobileOrbitPromoterComponent,
+    StartCardComponent,
   ],
   imports: [
     BrowserModule,
