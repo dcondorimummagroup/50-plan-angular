@@ -6,21 +6,19 @@
     <div  class="circle-1" ></div>
     <div  class="circle-2" ></div>
     <div  class="parent-body-1" >
-        <div class="body-text-element-1" >
-            Invierte en 
+        <div class="body-text-element-1" [ngClass]="currentStyleClass" >
+            {{ currentText1 }}
         </div>
-        <div class="body-text-element-2" >
-            Startups Mundiales 
+        <div class="body-text-element-2" [ngClass]="currentStyleClass" >
+            {{ currentText2 }}
         </div>
-        <div class="body-text-element-3" >
-            con un solo click
+        <div class="body-text-element-3" [ngClass]="currentStyleClass" >
+            {{ currentText3 }}
         </div>
-        <div class="body-button-1" >
-            <p class="element-button" >Descargar Presentación</p>
+        <div class="body-button-1" (click)="showWallets()" style="cursor: pointer" >
+            <p class="element-button"  >Listado de Wallets</p>
         </div>
-        <div class="body-button-2" >
-            <p class="element-button" >Listado de Wallets</p> 
-        </div>
+
     </div>
     <div id="nosotros" class="parent-body-2" >
         <div class="body-2-element-1" [style.background-image]="'url(' + currentImage + ')'"></div>
@@ -141,3 +139,4 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
 </a>
 <app-view-start-mobile class="mobile-view" > </app-view-start-mobile>
+<app-modal-qr *ngIf="isWalletsVisible" (closeModal)="hideWallets()"></app-modal-qr>

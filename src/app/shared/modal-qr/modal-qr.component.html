@@ -1,0 +1,37 @@
+<div class="modal-overlay" (click)="onClose()">
+    <div class="modal-content" (click)="stopPropagation($event)">
+        <div class="modal-header">
+            <h2>Wallets Disponibles</h2>
+            <button class="close-button" (click)="onClose()">×</button>
+        </div>
+
+        <div class="wallet-section" *ngFor="let wallet of currentPageWallets">
+            <h3>{{ wallet.title }}</h3>
+            <div class="qr-container">
+                <img [src]="wallet.qrImage" [alt]="wallet.title" class="qr-code">
+                <p class="wallet-address">
+                    {{ wallet.address }}
+                </p>
+            </div>
+        </div>
+
+        <div class="navigation-controls">
+       
+            <button 
+                class="button-prev" 
+                (click)="prevPage()" 
+                [disabled]="currentPage === 0">
+                ‹
+            </button>
+         
+            <button 
+                class="button-next" 
+                (click)="nextPage()" 
+                [disabled]="!hasNextPage">
+                ›
+            </button>
+            
+        </div>
+
+    </div>
+</div>

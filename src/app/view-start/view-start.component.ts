@@ -11,6 +11,27 @@ export class ViewStartComponent implements OnInit, OnDestroy {
   isLicensesVisible: boolean = false;
   selectedBoxId: number = 0;
 
+  slides_header = [
+    {
+      text1: 'Haz que tu',
+      text2: 'DINERO TRABAJE',
+      text3: 'para ti a partir de hoy mismo',
+      styleClass: 'style1'
+    },
+    {
+      text1: 'Invierte ',
+      text2: 'como los',
+      text3: 'PROFESIONALES',
+      styleClass: 'style2'
+    },
+  ];
+
+  currentHeaderIndex = 0;
+  currentText1 = this.slides_header[0].text1;
+  currentText2 = this.slides_header[0].text2;
+  currentText3 = this.slides_header[0].text3;
+  currentStyleClass = this.slides_header[0].styleClass;
+
   // Variables nuevas para el carrusel
   private interval: any;
   currentIndex = 0;
@@ -38,7 +59,7 @@ export class ViewStartComponent implements OnInit, OnDestroy {
   currentTitle = this.slides[0].title;
   currentText = this.slides[0].text;
   currentImage = this.slides[0].image;
-
+  private headerInterval: any;
 
   private readonly sections = {
     'logo': 'parent-body-1',
@@ -53,7 +74,7 @@ export class ViewStartComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // Inicializar el carrusel
     this.startCarousel();
-
+    this.startHeaderCarousel();
     // Código existente
     this.route.fragment.subscribe(fragment => {
       if (fragment) {
@@ -77,8 +98,23 @@ export class ViewStartComponent implements OnInit, OnDestroy {
       this.currentImage = this.slides[this.currentIndex].image;
     }, 3000);
   }
-  
+  private startHeaderCarousel() {
+    this.headerInterval = setInterval(() => {
+      this.currentHeaderIndex = (this.currentHeaderIndex + 1) % this.slides_header.length;
+      this.currentText1 = this.slides_header[this.currentHeaderIndex].text1;
+      this.currentText2 = this.slides_header[this.currentHeaderIndex].text2;
+      this.currentText3 = this.slides_header[this.currentHeaderIndex].text3;
+      this.currentStyleClass = this.slides_header[this.currentHeaderIndex].styleClass;
+    }, 10000);
+  }
+  isWalletsVisible = false;
+  showWallets() {
+    this.isWalletsVisible = true;
+  }
 
+  hideWallets() {
+    this.isWalletsVisible = false;
+  }
   showLicenses(boxId: number) {
     this.selectedBoxId = boxId;
     this.isLicensesVisible = true;

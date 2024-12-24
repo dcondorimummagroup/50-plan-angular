@@ -22,6 +22,7 @@ import { SimulatorMobilePromoterComponent } from './mobile-simulator/simulator-m
 import { MobileOrbitLeaderComponent } from './mobile-orbit/mobile-orbit-leader/mobile-orbit-leader.component';
 import { MobileOrbitPromoterComponent } from './mobile-orbit/mobile-orbit-promoter/mobile-orbit-promoter.component';
 import { StartCardComponent } from './shared/start-card/start-card.component';
+import { ModalQrComponent } from './shared/modal-qr/modal-qr.component';
 
 const routes: Routes = [
   { path: '', component: ViewStartComponent },
@@ -46,6 +47,7 @@ const routes: Routes = [
   { path: 'mobile-orbit-leader', component: MobileOrbitLeaderComponent },
   { path: 'mobile-orbit-promoter', component: MobileOrbitPromoterComponent },
   { path: 'start-card', component: StartCardComponent},
+  { path: 'modal-qr', component: ModalQrComponent},
 ];
 
 @NgModule({

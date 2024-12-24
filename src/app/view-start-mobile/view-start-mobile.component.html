@@ -2,21 +2,19 @@
 <div id="logo" class="parent-mobile">
     <div class="circle-body-1" ></div>
     <div  class="parent-body-1" >
-        <div class="body-text-element-1" >
-            Invierte en 
+        <div class="body-text-element-1" [ngClass]="currentStyleClass" >
+            Haz que tu
         </div>
-        <div class="body-text-element-2" >
-            Startups Mundiales 
+        <div class="body-text-element-2" [ngClass]="currentStyleClass" >
+            DINERO TRABAJE
         </div>
-        <div class="body-text-element-3" >
-            con un solo click
+        <div class="body-text-element-3" [ngClass]="currentStyleClass" >
+            para ti a partir de hoy mismo
         </div>
-        <div class="body-button-1" >
-            <p class="element-button" >Descargar Presentación</p>
+        <div class="body-button-1" (click)="showWallets()" style="cursor: pointer" >
+            <p class="element-button" >Listado de Wallets</p>
         </div>
-        <div class="body-button-2" >
-            <p class="element-button" >Listado de Wallets</p> 
-        </div>
+   
 </div>
 
     <div id="nosotros" class="parent-body-2" >
@@ -43,4 +41,11 @@
         <div class="footer-mobile" ></div>
     </div>
 
+</div>
+<div class="modal-overlay" 
+     *ngIf="isWalletsVisible" 
+     (click)="hideWallets()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <app-modal-qr (closeModal)="hideWallets()"></app-modal-qr>
+    </div>
 </div>

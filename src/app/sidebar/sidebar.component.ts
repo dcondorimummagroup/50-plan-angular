@@ -102,11 +102,11 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
 
   goToLogin(event?: Event): void {
-    this.navigateAndToggle('/login', event);
+    window.location.href = 'https://app.50plan.pro/login';
   }
 
   goToRegister(event?: Event): void {
-    this.navigateAndToggle('/register', event);
+    window.location.href = 'https://app.50plan.pro/register';
   }
 
   ngOnInit(): void {
