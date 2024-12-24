@@ -73,26 +73,28 @@
               </app-licenses>
             </div>
           </div>
-    <div id="clientes" class="parent-body-5" >
-        <div class="body-5-sub-title" >Testimonios</div>
-        <div class="rectangle">
-            <input type="checkbox" id="video-toggle" class="video-checkbox">
-            <label for="video-toggle" class="rectangle-movie"></label>
-            <div class="video-container">
-                <iframe
-                src="https://www.youtube.com/embed/zEcYZi_46TA?autoplay=0&mute=0&enablejsapi=1&rel=0"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
+
+
+
+          <div id="clientes" class="parent-body-5">
+            <div class="body-5-sub-title">Testimonios</div>
+            <div class="rectangle" (click)="showMovies()" style="cursor:pointer">
+                <div class="video-container">
+                    <div class="play-icon"></div>
+                </div>
+            </div>
+            <img class="body-5-circle" src="/assets/image/circulos.webp" alt="">
+        </div>
+        
+        <!-- Modal para videos -->
+        <div class="overlay" *ngIf="isMoviesVisible" (click)="hideMovies()">
+            <div class="modal-wrapper" (click)="$event.stopPropagation()">
+                <app-card-video-1 (closeModal)="hideMovies()"></app-card-video-1>
             </div>
         </div>
-      
-    
-        <button  class="button-next" >Siguiente ></button>
-        <img class="body-5-circle" src="/assets/image/circulos.webp" alt="">
-    </div>
+
+
+
     <div class="parent-body-6" >
         <div class="body-6-sub-title" >Inversores satisfechos</div>
         
@@ -132,6 +134,7 @@
        
     </div>
     <div class="parent-body-7" >
+        
     </div>
     <app-start-card></app-start-card>
 </div>

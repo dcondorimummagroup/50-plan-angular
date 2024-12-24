@@ -167,4 +167,13 @@ export class ViewStartComponent implements OnInit, OnDestroy {
     }
     this.showLicenses(boxId);
   }
+
+  isMoviesVisible = false;
+  showMovies() {
+    this.isMoviesVisible = true;
+  }
+
+  hideMovies() {
+    this.isMoviesVisible = false;
+  }
 }

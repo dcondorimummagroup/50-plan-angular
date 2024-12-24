@@ -23,6 +23,8 @@ import { MobileOrbitLeaderComponent } from './mobile-orbit/mobile-orbit-leader/m
 import { MobileOrbitPromoterComponent } from './mobile-orbit/mobile-orbit-promoter/mobile-orbit-promoter.component';
 import { StartCardComponent } from './shared/start-card/start-card.component';
 import { ModalQrComponent } from './shared/modal-qr/modal-qr.component';
+import { CardVideo1Component } from './shared/card-video-1/card-video-1.component';
+import { FooterComponent } from './footer/footer.component';
 
 const routes: Routes = [
   { path: '', component: ViewStartComponent },
@@ -48,6 +50,8 @@ const routes: Routes = [
   { path: 'mobile-orbit-promoter', component: MobileOrbitPromoterComponent },
   { path: 'start-card', component: StartCardComponent},
   { path: 'modal-qr', component: ModalQrComponent},
+  { path: 'card-video-1', component: CardVideo1Component},
+  { path: 'footer', component: FooterComponent},
 ];
 
 @NgModule({

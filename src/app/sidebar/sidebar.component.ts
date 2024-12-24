@@ -8,76 +8,94 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent implements OnInit, OnDestroy {
   isMenuOpen = false;
-  private isToggling = false;
+  private touchStartX = 0;
+  private readonly SWIPE_THRESHOLD = 50;
   private menuElement: Element | null = null;
   private toggleButton: Element | null = null;
-  private menuIcon: Element | null = null;
 
   constructor(
     private router: Router,
     private elementRef: ElementRef
   ) {}
 
+  // Optimizado toggleMenu sin delay
   toggleMenu(event?: Event): void {
-    if (this.isToggling) return;
-    
     if (event) {
-      event.stopPropagation();
       event.preventDefault();
+      event.stopPropagation();
     }
 
-    this.isToggling = true;
-    this.isMenuOpen = !this.isMenuOpen;
-    document.body.style.overflow = this.isMenuOpen ? 'hidden' : 'auto';
-
-    // Reducido a 150ms
-    setTimeout(() => this.isToggling = false, 150);
+    requestAnimationFrame(() => {
+      this.isMenuOpen = !this.isMenuOpen;
+      document.body.style.overflow = this.isMenuOpen ? 'hidden' : 'auto';
+    });
   }
 
+  // Soporte para gestos táctiles
+  @HostListener('touchstart', ['$event'])
+  onTouchStart(event: TouchEvent): void {
+    this.touchStartX = event.touches[0].clientX;
+  }
+
+  @HostListener('touchend', ['$event'])
+  onTouchEnd(event: TouchEvent): void {
+    const touchEndX = event.changedTouches[0].clientX;
+    const deltaX = touchEndX - this.touchStartX;
+
+    if (Math.abs(deltaX) > this.SWIPE_THRESHOLD) {
+      if (deltaX > 0 && !this.isMenuOpen) {
+        this.toggleMenu();
+      } else if (deltaX < 0 && this.isMenuOpen) {
+        this.toggleMenu();
+      }
+    }
+  }
+
+  // Click handler optimizado
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent): void {
     if (!this.isMenuOpen) return;
 
-    const target = event.target as Node;
-    
-    if (!this.menuElement?.contains(target) && 
-        !this.toggleButton?.contains(target) && 
-        !this.menuIcon?.contains(target)) {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.side-menu') && !target.closest('.menu-button')) {
       this.toggleMenu();
     }
   }
 
   @HostListener('document:keydown.escape')
   onEscapePress(): void {
-    if (this.isMenuOpen && !this.isToggling) {
+    if (this.isMenuOpen) {
       this.toggleMenu();
     }
   }
 
+  // Navegación optimizada
   goToSection(section: string, event?: Event): void {
-    if (this.isToggling) return;
-    
     if (event) {
       event.preventDefault();
       event.stopPropagation();
     }
+
+    if (this.isMenuOpen) {
+      this.toggleMenu();
+    }
     
     if (this.router.url !== '/') {
       this.router.navigate(['/'])
-        .then(() => requestAnimationFrame(() => this.scrollToSection(section)));
+        .then(() => this.scrollToSection(section));
     } else {
       this.scrollToSection(section);
     }
   }
 
   private scrollToSection(section: string): void {
-    const element = document.getElementById(section);
-    if (!element) return;
-
-    const headerOffset = 90;
-    const targetPosition = element.offsetTop - headerOffset;
-    
     requestAnimationFrame(() => {
+      const element = document.getElementById(section);
+      if (!element) return;
+
+      const headerOffset = 90;
+      const targetPosition = element.offsetTop - headerOffset;
+
       window.scrollTo({
         top: targetPosition,
         behavior: 'smooth'
@@ -85,48 +103,36 @@ export class SidebarComponent implements OnInit, OnDestroy {
     });
   }
 
-  private navigateAndToggle(route: string, event?: Event): void {
-    if (this.isToggling) return;
-    
+  // Navegación externa optimizada
+  goToLogin(event?: Event): void {
     if (event) {
       event.preventDefault();
-      event.stopPropagation();
     }
-    
     if (this.isMenuOpen) {
       this.toggleMenu();
     }
-    
-    this.router.navigate([route]);
-  }
-
-
-  goToLogin(event?: Event): void {
     window.location.href = 'https://app.50plan.pro/login';
   }
 
   goToRegister(event?: Event): void {
+    if (event) {
+      event.preventDefault();
+    }
+    if (this.isMenuOpen) {
+      this.toggleMenu();
+    }
     window.location.href = 'https://app.50plan.pro/register';
   }
 
   ngOnInit(): void {
-    this.isMenuOpen = false;
-    this.isToggling = false;
-    document.body.style.overflow = 'auto';
-
-
+    // Inicialización optimizada
     this.menuElement = this.elementRef.nativeElement.querySelector('.side-menu');
     this.toggleButton = this.elementRef.nativeElement.querySelector('.menu-button');
-    this.menuIcon = this.elementRef.nativeElement.querySelector('.menu-icon');
   }
 
   ngOnDestroy(): void {
     document.body.style.overflow = 'auto';
-    this.isToggling = false;
-    
-
     this.menuElement = null;
     this.toggleButton = null;
-    this.menuIcon = null;
   }
 }

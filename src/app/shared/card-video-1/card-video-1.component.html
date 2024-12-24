@@ -1,0 +1,39 @@
+<div class="modal-overlay" (click)="onClose()">
+    <div class="modal-content" (click)="stopPropagation($event)">
+        <div class="modal-header">
+            <h2>Testimonios en Video</h2>
+            <button class="close-button" (click)="onClose()">×</button>
+        </div>
+
+        <div class="video-section">
+            <h3>{{ currentVideo.title }}</h3>
+            <div class="video-container">
+                <div class="rectangle">
+                    <iframe
+                        [src]="currentVideo.safeUrl"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            <p class="video-description">{{ currentVideo.description }}</p>
+        </div>
+
+        <div class="navigation-controls">
+            <button 
+                class="button-prev" 
+                (click)="prevPage()" 
+                [disabled]="currentPage === 0">
+                ‹
+            </button>
+            <button 
+                class="button-next" 
+                (click)="nextPage()" 
+                [disabled]="!hasNextPage">
+                ›
+            </button>
+        </div>
+    </div>
+</div>

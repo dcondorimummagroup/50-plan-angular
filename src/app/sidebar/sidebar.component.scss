@@ -747,7 +747,7 @@ html {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1001;
     backdrop-filter: blur(20px);
-    box-shadow: 0 0 30px rgba(0, 217, 255, 0.301);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0);
     border-right: 1px solid rgba(0, 216, 255, 0.1);
   
     &.open {
@@ -954,7 +954,7 @@ html {
   // Navbar mejorado
   .parent-sidebar {
     animation: slideIn 0.8s ease-out, navbarGlow 4s infinite;
-    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.95) 100%);
+    background: linear-gradient(180deg, rgba(0, 72, 90, 0.644) 0%, rgba(0,0,0,0.95) 100%);
     backdrop-filter: blur(10px);
   }
   
@@ -988,30 +988,31 @@ html {
   
   // Botones mejorados
   .btn-inicio, .btn-register {
-    background: linear-gradient(45deg, rgba(0,216,255,0.1), rgba(0, 33, 39, 0.2));
-    border: 1px solid rgba(0,216,255,0.2);
-    backdrop-filter: blur(5px);
+    background: linear-gradient(45deg, rgba(0, 10, 12, 0.678), rgba(0, 33, 39, 0.589));
+    border: 1px solid rgba(0, 100, 117, 0.966);
+    backdrop-filter: blur(15px);
     transition: all 0.3s ease;
     color: rgb(170, 170, 170);
     &:hover {
       transform: translateY(-2px);
-      border-color: rgba(0, 91, 107, 0.4);
+      border-color: rgb(0, 126, 126);
      color: white;
-      background: linear-gradient(45deg, rgba(0,216,255,0.2), rgba(45, 105, 116, 0));
+      background: linear-gradient(45deg, rgba(0, 69, 82, 0.2), rgba(0, 32, 37, 0.705));
     }
   }
   
   // Simulador mejorado
   .element-simulator {
-    background: linear-gradient(45deg, rgba(0,216,255,0.1), rgba(0, 33, 39, 0.2));
-    border: 1px solid rgba(0,216,255,0.2);
+    background: linear-gradient(45deg, rgba(0, 10, 12, 0.678), rgba(0, 33, 39, 0.589));
+    border: 1px solid rgba(0, 100, 117, 0.966);
+    backdrop-filter: blur(15px);
     transition: all 0.3s ease;
     
     &:hover {
       transform: translateY(-2px);
-      border-color: rgba(0, 91, 107, 0.4);
+      border-color: rgb(0, 126, 126);
      
-      background: linear-gradient(45deg, rgba(0,216,255,0.2), rgba(45, 105, 116, 0));
+      background: linear-gradient(45deg, rgba(0, 69, 82, 0.2), rgba(0, 32, 37, 0.705));
     }
   }
   
@@ -1148,7 +1149,7 @@ html {
 .sidebar-element-4.active {
   button.text-element {
     color: #00d8ff;
-    text-shadow: 0 0 10px rgba(0, 216, 255, 0.3);
+    text-shadow: 0 0 10px rgba(2, 165, 194, 0.767);
     
     &::after {
       left: 0;
