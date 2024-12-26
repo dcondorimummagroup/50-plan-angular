@@ -14,7 +14,7 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto 1fr auto;
-    background: linear-gradient(145deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.85));
+    background: linear-gradient(145deg, rgba(0, 0, 0, 0.315), rgba(0, 0, 0, 0.548));
     backdrop-filter: blur(10px);
     position: fixed;
     top: 45%;
@@ -28,12 +28,10 @@
     border-radius: 20px;
     margin-top: 40px;
     animation: modalEnter 0.3s ease-out;
-    box-shadow: 
-        0 0 15px rgba(0, 255, 255, 0.2),
-        0 0 30px rgba(0, 255, 255, 0.1);
+
     
     &.closing {
-      color: #00bdbd;
+      color: #16cdff;
       animation: modalExit 0.3s ease-out forwards;
     }
   
@@ -54,8 +52,8 @@
           bottom: 0;
           left: 0;
           width: 100%;
-          height: 4px;
-          background: #00a3a3;
+          height: 1px;
+          background: #00eeff;
           box-shadow: 
             0 5px 10px -2px rgba(1, 123, 156, 0.6),
             0 8px 15px -3px rgba(43, 181, 219, 0.4),
@@ -64,26 +62,7 @@
           animation: borderGlow 3s ease-in-out infinite;
         }
         
-        @keyframes borderGlow {
-          0% {
-            box-shadow: 
-              0 5px 10px -2px rgba(43, 181, 219, 0.4),
-              0 8px 15px -3px rgba(43, 181, 219, 0.3),
-              0 12px 20px -4px rgba(43, 181, 219, 0.1);
-          }
-          50% {
-            box-shadow: 
-              0 5px 15px -2px rgba(43, 181, 219, 0.7),
-              0 10px 20px -3px rgba(43, 181, 219, 0.5),
-              0 15px 25px -4px rgba(43, 181, 219, 0.3);
-          }
-          100% {
-            box-shadow: 
-              0 5px 10px -2px rgba(43, 181, 219, 0.4),
-              0 8px 15px -3px rgba(43, 181, 219, 0.3),
-              0 12px 20px -4px rgba(43, 181, 219, 0.1);
-          }
-        }
+       
       
         h2 {
           font-family: "Jost", sans-serif;
@@ -93,7 +72,7 @@
         .close-button {
           background: none;
           border: none;
-          color: #00ffff;
+          color: #00d9ff;
           font-size: 1.5rem;
           cursor: pointer;
           transition: all 0.3s ease;
@@ -131,7 +110,7 @@
         .license-card {
           background: rgba(255, 255, 255, 0.05);
           backdrop-filter: blur(5px);
-          border: 1px solid rgba(0, 255, 255, 0.1);
+          border: 1px solid rgba(0, 255, 255, 0);
           border-radius: 15px;
           padding: 1rem;
           transition: all 0.3s ease;
@@ -140,12 +119,11 @@
             transform: translateY(-5px);
             box-shadow: 
                 0 10px 20px rgba(0, 0, 0, 0.2),
-                0 0 15px rgba(0, 255, 255, 0.2);
-            border-color: rgba(0, 255, 255, 0.3);
+                0 0 15px rgba(0, 195, 255, 0.2);
   
             .card-image {
               transform: scale(1.05);
-              box-shadow: 0 10px 20px rgba(0, 255, 255, 0.1);
+              box-shadow: 0 10px 20px rgba(0, 204, 255, 0.1);
             }
           }
   
@@ -275,7 +253,7 @@
               font-family: "Jost", sans-serif;
   
               .highlight {
-                color: #00ffff;
+                color: #16cdff;
               }
             }
           }
@@ -338,7 +316,7 @@
           
           &.btn-previous {
             background: transparent;
-            border: 1px solid #00ffff;
+            border: 1px solid #00e1ff;
             color: #929292;
             
             &:hover {
@@ -348,11 +326,11 @@
           }
           
           &.btn-ok {
-            background: rgba(0, 255, 255, 0.8);
+            background: #16cdff;
             color: rgba(0, 0, 0, 0.8);
             
             &:hover {
-              background: rgba(0, 255, 255, 1);
+              background:#16cdff;
               color: rgba(0, 0, 0, 1);
             }
           }

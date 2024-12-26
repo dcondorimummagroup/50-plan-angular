@@ -102,13 +102,7 @@ html {
     padding-right: 40px;
   }
   
-  .simulator {
-    font-family: "Jost", sans-serif;
-    font-size: 1.2em;
-    font-weight: 400;
-    margin: 8px;
-    margin-inline: 20px;
-  }
+ 
   
   .btn-inicio,
   .btn-register {
@@ -122,6 +116,7 @@ html {
     border: 1px solid transparent;
     color: white;
     width: 180px;
+    transition: all 0.3s ease-in-out;
   }
   
   .btn-inicio {
@@ -130,7 +125,7 @@ html {
   
   .btn-register {
     border-radius: 0 20px 20px 0;
-    border-left: 1px solid rgb(61, 61, 61);
+    border-left: 1px solid rgba(61, 61, 61, 0.5);
   }
   
   .inicio,
@@ -139,6 +134,16 @@ html {
     font-size: 1em;
     font-weight: 500;
     color: rgb(196, 196, 196);
+    transition: color 0.3s ease;
+  }
+  
+  .simulator {
+    font-family: "Jost", sans-serif;
+    font-size: 1.2em;
+    font-weight: 400;
+    color: rgb(196, 196, 196);
+    margin: 0;
+    transition: color 0.3s ease;
   }
   
   .element-simulator {
@@ -150,11 +155,84 @@ html {
       rgba(85, 85, 85, 0.329) 100%
     );
     margin: 10px;
+    padding: 12px 20px;
     width: 200px;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.6);
     color: rgb(146, 146, 146);
     border: 1px solid transparent;
     border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+  
+    i {
+      font-size: 1.1em;
+      transition: transform 0.3s ease;
+    }
+  
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+      );
+      transition: 0.5s;
+    }
+  
+    &:hover {
+      color: rgb(255, 255, 255);
+      background: url('/assets/image/hover.svg') center/220% no-repeat,
+                  linear-gradient(
+                    to bottom,
+                    rgba(0, 216, 255, 0.1),
+                    rgba(0, 216, 255, 0.05)
+                  );
+      border-color: rgba(0, 216, 255, 0.2);
+      box-shadow: 0 0 20px rgba(0, 216, 255, 0.1);
+      transform: translateY(-2px);
+  
+      &::before {
+        left: 100%;
+      }
+  
+      i {
+        transform: scale(1.1) rotate(360deg);
+      }
+  
+      .simulator {
+        color: white;
+      }
+    }
+  }
+  
+  .btn-inicio:hover,
+  .btn-register:hover {
+    color: rgb(255, 255, 255);
+    background: url('/assets/image/hover.svg') center/220% no-repeat,
+                linear-gradient(
+                  to bottom,
+                  rgba(0, 216, 255, 0.1),
+                  rgba(0, 216, 255, 0.05)
+                );
+    border-color: rgba(0, 216, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 216, 255, 0.1);
+    transform: translateY(-2px);
+  
+    .inicio,
+    .register {
+      color: white;
+    }
   }
   
   .btn-inicio:hover,
