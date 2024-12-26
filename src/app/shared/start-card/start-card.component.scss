@@ -166,9 +166,37 @@
   /* Responsive adjustments */
   @media (max-width: 768px) {
     .modal-container {
-      width: 95%;
+      width: 65%;
       padding: 20px;
     }
+    .modal-container {
+      background: linear-gradient(135deg, #0090b4 0%, #002d38 100%);
+      border-radius: 8px;
+      padding: 5px;
+      width: 90%;
+      max-width: 580px;
+      height: 700px;
+      position: relative;
+      overflow: hidden;
+      animation: slideIn 0.3s ease-out;
+      font-family: "Jost", sans-serif;
+    }
+    .modal-content {
+      color: white;
+      position: relative;
+      z-index: 2;
+      margin-inline: 10px;
+      align-items: center;
+    }
+    .image-logo {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      width: 80px;
+      height: 80px;
+      transform: translate(-50%, -50%);
+    }
+    
     
     .circles-container {
       bottom: -30%;

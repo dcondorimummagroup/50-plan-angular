@@ -76,7 +76,7 @@
 
 
 
-          <div id="clientes" class="parent-body-5">
+        <div id="clientes" class="parent-body-5">
             <div class="body-5-sub-title">Testimonios</div>
             <div class="rectangle" (click)="showMovies()" style="cursor:pointer">
                 <div class="video-container">
@@ -84,16 +84,14 @@
                 </div>
             </div>
             <img class="body-5-circle" src="/assets/image/circulos.webp" alt="">
+           
+    
+    
         </div>
-        
+    
+     
         <!-- Modal para videos -->
-        <div class="overlay" *ngIf="isMoviesVisible" (click)="hideMovies()">
-            <div class="modal-wrapper" (click)="$event.stopPropagation()">
-                <app-card-video-1 (closeModal)="hideMovies()"></app-card-video-1>
-            </div>
-        </div>
-
-
+      
 
     <div class="parent-body-6" >
         <div class="body-6-sub-title" >Inversores satisfechos</div>
@@ -130,14 +128,16 @@
                     he logrado resultados excepcionales en mi cartera, dándome más confianza y entusiasmo por 
                     el futuro financiero.
                 </div>
-              
         </div>
-  
-  
-    <app-start-card></app-start-card>
+          <div class="body-6-box-4" >
+           <app-footer class="footer-test" > </app-footer>
+        </div>
+
+    </div>
 </div>
 <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" class="whatsapp-float">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
 </a>
 <app-view-start-mobile class="mobile-view" > </app-view-start-mobile>
-<app-modal-qr *ngIf="isWalletsVisible" (closeModal)="hideWallets()"></app-modal-qr>
+<app-modal-qr *ngIf="isWalletsVisible" (closeModal)="hideWallets()"></app-modal-qr>  
+ <app-start-card></app-start-card>
