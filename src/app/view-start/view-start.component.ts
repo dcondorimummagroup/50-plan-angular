@@ -51,6 +51,15 @@ export class ViewStartComponent implements OnInit, OnDestroy {
     }
   ];
 
+  iconImages = [
+    '/assets/image/dinero.webp',
+    '/assets/image/capital.webp',
+    '/assets/image/flujo.webp'
+  ];
+  currentIconImage = this.iconImages[0];
+  private imageInterval: any;
+  private currentIconIndex = 0;
+
   currentHeaderIndex = 0;
   currentIndex = 0;
   currentTitle = this.slides[0].title;
@@ -60,6 +69,8 @@ export class ViewStartComponent implements OnInit, OnDestroy {
   currentText2 = this.slides_header[0].text2;
   currentText3 = this.slides_header[0].text3;
   currentStyleClass = this.slides_header[0].styleClass;
+
+
 
   private readonly sections = {
     'logo': 'parent-body-1',
@@ -79,7 +90,12 @@ export class ViewStartComponent implements OnInit, OnDestroy {
     this.preloadImages();
     this.startCarousel();
     this.startHeaderCarousel();
-
+    this.imageInterval = interval(4000)
+    .pipe(takeUntil(this.destroy$))
+    .subscribe(() => {
+      this.rotateIconImage();
+      this.cdr.markForCheck();
+    });
     this.route.fragment
       .pipe(takeUntil(this.destroy$))
       .subscribe(fragment => {
@@ -89,6 +105,10 @@ export class ViewStartComponent implements OnInit, OnDestroy {
       });
   }
 
+  private rotateIconImage() {
+    this.currentIconIndex = (this.currentIconIndex + 1) % this.iconImages.length;
+    this.currentIconImage = this.iconImages[this.currentIconIndex];
+  }
   private preloadImages(): void {
     this.slides.forEach(slide => {
       if (slide.image) {
@@ -131,6 +151,7 @@ export class ViewStartComponent implements OnInit, OnDestroy {
   hideWallets() {
     this.isWalletsVisible = false;
     this.cdr.markForCheck();
+    
   }
 
   showLicenses(boxId: number) {
@@ -149,7 +170,7 @@ export class ViewStartComponent implements OnInit, OnDestroy {
   showMovies() {
     this.isMoviesVisible = true;
     this.cdr.markForCheck();
-  }
+    }
 
   hideMovies() {
     this.isMoviesVisible = false;

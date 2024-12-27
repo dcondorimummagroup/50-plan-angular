@@ -10,9 +10,11 @@
         <a href="#">Políticas y términos de privacidad</a>
         <a href="#">Políticas de cookies</a>
         <a href="#">Contacto legal</a>
+        <a href="#">Contacto legal</a>
+        <a (click)="showMovies()" style="cursor:pointer" >Videos de soporte</a>
       </div>
     </div>
-
+  
     <!-- Columna central -->
     <div class="footer-center">
       <div class="locations">
@@ -40,3 +42,8 @@
     </div>
   </div>
 </footer>
+<div class="overlay" *ngIf="isMoviesVisible" (click)="hideMovies()">
+  <div class="modal-wrapper" (click)="$event.stopPropagation()">
+    <app-card-video-2 (closeModal)="hideMovies()"></app-card-video-2>
+  </div>
+</div>

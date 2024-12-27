@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
 
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  isMoviesVisible: boolean = false;
+  showMovies() {
+    this.isMoviesVisible = true;
+    this.cdr.markForCheck();
+    
+  }
+
+  hideMovies() {
+    this.isMoviesVisible = false;
+    this.cdr.markForCheck();
+  }
 }

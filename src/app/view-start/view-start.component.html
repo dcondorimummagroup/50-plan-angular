@@ -6,6 +6,7 @@
   <div  class="circle-1" ></div>
   <div  class="circle-2" ></div>
   <div  class="parent-body-1" >
+ 
     <div class="body-text-element-1" [ngClass]="currentStyleClass" >
       {{ currentText1 }}
     </div>
@@ -21,6 +22,9 @@
 
   </div>
   <div id="nosotros" class="parent-body-2" >
+    <div class="body-image-2">
+      <img [src]="currentIconImage" alt="" class="rotating-image">
+    </div>
     <div class="body-2-element-1" [style.background-image]="'url(' + currentImage + ')'"></div>
     <div class="body-2-element-2">
       <h2 class="title">{{ currentTitle }}</h2>

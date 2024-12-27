@@ -50,6 +50,7 @@ import { StartCardComponent } from './shared/start-card/start-card.component';
 import { ModalQrComponent } from './shared/modal-qr/modal-qr.component';
 import { CardVideo1Component } from './shared/card-video-1/card-video-1.component';
 import { FooterComponent } from './footer/footer.component';
+import { CardVideo2Component } from './shared/card-video-2/card-video-2.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -98,6 +99,7 @@ import { FooterComponent } from './footer/footer.component';
     ModalQrComponent,
     CardVideo1Component,
     FooterComponent,
+    CardVideo2Component,
   ],
   imports: [
     BrowserModule,
