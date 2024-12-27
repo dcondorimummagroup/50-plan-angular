@@ -1,164 +1,164 @@
 .footer {
 
-    background:
-     linear-gradient(to bottom, rgba(22, 22, 22, 0.781) 0%, rgba(0, 217, 255, 0.521) 84%, rgb(0, 87, 99) 100%)
-    ;
-    color: white;
-    padding: 40px 0;
+  background:
+    linear-gradient(to bottom, rgba(22, 22, 22, 0.781) 0%, rgba(0, 217, 255, 0.521) 84%, rgb(0, 87, 99) 100%)
+;
+  color: white;
+  padding: 64px 0;
+  position: relative;
+  overflow: hidden;
+
+  // Efecto de brillo superior
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.8),
+      transparent
+    );
+    animation: shimmer 2s infinite;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 40px;
     position: relative;
-    overflow: hidden;
+    z-index: 1;
+  }
 
-    // Efecto de brillo superior
-    &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: linear-gradient(90deg,
-            transparent,
-            rgba(255, 255, 255, 0.8),
-            transparent
-        );
-        animation: shimmer 2s infinite;
+  // Columna izquierda
+  .footer-left {
+    .footer-logo {
+      width: 120px;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
     }
 
-    .footer-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-        display: grid;
-        grid-template-columns: 1fr 1.5fr 1fr;
-        gap: 40px;
-        position: relative;
-        z-index: 1;
+    .legal-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: left;
+
+      .company-name {
+        font-weight: 500;
+        margin-bottom: 15px;
+        font-size: 1.1em;
+      }
+
+      a {
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 0.9em;
+        opacity: 0.9;
+
+        &:hover {
+          opacity: 1;
+          transform: translateX(5px);
+        }
+      }
     }
+  }
 
-    // Columna izquierda
-    .footer-left {
-        .footer-logo {
-            width: 120px;
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
+  // Columna central
+  .footer-center {
+    .locations {
+      .location {
 
-            &:hover {
-                transform: scale(1.05);
-            }
+        text-align: left;
+
+        h3 {
+          font-size: 1.2em;
+          margin-bottom: 10px;
+          color: #fff;
         }
 
-        .legal-links {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            text-align: left;
+        p {
 
-            .company-name {
-                font-weight: 500;
-                margin-bottom: 15px;
-                font-size: 1.1em;
-            }
-
-            a {
-                color: white;
-                text-decoration: none;
-                transition: all 0.3s ease;
-                font-size: 0.9em;
-                opacity: 0.9;
-                
-                &:hover {
-                    opacity: 1;
-                    transform: translateX(5px);
-                }
-            }
+          font-size: 0.9em;
+          line-height: 1.5;
+          opacity: 0.9;
         }
+      }
     }
+  }
 
-    // Columna central
-    .footer-center {
-        .locations {
-            .location {
-                
-                text-align: left;
-                
-                h3 {
-                    font-size: 1.2em;
-                    margin-bottom: 10px;
-                    color: #fff;
-                }
+  // Columna derecha
+  .footer-right {
+    .social-links {
+      display: flex;
+      gap: 15px;
+      justify-content: flex-end;
 
-                p {
-                    
-                    font-size: 0.9em;
-                    line-height: 1.5;
-                    opacity: 0.9;
-                }
-            }
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: translateY(-3px);
         }
-    }
 
-    // Columna derecha
-    .footer-right {
-        .social-links {
-            display: flex;
-            gap: 15px;
-            justify-content: flex-end;
-
-            .social-icon {
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: white;
-                transition: all 0.3s ease;
-
-                &:hover {
-                    transform: translateY(-3px);
-                }
-
-                i {
-                    font-size: 1.2em;
-                }
-
-                &.whatsapp { background: #25D366; }
-                &.facebook { background: #1877F2; }
-                &.instagram { background: #E4405F; }
-                &.linkedin { background: #0A66C2; }
-                &.email { background: #EA4335; }
-            }
+        i {
+          font-size: 1.2em;
         }
-    }
 
-    @keyframes shimmer {
-        0% { transform: translateX(-100%); }
-        100% { transform: translateX(100%); }
+        &.whatsapp { background: #25D366; }
+        &.facebook { background: #1877F2; }
+        &.instagram { background: #E4405F; }
+        &.linkedin { background: #0A66C2; }
+        &.email { background: #EA4335; }
+      }
     }
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
 }
 
 @media (max-width: 768px) {
-    .footer {
-        .footer-container {
-            grid-template-columns: 1fr;
-        }
-
-        .footer-left {
-            .legal-links {
-                text-align: left;
-            }
-        }
-
-        .footer-center {
-            .locations {
-                text-align: left;
-            }
-        }
-
-        .footer-right {
-            .social-links {
-                justify-content: flex-start;
-            }
-        }
+  .footer {
+    .footer-container {
+      grid-template-columns: 1fr;
     }
+
+    .footer-left {
+      .legal-links {
+        text-align: left;
+      }
+    }
+
+    .footer-center {
+      .locations {
+        text-align: left;
+      }
+    }
+
+    .footer-right {
+      .social-links {
+        justify-content: flex-start;
+      }
+    }
+  }
 }

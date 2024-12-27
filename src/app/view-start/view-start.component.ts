@@ -1,14 +1,21 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subject, Observable, interval } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-view-start',
   templateUrl: './view-start.component.html',
-  styleUrls: ['./view-start.component.scss']
+  styleUrls: ['./view-start.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ViewStartComponent implements OnInit, OnDestroy {
+  private destroy$ = new Subject<void>();
+
   // Variables para el overlay de licencias
   isLicensesVisible: boolean = false;
+  isWalletsVisible: boolean = false;
+  isMoviesVisible: boolean = false;
   selectedBoxId: number = 0;
 
   slides_header = [
@@ -26,16 +33,6 @@ export class ViewStartComponent implements OnInit, OnDestroy {
     },
   ];
 
-  currentHeaderIndex = 0;
-  currentText1 = this.slides_header[0].text1;
-  currentText2 = this.slides_header[0].text2;
-  currentText3 = this.slides_header[0].text3;
-  currentStyleClass = this.slides_header[0].styleClass;
-
-  // Variables nuevas para el carrusel
-  private interval: any;
-  currentIndex = 0;
-  
   slides = [
     {
       title: 'Años de Experiencia',
@@ -53,13 +50,16 @@ export class ViewStartComponent implements OnInit, OnDestroy {
       image: '/assets/image/20.webp'
     }
   ];
-  
 
-  
+  currentHeaderIndex = 0;
+  currentIndex = 0;
   currentTitle = this.slides[0].title;
   currentText = this.slides[0].text;
   currentImage = this.slides[0].image;
-  private headerInterval: any;
+  currentText1 = this.slides_header[0].text1;
+  currentText2 = this.slides_header[0].text2;
+  currentText3 = this.slides_header[0].text3;
+  currentStyleClass = this.slides_header[0].styleClass;
 
   private readonly sections = {
     'logo': 'parent-body-1',
@@ -69,61 +69,91 @@ export class ViewStartComponent implements OnInit, OnDestroy {
     'clientes': 'parent-body-5'
   };
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
-    // Inicializar el carrusel
+    // Precarga de imágenes para mejorar rendimiento
+    this.preloadImages();
     this.startCarousel();
     this.startHeaderCarousel();
-    // Código existente
-    this.route.fragment.subscribe(fragment => {
-      if (fragment) {
-        this.scrollToSection(fragment);
+
+    this.route.fragment
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(fragment => {
+        if (fragment) {
+          this.scrollToSection(fragment);
+        }
+      });
+  }
+
+  private preloadImages(): void {
+    this.slides.forEach(slide => {
+      if (slide.image) {
+        const img = new Image();
+        img.src = slide.image;
       }
     });
   }
 
-  ngOnDestroy() {
-    // Limpiar el intervalo cuando el componente se destruye
-    if (this.interval) {
-      clearInterval(this.interval);
-    }
+  private startCarousel() {
+    interval(3000)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+        this.currentTitle = this.slides[this.currentIndex].title;
+        this.currentText = this.slides[this.currentIndex].text;
+        this.currentImage = this.slides[this.currentIndex].image;
+        this.cdr.markForCheck();
+      });
   }
 
-  private startCarousel() {
-    this.interval = setInterval(() => {
-      this.currentIndex = (this.currentIndex + 1) % this.slides.length;
-      this.currentTitle = this.slides[this.currentIndex].title;
-      this.currentText = this.slides[this.currentIndex].text;
-      this.currentImage = this.slides[this.currentIndex].image;
-    }, 3000);
-  }
   private startHeaderCarousel() {
-    this.headerInterval = setInterval(() => {
-      this.currentHeaderIndex = (this.currentHeaderIndex + 1) % this.slides_header.length;
-      this.currentText1 = this.slides_header[this.currentHeaderIndex].text1;
-      this.currentText2 = this.slides_header[this.currentHeaderIndex].text2;
-      this.currentText3 = this.slides_header[this.currentHeaderIndex].text3;
-      this.currentStyleClass = this.slides_header[this.currentHeaderIndex].styleClass;
-    }, 10000);
+    interval(10000)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.currentHeaderIndex = (this.currentHeaderIndex + 1) % this.slides_header.length;
+        this.currentText1 = this.slides_header[this.currentHeaderIndex].text1;
+        this.currentText2 = this.slides_header[this.currentHeaderIndex].text2;
+        this.currentText3 = this.slides_header[this.currentHeaderIndex].text3;
+        this.currentStyleClass = this.slides_header[this.currentHeaderIndex].styleClass;
+        this.cdr.markForCheck();
+      });
   }
-  isWalletsVisible = false;
+
   showWallets() {
     this.isWalletsVisible = true;
+    this.cdr.markForCheck();
   }
 
   hideWallets() {
     this.isWalletsVisible = false;
+    this.cdr.markForCheck();
   }
+
   showLicenses(boxId: number) {
     this.selectedBoxId = boxId;
     this.isLicensesVisible = true;
     document.body.style.overflow = 'hidden';
+    this.cdr.markForCheck();
   }
 
   hideLicenses() {
     this.isLicensesVisible = false;
     document.body.style.overflow = 'auto';
+    this.cdr.markForCheck();
+  }
+
+  showMovies() {
+    this.isMoviesVisible = true;
+    this.cdr.markForCheck();
+  }
+
+  hideMovies() {
+    this.isMoviesVisible = false;
+    this.cdr.markForCheck();
   }
 
   private scrollToSection(sectionId: string): void {
@@ -138,42 +168,8 @@ export class ViewStartComponent implements OnInit, OnDestroy {
     }
   }
 
-  private getCurrentSection(): string {
-    const scrollPosition = window.scrollY;
-    return Object.entries(this.sections).find(([_, className]) => {
-      const element = document.querySelector(`.${className}`);
-      if (element) {
-        const rect = element.getBoundingClientRect();
-        return rect.top <= 0 && rect.bottom > 0;
-      }
-      return false;
-    })?.[0] || 'logo';
-  }
-
-  handleBoxSelection(boxId: number) {
-    switch(boxId) {
-      case 1:
-        console.log('Licencia Starter seleccionada');
-        break;
-      case 2:
-        console.log('Licencia Professional seleccionada');
-        break;
-      case 3:
-        console.log('Licencia Business seleccionada');
-        break;
-      case 4:
-        console.log('Licencia Enterprise seleccionada');
-        break;
-    }
-    this.showLicenses(boxId);
-  }
-
-  isMoviesVisible = false;
-  showMovies() {
-    this.isMoviesVisible = true;
-  }
-
-  hideMovies() {
-    this.isMoviesVisible = false;
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

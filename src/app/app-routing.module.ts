@@ -34,24 +34,7 @@ const routes: Routes = [
   { path: 'simulator-investor', component: SimulatorInvestorComponent },
   { path: 'simulator-promoter', component: SimulatorPromoterComponent },
   { path: 'simulator-leader', component: SimulatorLeaderComponent },
-  { path: 'licenses', component: LicensesComponent },
-  { path: 'card', component: CardComponent },
-  { path: 'card-2', component: Card2Component },
-  { path: 'orbit-card-leader', component: OrbitCardLeaderComponent},
-  { path: 'carousel-cards', component: CarouselCardsComponent},
-  { path: 'carousel-strategy', component: CarouselStrategyComponent},
-  { path: 'carousel-customers', component: CarouselCustomersComponent},
-  { path: 'carousel-simulator', component: CarouselSimulatorComponent},
-  { path: 'view-start-mobile', component: ViewStartMobileComponent},
-  { path: 'simulator-mobile-investor', component: SimulatorMobileInvestorComponent},
-  { path: 'simulator-mobile-leader', component: SimulatorMobileLeaderComponent},
-  { path: 'simulator-mobile-promoter', component: SimulatorMobilePromoterComponent},
-  { path: 'mobile-orbit-leader', component: MobileOrbitLeaderComponent },
-  { path: 'mobile-orbit-promoter', component: MobileOrbitPromoterComponent },
-  { path: 'start-card', component: StartCardComponent},
-  { path: 'modal-qr', component: ModalQrComponent},
-  { path: 'card-video-1', component: CardVideo1Component},
-  { path: 'footer', component: FooterComponent},
+
 ];
 
 @NgModule({
