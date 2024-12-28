@@ -158,19 +158,20 @@
         padding: 0 0;
     }
 
-.parent-body-7 {
-     display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 400px;
-}
-.footer-mobile {
-    margin-top: 100px;
-    width: 100%;
-    height: 100%;
-    background-image: url('/assets/image/Footer.svg');
-    background-color: #ff006a;
-}
+    .parent-body-7 {
+        width: 10%;
+        height: 10vh;
+        background-color: transparent;
+        grid-row: 62 / span 5;
+        grid-column: 1 /span 12 ;
+      
+      }
+      .footer-item {
+        width: 100%;
+        grid-column: 1 /span 12 ;
+      
+      
+      }
+    
 
 } 

@@ -851,9 +851,9 @@ $transition-default: all 0.3s ease-in-out;
 }
 
 [class^="icon-"] {
-  margin-top: 30px;
+  margin-top: 40px;
   height: 130px;
-  width: 40%;
+  width: 40%; 
   color: #494949;
   background-color: #00000000;
   margin-inline: auto;
@@ -892,17 +892,16 @@ $transition-default: all 0.3s ease-in-out;
 
 
 .box-text-1{
-  margin-top: 15px;
-  margin-inline: 20px;
+  margin-top: 25px;
 }
 
 .box-text-1 {
-
+ 
   font-family: "Jost", sans-serif;
-  font-weight: 500;
-  font-size: 1em;
+  font-weight: 300;
+  font-size: 1.2em;
   color: white;
-  margin-inline: 20px;
+  margin-inline: 30px;
 }
 
 // Variables
