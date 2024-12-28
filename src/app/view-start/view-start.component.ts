@@ -11,6 +11,7 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class ViewStartComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
+  isMobile = window.innerWidth <= 768;
 
   // Variables para el overlay de licencias
   isLicensesVisible: boolean = false;
@@ -86,6 +87,9 @@ export class ViewStartComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    window.addEventListener('resize', () => {
+      this.isMobile = window.innerWidth <= 768;
+    });
     // Precarga de imágenes para mejorar rendimiento
     this.preloadImages();
     this.startCarousel();
@@ -104,6 +108,7 @@ export class ViewStartComponent implements OnInit, OnDestroy {
         }
       });
   }
+  
 
   private rotateIconImage() {
     this.currentIconIndex = (this.currentIconIndex + 1) % this.iconImages.length;

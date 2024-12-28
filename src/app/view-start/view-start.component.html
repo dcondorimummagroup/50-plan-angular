@@ -1,5 +1,5 @@
-
-<div id="logo" class="parent">
+<app-view-start-mobile *ngIf="isMobile" class="mobile-view"></app-view-start-mobile>
+<div *ngIf="!isMobile" id="logo" class="parent">
   <div class="column-left"></div>
   <div class="column-right"></div>
 
@@ -142,10 +142,12 @@
 
   </div>
   <app-footer class="footer-item"  > </app-footer>
-  <app-start-card></app-start-card>
+ 
 </div>
 <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" class="whatsapp-float">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
 </a>
-<app-view-start-mobile class="mobile-view" > </app-view-start-mobile>
+
+
 <app-modal-qr *ngIf="isWalletsVisible" (closeModal)="hideWallets()"></app-modal-qr>
+<app-start-card></app-start-card>
