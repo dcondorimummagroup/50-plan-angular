@@ -91,12 +91,6 @@
   </div>
 
   <!-- Modal para videos -->
-  <div class="overlay" *ngIf="isMoviesVisible" (click)="hideMovies()">
-    <div class="modal-wrapper" (click)="$event.stopPropagation()">
-      <app-card-video-1 (closeModal)="hideMovies()"></app-card-video-1>
-    </div>
-  </div>
-
 
 
   <div class="parent-body-6" >
@@ -151,3 +145,9 @@
 
 <app-modal-qr *ngIf="isWalletsVisible" (closeModal)="hideWallets()"></app-modal-qr>
 <app-start-card></app-start-card>
+<div class="overlay" *ngIf="isMoviesVisible" (click)="hideMovies()">
+  <div class="modal-wrapper" (click)="$event.stopPropagation()">
+    <app-card-video-1 (closeModal)="hideMovies()"></app-card-video-1>
+  </div>
+</div>
+

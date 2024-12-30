@@ -8,25 +8,21 @@
     <div class="block-2-box-2" >
         <div  class="orbit-1" >
             <button class="orbit-button-1" 
-            (click)="hideOrbitCard()"
-            [disabled]="isOrbitCardVisible2"
-            [ngClass]="{'disabled-orbit': isOrbitCardVisible2}">
-            <span class="orbit-number-line">1</span>
-    </button>
+                (click)="hideOrbitCard()"
+                [disabled]="isOrbitCardVisible2"
+                [ngClass]="{'disabled-orbit': isOrbitCardVisible2}">
+                <span class="orbit-number-line">1</span>
+            </button>   
         </div>   
     </div>
     <div class="block-2-box-3" >
         <div class="orbit-1">
             <button class="orbit-button-1" 
-            (click)="hideOrbitCard2()"
-            [disabled]="isOrbitCardVisible || !isValidToSimulate()"
-            [ngClass]="{
-                'disabled-orbit': isOrbitCardVisible || !isValidToSimulate(),
-                'invalid-button': !isValidToSimulate(),
-                'valid-button': isValidToSimulate()
-            }">
-             <span class="orbit-number-line">2</span>
-            </button>
+                (click)="hideOrbitCard2()"
+                [disabled]="isOrbitCardVisible2"
+                [ngClass]="{'disabled-orbit': isOrbitCardVisible2}">
+                <span class="orbit-number-line">2</span>
+            </button>   
         </div>     
     </div>
     <div class="block-2-box-4" >
