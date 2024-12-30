@@ -21,18 +21,15 @@ export class MobileOrbitLeaderComponent {
   private readonly ORBIT2_USERS_KEY = 'orbit2_users'; 
   private readonly ORBIT3_USERS_KEY = 'orbit3_users'; 
   private readonly ORBIT4_USERS_KEY = 'orbit4_users'; 
-  private readonly ORBIT5_USERS_KEY = 'orbit5_users'; 
 
    constructor(private orbitService: Orbit1Service , 
-    private orbit2Service: Orbit2Service,
-    private orbit3Service: Orbit3Service,
-    private orbit4Service: Orbit4Service,
-    private orbit5Service: OrbitOthersService,
-
-     
+    private orbit2Service: Orbit2Service ,
+     private orbit3Service: Orbit3Service,
+     private orbit4Service: OrbitOthersService,
     ) {}
 
    ngOnInit() {
+    this.resetOrbitData();
     // Recuperar datos del localStorage
     const savedData = localStorage.getItem('investment_data');
     if (savedData) {
@@ -46,7 +43,6 @@ export class MobileOrbitLeaderComponent {
         // Actualizar el servicio con el valor guardado
         this.orbitService.updateInvestment(this.currentInvestment);
     }
-    
 }
   // Estados
 
@@ -65,12 +61,11 @@ export class MobileOrbitLeaderComponent {
   isOrbitCardVisible9: boolean = false; 
   isOrbitCardVisible10: boolean = false; 
   // Propiedades para la inversión
-  currentInvestment: number = 1000;
+  currentInvestment: number = 100.00;
   currentCard: string = 'alfa';
   weeklyPercentage: string = '0.625';
   monthlyPercentage: string = '2.5';
   yearlyPercentage: string = '30';
-
 
   updateInvestment(event: any) {
       const input = event.target as HTMLInputElement;
@@ -123,53 +118,40 @@ export class MobileOrbitLeaderComponent {
     errorMessage?: string 
   } {
     try {
+      // Obtener y validar usuarios
       const savedUsers = localStorage.getItem(this.ORBIT_USERS_KEY);
       let users: any[] = [];
   
+      // Intentar parsear los datos
       if (savedUsers) {
         try {
-          users = JSON.parse(savedUsers);
+          const parsedUsers = JSON.parse(savedUsers);
+          users = Array.isArray(parsedUsers) ? parsedUsers : [];
         } catch (error) {
           console.error('Error al parsear usuarios:', error);
           users = [];
         }
       }
   
-      // Verificar si users es un array
-      if (!Array.isArray(users)) {
-        users = [];
-      }
-  
+      // Calcular la inversión total de manera segura
       const totalInvestment = users.reduce((sum: number, user: any) => {
-        return sum + (Number(user?.investment) || 0);
+        const investment = typeof user?.investment === 'number' ? user.investment : 0;
+        return sum + investment;
       }, 0);
   
-      // Validar primero la inversión mínima
-      if (this.currentInvestment < 1000) {
-        return {
-          isValid: false,
-          users,
-          totalInvestment,
-          errorMessage: 'Es necesario haber invertido más de $1k para generar ganancias como promotor.'
-        };
-      }
-  
-      // Luego validar la cantidad de referidos
-      if (users.length < 2) {
-        return {
-          isValid: false,
-          users,
-          totalInvestment,
-          errorMessage: 'Es necesario tener 2 referidos directos en la órbita 1 y haber invertido más de $1k para generar ganancias como promotor.'
-        };
+      // Validar condiciones para Líder
+      let errorMessage = '';
+      if (users.length < 6 || totalInvestment < 24000) {
+        errorMessage = `Es necesario tener 6 referidos y un flujo total de $24k en la órbita 1 para generar ganancias como Líder.`;
       }
   
       return {
-        isValid: true,
+        isValid: users.length >= 6 && totalInvestment >= 24000,
         users,
         totalInvestment,
-        errorMessage: ''
+        errorMessage
       };
+  
     } catch (error) {
       console.error('Error en validateOrbitData:', error);
       return {
@@ -180,8 +162,10 @@ export class MobileOrbitLeaderComponent {
       };
     }
   }
+
   isValidToSimulate(): boolean {
-    return this.currentInvestment >= 1000 && this.validateOrbitData().isValid;
+    const { isValid } = this.validateOrbitData();
+    return isValid;
   }
 
   getButtonTooltip(): string {
@@ -192,12 +176,7 @@ export class MobileOrbitLeaderComponent {
   }
 
   toggleSimulator(): void {
-    if (!this.isValidToSimulate()) {
-      this.showErrorMessage = true;
-      this.errorMessage = this.getButtonTooltip();
-      return;
-    }
-  
+    // Si el simulador está visible, resetear todo
     if (this.showSimulator) {
       this.resetOrbitData();
       this.showSimulator = false;
@@ -205,11 +184,21 @@ export class MobileOrbitLeaderComponent {
       console.log('Simulador reseteado');
       return;
     }
-  
+
+    // Validar datos
+    const { isValid, errorMessage, users, totalInvestment } = this.validateOrbitData();
+    if (!isValid) {
+      this.showErrorMessage = true;
+      this.errorMessage = errorMessage!;
+      console.log(`Error: ${errorMessage}`);
+      return;
+    }
+    // Si todo está bien, mostrar el simulador
     this.showSimulator = true;
     this.showErrorMessage = false;
-    console.log('Simulador activado');
+    console.log('Simulador activado con:', { usuarios: users.length, montoTotal: totalInvestment });
     
+    // Scroll al simulador
     setTimeout(() => {
       const simulatorElement = document.querySelector('.simulator-section');
       if (simulatorElement) {
@@ -219,21 +208,18 @@ export class MobileOrbitLeaderComponent {
     }, 100);
   }
 
-
   private resetOrbitData(): void {
     // Eliminar datos del localStorage uno por uno
     localStorage.removeItem(this.ORBIT_USERS_KEY);
     localStorage.removeItem(this.ORBIT2_USERS_KEY);
     localStorage.removeItem(this.ORBIT3_USERS_KEY);
     localStorage.removeItem(this.ORBIT4_USERS_KEY);
-    localStorage.removeItem(this.ORBIT5_USERS_KEY);
   
     // Resetear los servicios
     this.orbitService.resetOrbitInvestment();
     this.orbit2Service.resetOrbitInvestment();
     this.orbit3Service.resetOrbitInvestment();
     this.orbit4Service.resetOrbitInvestment();
-    this.orbit5Service.resetOrbitInvestment();
  
   }
 
@@ -257,6 +243,7 @@ export class MobileOrbitLeaderComponent {
     document.body.style.overflow = 'auto';
     document.querySelector('.parent-body-simulator-capa-1')?.classList.remove('blur-background');
   }
+  
 
   showNextCard() {
     this.showCard2 = true;
@@ -277,7 +264,7 @@ export class MobileOrbitLeaderComponent {
 
    hideOrbitCard() {
     this.isOrbitCardVisible = true; 
-    document.body.style.overflow = 'hidden'
+    document.body.style.overflow = 'auto';
         document.body.classList.add('blur-background');
         document.querySelector('.parent-body-simulator-capa-1')?.classList.add('blur-background');
     document.querySelector('#sidebar')?.classList.add('blur-background');
@@ -332,10 +319,12 @@ export class MobileOrbitLeaderComponent {
   }
   hideOrbitCard10() {
     this.isOrbitCardVisible10 = true; 
+    document.body.style.overflow = 'hidden';
         document.body.classList.add('blur-background');
         document.querySelector('.parent-body-simulator-capa-1')?.classList.add('blur-background');
     document.querySelector('#sidebar')?.classList.add('blur-background');
   }
+
 
    // Close Orbit Cards
 

@@ -45,8 +45,16 @@
         <div class="amount-percentaje-3">{{yearlyPercentage}}%</div> 
     </div>
     
-    <app-mobile-orbit-leader></app-mobile-orbit-leader>     
+    <app-mobile-orbit-promoter></app-mobile-orbit-promoter>     
  
 
-    
+     <div class="button-simulation" 
+        [ngClass]="{
+        'invalid-button': !isValidToSimulate(),
+        'valid-button': isValidToSimulate()
+        }"
+        (click)="toggleSimulator()"
+        [title]="getButtonTooltip()">
+    <p class="button-text">{{ showSimulator ? 'Volver a simular' : 'Simular' }}</p>
+    </div>
 </div>

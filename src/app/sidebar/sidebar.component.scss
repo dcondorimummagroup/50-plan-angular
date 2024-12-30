@@ -758,9 +758,12 @@ button .text-element {
   background: rgba(0, 0, 0, 0.7);
   opacity: 0;
   visibility: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  // Optimizar la transición
+  transition: opacity 0.3s ease;
+  will-change: opacity;
   z-index: 1000;
-  backdrop-filter: blur(4px);
+  // Reducir la intensidad del blur
+  backdrop-filter: blur(3px);
 
   &.visible {
     opacity: 1;
@@ -768,212 +771,127 @@ button .text-element {
   }
 }
 
-// Menú lateral
 .side-menu {
   position: fixed;
   top: 0;
-  left: -100%;
+  // Cambiar left por transform para mejor rendimiento
+  transform: translateX(-100%);
   width: 80%;
   max-width: 400px;
   height: 100vh;
-  background: linear-gradient(
-    135deg,
-    rgba(2, 120, 141, 0.932) 0%,
-    rgba(0, 49, 51, 0.479) 100%
+  background: linear-gradient(135deg, 
+    rgba(0, 20, 24, 0.95) 0%,
+    rgba(0, 49, 51, 0.98) 100%
   );
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  // Optimizar transición
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
   z-index: 1001;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0);
-  border-right: 1px solid rgba(0, 216, 255, 0.1);
+  // Reducir efectos costosos
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 
   &.open {
-    left: 0;
+    transform: translateX(0);
   }
 
+  // Optimizar header
   .menu-header {
-    padding: 25px 20px;
+    padding: 20px;
     border-bottom: 1px solid rgba(0, 216, 255, 0.15);
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 216, 255, 0.1),
-      transparent
-    );
+    background: rgba(0, 216, 255, 0.05);
 
     .header-content {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
 
       .menu-logo {
-        height: 50px;
+        height: 40px;
         width: auto;
-        filter: drop-shadow(0 0 8px rgba(0, 216, 255, 0.3));
       }
 
       .close-button {
-        width: 32px;
-        height: 32px;
+        width: 30px;
+        height: 30px;
         position: relative;
-        border: none;
-        background: transparent;
         cursor: pointer;
         
-        
+        span {
+          position: absolute;
+          width: 20px;
+          height: 2px;
+          background: #00d8ff;
+          left: 50%;
+          top: 50%;
+          transition: transform 0.3s ease;
 
-        &:hover span {
-          background: white;
-          box-shadow: 0 0 8px rgba(0, 216, 255, 0.5);
+          &:first-child {
+            transform: translate(-50%, -50%) rotate(45deg);
+          }
+
+          &:last-child {
+            transform: translate(-50%, -50%) rotate(-45deg);
+          }
         }
       }
     }
   }
 
+  // Optimizar contenido
   .menu-content {
-    padding: 30px 25px;
+    padding: 20px;
 
-    .menu-item-1 {
-      width: 100%;
-      padding: 15px 20px;
-      margin-bottom: 10px;
-      font-family: "Jost", sans-serif;
-      font-size: 1.2em;
-      color: rgba(255, 255, 255, 0.8);
-      background: transparent;
-      border: none;
-      border-radius: 8px;
-      text-align: left;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-
-    
-
-      &:hover {
-        color: white;
-        background: transparent;
-        padding-left: 25px;
-
-        &::before {
-          opacity: 1;
-        }
-      }
-
-    }  .menu-item-1.active {
-      background: rgba(0, 216, 255, 0.1);
-    }
-
+    .menu-item-1,
     .menu-item-2 {
       width: 100%;
-      padding: 15px 20px;
-      margin-bottom: 10px;
-      font-family: "Jost", sans-serif;
-      font-size: 1.2em;
-      color: rgba(255, 255, 255, 0.8);
-
-      border: none;
-      border-radius: 8px;
-      text-align: left;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
+      padding: 12px 20px;
+      margin-bottom: 8px;
+      font-size: 1.1em;
+      color: rgba(255, 255, 255, 0.9);
+      transition: all 0.2s ease;
 
       &:hover {
-        color: white;
         background: rgba(0, 216, 255, 0.1);
         padding-left: 25px;
-
-        &::before {
-          opacity: 1;
-        }
       }
-
-    }
-    .menu-item-2.active {
-      background: rgba(0, 216, 255, 0.1);
     }
 
     .simulator-option {
-      margin: 20px 0;
-      padding: 15px 20px;
-      background: linear-gradient(
-        45deg,
-        rgba(0, 216, 255, 0.15),
-        rgba(0, 175, 206, 0.555)
-      );
-      border-radius: 12px;
-      border: 1px solid rgba(0, 216, 255, 0.2);
+      margin: 15px 0;
+      padding: 12px 20px;
+      background: rgba(0, 216, 255, 0.1);
+      border-radius: 8px;
       display: flex;
       align-items: center;
-      gap: 15px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-
-      i {
-        font-size: 1.2em;
-        color: #00d8ff;
-      }
-
-      span {
-        color: white;
-        font-size: 1.2em;
-      }
+      gap: 12px;
+      transition: background-color 0.2s ease;
 
       &:hover {
-        background: linear-gradient(
-          45deg,
-          rgba(0, 216, 255, 0.2),
-          rgba(0, 216, 255, 0.1)
-        );
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      }
-    }
-
-    .auth-buttons {
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(1, 175, 206, 0.712);
-
-      .menu-item {
-        margin-bottom: 15px;
+        background: rgba(0, 216, 255, 0.2);
       }
     }
   }
 }
 
-// Estilos para el botón hamburguesa
+// Optimizar botón hamburguesa
 .menu-button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
   padding: 8px;
-  width: 35px;
-  height: 35px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  width: 30px;
+  height: 30px;
   
   span {
     display: block;
     width: 100%;
     height: 2px;
-    background-color: #00d8ff;
-    transition: 0.3s;
+    background: #00d8ff;
+    transition: transform 0.3s ease;
   }
 
   &.open {
-    span:nth-child(1) {
-      transform: translateY(11px) rotate(45deg);
-    }
-    
-    span:nth-child(2) {
-      opacity: 0;
-    }
-    
-    span:nth-child(3) {
-      transform: translateY(-11px) rotate(-45deg);
-    }
+    span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; }
+    span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
   }
 }
 
