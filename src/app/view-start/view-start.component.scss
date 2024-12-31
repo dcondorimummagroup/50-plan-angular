@@ -1748,33 +1748,42 @@ $transition: all 0.3s ease;
   );
 }
 .image-test-1 {
-  background-image: url('/assets//image/test-1.webp');
+  background-image: url('/assets//image/user-icon-1.webp');
   grid-column: 2/ span 3;
   grid-row: 2 / span 4 ;
   position: relative;
   z-index: 11;
-  width: 97px ;
-  height: 97px;
+  width: 90px ;
+  height: 90px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .image-test-2 {
-  background-image: url('/assets/image/test-2.webp');
+  background-image: url('/assets/image/user-icon-1.webp');
   grid-column: 2/ span 3;
   grid-row: 2 / span 4 ;
   position: relative;
   z-index: 11;
-  width: 97px ;
-  height: 97px;
+  width: 90px ;
+  height: 90px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .image-test-3 {
-  background-image: url('/assets/image/test-3.webp');
+  background-image: url('/assets/image/user-icon-1.webp');
   grid-column: 2/ span 3;
   grid-row: 2 / span 4 ;
   position: relative;
   z-index: 11;
-  width: 97px ;
-  height: 97px;
+  width: 90px ;
+  height: 90px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 
@@ -1816,7 +1825,7 @@ $transition: all 0.3s ease;
 
 
 .body-6-box-1-title {
-  margin-top: 2px;
+  margin-top: 7px;
   grid-column: 1/ span 12;
   grid-row: 3 / span 4 ;
   color: white;
@@ -1825,7 +1834,7 @@ $transition: all 0.3s ease;
   z-index: 2;
 }
 .body-6-box-2-title {
-  margin-top: 2px;
+  margin-top: 7px;
   grid-column: 1/ span 12;
   grid-row: 3 / span 4 ;
   color: white;
@@ -1834,7 +1843,7 @@ $transition: all 0.3s ease;
   z-index: 2;
 }
 .body-6-box-3-title {
-  margin-top: 2px;
+  margin-top: 7px;
   grid-column: 1/ span 12;
   grid-row: 3 / span 4 ;
   color: white;
@@ -1845,7 +1854,7 @@ $transition: all 0.3s ease;
 .body-6-box-1-text {
   margin-left: 20px;
   margin-top: 6px;
-  text-align: left;
+  text-align: center;
   grid-column: 2/ span 10;
   grid-row: 6 / span 4 ;
   font-size: 1.2em;
@@ -1854,7 +1863,7 @@ $transition: all 0.3s ease;
 .body-6-box-2-text {
   margin-left: 20px;
   margin-top: 6px;
-  text-align: left;
+  text-align: center;
   grid-column: 2/ span 10;
   grid-row: 6 / span 4 ;
   font-size: 1.2em;
@@ -1863,9 +1872,9 @@ $transition: all 0.3s ease;
 .body-6-box-3-text {
   margin-left: 20px;
   margin-top: 6px;
-  text-align: left;
+  text-align: center;
   grid-column: 2/ span 10;
-  grid-row: 6 / span 4 ;
+  grid-row: 6 / span 5 ;
   font-size: 1.2em;
   color: white;
 }
