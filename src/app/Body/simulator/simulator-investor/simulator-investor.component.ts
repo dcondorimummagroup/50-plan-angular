@@ -42,7 +42,9 @@ export class SimulatorInvestorComponent {
     this.showLicenses = false;
     document.body.style.overflow = 'hidden';
     document.querySelector('.parent-body-simulator-capa-1')?.classList.add('blur-background');
+
   }
+
 
   hideInfo() {
     this.isCardVisible = false;

@@ -805,11 +805,7 @@ $transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 .parent-body-3 {
   height: 100vh;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.95) 0%,
-    rgba(0, 20, 24, 0.98) 100%
-  );
+
   grid-row: 22 / span 10;
   grid-column: 1 / span 12;
   display: grid;

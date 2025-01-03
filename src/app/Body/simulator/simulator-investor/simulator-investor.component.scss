@@ -718,7 +718,7 @@
   .card-wrapper {
     filter: none !important; // Evita que se aplique el desenfoque
     position: relative;
-    z-index: 1001; // Un nivel más alto que el overlay
+    z-index: 1090; // Un nivel más alto que el overlay
   }
 }
 

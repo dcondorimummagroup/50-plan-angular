@@ -116,18 +116,17 @@
 
         &:hover {
           transform: translateY(-3px);
+       
         }
 
         i {
           font-size: 1.2em;
         }
 
-        &.whatsapp { background: #00b9d1; }
-        &.facebook {  background: #00b9d1;  }
-        &.instagram {  background: #00b9d1;  }
-        &.linkedin {  background: #00b9d1; }
-        &.email {  background: #00b9d1;  }
-      }
+        &.facebook {  background:  #20cdfd;  }
+        &.instagram {   background:  #20cdfd;   }
+        &.linkedin {  background:  #20cdfd;  }
+   }
     }
   }
 
