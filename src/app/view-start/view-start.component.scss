@@ -2,7 +2,12 @@
 $grid-columns: 12;
 $grid-rows: 62;
 $transition-default: all 0.3s ease-in-out;
-
+$primary-color: rgba(0, 0, 0, 0);
+$dark-bg: rgba(0, 0, 0, 0);
+$star-color: rgba(187, 187, 187, 0.4);
+$circle-color: rgba(0, 110, 138, 0.342);
+$primary-glow: rgba(0, 0, 0, 0);
+$transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 // Mixins
 @mixin grid-container($cols, $rows) {
   display: grid;
@@ -56,9 +61,26 @@ $transition-default: all 0.3s ease-in-out;
   @include grid-container($grid-columns, $grid-rows);
 
   background-image: url('/assets/image/fondo.webp');
-  background-color: #000;
+  background-color: #0000006c;
   overflow-x: hidden;
   z-index: -4;
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle at 20% 30%, $star-color 1px, transparent 1px),
+      radial-gradient(circle at 40% 70%, $star-color 1px, transparent 1px),
+      radial-gradient(circle at 60% 20%, $star-color 1px, transparent 1px),
+      radial-gradient(circle at 80% 50%, $star-color 1px, transparent 1px);
+    background-size: 
+      100px 100px,
+      120px 120px,
+      150px 150px,
+      200px 200px;
+    animation: starTwinkle 4s ease-in-out infinite;
+  }
 }
 .blur-background {
   filter: blur(70px);
@@ -202,6 +224,23 @@ $transition-default: all 0.3s ease-in-out;
     height: 100vh;
     @include grid-container($grid-columns, 16);
     grid-column: 1 / span $grid-columns;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 20% 30%, $star-color 1px, transparent 1px),
+        radial-gradient(circle at 40% 70%, $star-color 1px, transparent 1px),
+        radial-gradient(circle at 60% 20%, $star-color 1px, transparent 1px),
+        radial-gradient(circle at 80% 50%, $star-color 1px, transparent 1px);
+      background-size: 
+        100px 100px,
+        120px 120px,
+        150px 150px,
+        200px 200px;
+      animation: starTwinkle 4s ease-in-out infinite;
+    }
   }
 
   &-1 {
@@ -766,15 +805,53 @@ $transition-default: all 0.3s ease-in-out;
 
 .parent-body-3 {
   height: 100vh;
-  background-color: transparent;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 20, 24, 0.98) 100%
+  );
   grid-row: 22 / span 10;
-  grid-column: 1 /span 12 ;
+  grid-column: 1 / span 12;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(16, 1fr);
-  justify-items: center
+  justify-items: center;
+  position: relative;
+  overflow: hidden;
+
+   // Estrellas
+   &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle at 20% 30%, $star-color 1px, transparent 1px),
+      radial-gradient(circle at 40% 70%, $star-color 1px, transparent 1px),
+      radial-gradient(circle at 60% 20%, $star-color 1px, transparent 1px),
+      radial-gradient(circle at 80% 50%, $star-color 1px, transparent 1px);
+    background-size: 
+      100px 100px,
+      120px 120px,
+      150px 150px,
+      200px 200px;
+    animation: starTwinkle 4s ease-in-out infinite;
+  }
+
+  // Círculos flotantes
 }
 
+// Animaciones
+@keyframes starTwinkle {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+// Título mejorado
 .body-3-sub-title {
   font-family: "Jost", sans-serif;
   font-weight: 200;
@@ -782,55 +859,276 @@ $transition-default: all 0.3s ease-in-out;
   font-size: 3.4em;
   grid-column: 1 / span 12;
   grid-row: 3 / span 1;
+  text-align: center;
+  position: relative;
+  text-shadow: 0 0 20px rgba(0, 216, 255, 0.3);
+  animation: titleAppear 1s cubic-bezier(0.4, 0, 0.2, 1);
+
+  // Efecto de línea debajo del título
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      #00d8ff,
+      transparent
+    );
+    animation: lineExpand 1s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.5s;
+  }
 }
 
-.line-1{
+// Líneas decorativas mejoradas
+%line-base {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #00d8ff,
+    #00d8ff,
+    transparent
+  );
+  z-index: 2;
+  box-shadow: 
+    0 0 15px rgba(0, 216, 255, 0.5),
+    0 0 30px rgba(0, 216, 255, 0.3);
+  opacity: 0;
+  transform: scaleX(0);
+  animation: lineAppear 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes titleAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lineExpand {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100px;
+  }
+}
+
+@keyframes lineAppear {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes rotateBackground {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.line-1 {
   position: absolute;
   top: 235%;
   width: 100vw;
   height: 2px;
-  background-color:#00d8ff;
-  z-index: 2 ;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #00d8ff,
+    #00d8ff,
+    #00d8ff,
+    transparent
+  );
+  z-index: 2;
+  box-shadow: 
+    0 0 10px rgba(0, 216, 255, 0.4),
+    0 0 20px rgba(0, 216, 255, 0.2);
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    top: -1px;
+    background: inherit;
+    filter: blur(2px);
+  }
 }
-.line-2{
+
+.line-2 {
   position: absolute;
   top: 290%;
   width: 100%;
   height: 2px;
-  background-color:#00d8ff;
-  z-index: 2 ;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #00d8ff,
+    #00d8ff,
+    #00d8ff,
+    transparent
+  );
+  z-index: 2;
+  box-shadow: 
+    0 0 10px rgba(0, 216, 255, 0.4),
+    0 0 20px rgba(0, 216, 255, 0.2);
 
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    top: -1px;
+    background: inherit;
+    filter: blur(2px);
+  }
 }
-.body-3-box-1 {
+@mixin box-effects {
+  background: linear-gradient(
+    145deg,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(20, 20, 20, 0.95) 100%
+  );
+  border: 1px solid rgba(0, 216, 255, 0.1);
+  box-shadow: 
+    0 0 20px rgba(0, 0, 0, 0.3),
+    inset 0 0 15px rgba(0, 216, 255, 0.05);
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 216, 255, 0.1),
+      transparent
+    );
+    transition: 0.5s;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 216, 255, 0.3);
+    box-shadow: 
+      0 10px 30px rgba(0, 0, 0, 0.4),
+      inset 0 0 20px rgba(0, 216, 255, 0.1);
+
+    &::before {
+      left: 100%;
+    }
+  }
+}
+
+// Estilos base para los boxes
+%box-base {
   text-align: center;
-  border: 4px solid rgb(58, 58, 58);
-  background-color: transparent;
+  border-radius: 20px;
+  width: 100%;
+  height: auto;
+  padding: 25px;
+  position: relative;
+  @include box-effects;
+
+  // Borde brillante
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 2px;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 216, 255, 0.2),
+      transparent 50%,
+      rgba(0, 216, 255, 0.1)
+    );
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+}
+
+// Boxes individuales
+.body-3-box-1 {
+  @extend %box-base;
   grid-column: 3 / span 2;
   grid-row: 6 / span 6;
-  width: 100%;
-  height: auto;
-  background-color: black;
+  animation: boxAppear 0.6s ease-out;
 }
+
 .body-3-box-2 {
-  text-align: center;
-  border: 4px solid rgb(58, 58, 58);
-  background-color: transparent;
+  @extend %box-base;
   grid-column: 6 / span 2;
   grid-row: 6 / span 6;
-  width: 100%;
-  height: auto;
-  background-color: black;
+  animation: boxAppear 0.6s ease-out 0.2s;
 }
+
 .body-3-box-3 {
-  text-align: center;
-  border: 4px solid rgb(58, 58, 58);
-  background-color: transparent;
+  @extend %box-base;
   grid-column: 9 / span 2;
   grid-row: 6 / span 6;
-  width: 100%;
-  height: auto;
-  background-color: black;
+  animation: boxAppear 0.6s ease-out 0.4s;
 }
+
+// Animaciones
+@keyframes boxAppear {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Efecto de hover adicional
+.body-3-box-1,
+.body-3-box-2,
+.body-3-box-3 {
+  &:hover {
+    .box-content {
+      transform: scale(1.02);
+    }
+  }
+
+  .box-content {
+    transition: transform 0.3s ease;
+  }
+}
+
 
 @media (max-width: 1480px) {
 
@@ -906,7 +1204,7 @@ $transition-default: all 0.3s ease-in-out;
 
 // Variables
 $transition-default: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-$box-width: 24vw;
+$box-width: 19vw;
 $box-shadow-default: 0 5px 15px rgba(0,0,0,0.05), 0 2px 5px rgba(0,0,0,0.03);
 
 // Mixins
@@ -983,9 +1281,14 @@ $box-shadow-default: 0 5px 15px rgba(0,0,0,0.05), 0 2px 5px rgba(0,0,0,0.03);
   justify-items: center;
   background-color: #000;
 }
+// Variables
+$box-alfa: rgba(0, 0, 0, 0);
+$box-beta: rgba(0, 0, 0, 0);
+$box-gamma: rgba(0, 0, 0, 0);
+$box-delta: rgba(0, 0, 0, 0);
 
-// Boxes base
-[class^="body-4-box-"] {
+// Mixin para efectos base
+@mixin box-base {
   text-align: center;
   width: $box-width;
   height: 100%;
@@ -996,67 +1299,133 @@ $box-shadow-default: 0 5px 15px rgba(0,0,0,0.05), 0 2px 5px rgba(0,0,0,0.03);
     position: center;
     size: contain;
   }
-  transition: $transition-default;
-  box-shadow: $box-shadow-default;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 
+  // Efecto de brillo común
   &::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    width: 25%;
+    left: -100%;
+    width: 50%;
     height: 100%;
-    @include shine-gradient;
-    opacity: 0;
-    pointer-events: none;
-    filter: blur(4px);
-    transform: translateX(-100%) skewX(-45deg);
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.2), // Reducido a 0.2 para más sutileza
+      transparent
+    );
+    transform: skewX(-25deg);
   }
 
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-
-  &:hover {
-    transform:
-      rotateY(12deg)
-      rotateX(-2deg)
-      translateZ(2px)
-      scale(1.01);
-    box-shadow:
-      -15px 15px 25px rgba(0, 0, 0, 0.15),
-      2px 2px 10px rgba(255, 255, 255, 0.05);
-
-    &::before {
-      opacity: 1;
-      animation: shineEffect 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-    }
-
-    &::after {
-      opacity: 1;
-    }
-  }
-
-  &:active {
-    transform: scale(0.95);
-    box-shadow:
-      0 5px 10px rgba(0, 0, 0, 0.1),
-      0 2px 4px rgba(0, 0, 0, 0.06);
+  &:hover::before {
+    animation: shine 2.2s cubic-bezier(0.4, 0, 0.2, 1); // Aumentado a 2.5s y cambiado el timing
   }
 }
 
-// Boxes específicos
-@for $i from 1 through 4 {
-  .body-4-box-#{$i} {
-    background-image: url('/assets/image/#{nth((alfa, beta, gamma, delta), $i)}.svg');
-    grid-column: #{3 + (($i - 1) * 3)} / span 2;
-    grid-row: 6 / span 4;
+// Box Alfa
+.body-4-box-1 {
+  @include box-base;
+  background-image: url('/assets/image/alfa.svg');
+  grid-column: 3 / span 2;
+  grid-row: 6 / span 4;
+  border: 1px solid rgba($box-alfa, 0.3);
+
+  &:hover {
+    transform: translateY(-5px) scale(1.02) rotateZ(2deg);
+    box-shadow: 
+      0 0 30px rgba(0, 204, 255, 0.2),
+      0 0 50px rgba(0, 204, 255, 0.1),
+      inset 0 0 20px rgba(0, 204, 255, 0.05);
+  }
+}
+
+// Box Beta
+.body-4-box-2 {
+  @include box-base;
+  background-image: url('/assets/image/beta.svg');
+  grid-column: 6 / span 2;
+  grid-row: 6 / span 4;
+  border: 1px solid rgba($box-beta, 0.3);
+
+  &:hover {
+    transform: translateY(-5px) scale(1.02) rotateZ(2deg);
+    box-shadow: 
+      0 0 30px rgba(180, 180, 180, 0.2),
+      0 0 50px rgba(180, 180, 180, 0.1),
+      inset 0 0 20px rgba(180, 180, 180, 0.05);
+  }
+}
+
+// Box Gamma
+.body-4-box-3 {
+  @include box-base;
+  background-image: url('/assets/image/gamma.svg');
+  grid-column: 9 / span 2;
+  grid-row: 6 / span 4;
+  border: 1px solid rgba($box-gamma, 0.3);
+
+  &:hover {
+    transform: translateY(-5px) scale(1.02) rotateZ(2deg);
+    box-shadow: 
+      0 0 30px rgba(255, 215, 0, 0.2),
+      0 0 50px rgba(255, 215, 0, 0.1),
+      inset 0 0 20px rgba(255, 215, 0, 0.05);
+  }
+}
+
+// Box Delta
+.body-4-box-4 {
+  @include box-base;
+  background-image: url('/assets/image/delta.svg');
+  grid-column: 12 / span 2;
+  grid-row: 6 / span 4;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  &:hover {
+    transform: translateY(-5px) scale(1.02) rotateZ(2deg);
+    box-shadow: 
+      0 0 30px rgba(255, 255, 255, 0.1),
+      0 0 50px rgba(0, 0, 0, 0.3),
+      inset 0 0 20px rgba(255, 255, 255, 0.05);
+  }
+}
+
+// Efecto activo común
+[class^="body-4-box-"] {
+  &:active {
+    transform: scale(0.98);
+    transition: transform 0.2s ease;
+  }
+}
+
+// Animación de brillo mejorada
+@keyframes shine {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.3;
+  }
+  35% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  65% {
+    opacity: 0.1;
+  }
+  100% {
+    left: 200%;
+    opacity: 0;
   }
 }
 
@@ -1166,25 +1535,173 @@ $box-shadow-default: 0 5px 15px rgba(0,0,0,0.05), 0 2px 5px rgba(0,0,0,0.03);
   font-size: 4em;
   grid-column: 1 / span 15;
   grid-row: 3 / span 1;
+
+  
 }
 
-// Variables
-$primary-color: rgb(0, 204, 255);
-$dark-bg: rgb(0, 41, 46);
-$transition: all 0.3s ease;
+
+
+
+// Variables globales
+
 
 .parent-body-5 {
   height: 100vh;
-  background-color: transparent;
-  grid-row: 42 / span 10;
+    grid-row: 42 / span 10;
   grid-column: 1 / span 12;
   display: grid;
   grid-template-columns: repeat(15, 1fr);
   grid-template-rows: repeat(16, 1fr);
   justify-items: center;
   z-index: 5;
-}
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
 
+
+
+  // Estrellas
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle at 20% 30%, $star-color 1px, transparent 1px),
+      radial-gradient(circle at 40% 70%, $star-color 1px, transparent 1px),
+      radial-gradient(circle at 60% 20%, $star-color 1px, transparent 1px),
+      radial-gradient(circle at 80% 50%, $star-color 1px, transparent 1px);
+    background-size: 
+      100px 100px,
+      120px 120px,
+      150px 150px,
+      200px 200px;
+    animation: starTwinkle 4s ease-in-out infinite;
+  }
+  .rectangle {
+    position: relative;
+    grid-column: 1 / span 15;
+    grid-row: 7 / span 1;
+    width: 50vw;
+    height: 59vh;
+    max-width: 900px;
+    margin: 0 auto;
+    aspect-ratio: 16/9;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: rgb(0, 41, 46);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 
+      0 0 30px rgba(0, 0, 0, 0.3),
+      0 0 50px rgba(0, 204, 255, 0.1);
+    border: 1px solid rgba(0, 204, 255, 0.1);
+    z-index: 10;
+  }
+
+  .video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/assets/image/señor.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        45deg,
+        rgba(0, 204, 255, 0.1),
+        rgba(0, 37, 39, 0.7)
+      );
+      z-index: 1;
+      transition: all 0.4s ease;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: rgba(0, 204, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      z-index: 2;
+      transition: all 0.4s ease;
+      box-shadow: 
+        0 0 20px rgba(0, 204, 255, 0.3),
+        inset 0 0 20px rgba(0, 204, 255, 0.2);
+    }
+
+    .play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 20px 0 20px 35px;
+      border-color: transparent transparent transparent #ffffff;
+      z-index: 3;
+      transition: all 0.4s ease;
+      filter: drop-shadow(0 0 10px rgba(0, 204, 255, 0.5));
+    }
+
+    &:hover {
+      transform: scale(1.02);
+
+      &::before {
+        background: linear-gradient(
+          45deg,
+          rgba(0, 204, 255, 0.2),
+          rgba(0, 37, 39, 0.8)
+        );
+      }
+
+      &::after {
+        transform: translate(-50%, -50%) scale(1.1);
+        background: rgba(0, 204, 255, 0.3);
+        border-color: rgb(0, 204, 255);
+        box-shadow: 
+          0 0 30px rgba(0, 204, 255, 0.5),
+          inset 0 0 30px rgba(0, 204, 255, 0.3);
+      }
+
+      .play-icon {
+        transform: translate(-50%, -50%) scale(1.1);
+        filter: drop-shadow(0 0 20px rgba(0, 204, 255, 0.8));
+      }
+    }
+
+    &:active {
+      transform: scale(0.98);
+      
+      &::after {
+        transform: translate(-50%, -50%) scale(0.95);
+      }
+      
+      .play-icon {
+        transform: translate(-50%, -50%) scale(0.95);
+      }
+    }
+  }
+}
 .body-5-sub-title {
   margin-top: 20px;
   font-family: "Jost", sans-serif;
@@ -1193,170 +1710,19 @@ $transition: all 0.3s ease;
   font-size: 4em;
   grid-column: 1 / span 15;
   grid-row: 3 / span 1;
+  text-shadow: 0 0 20px rgba($primary-color, 0.3);
+  z-index: 10;
+  
 }
-
-// Unificación de los dos .rectangle
-.rectangle {
-  position: relative;
-  grid-column: 1 / span 15;
-  grid-row: 7 / span 1;
-  width: 50vw;
-  height: 59vh;
-  max-width: 900px;
-  margin: 0 auto;
-  aspect-ratio: 16/9;
-  border-radius: 15px;
-  overflow: hidden;
-  background-color: $dark-bg;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.rectangle-movie {
-  background-color: $dark-bg;
-  height: 100%;
-  width: 40%;
-  border-left: #002527 2px solid;
-  border-right: 2px solid rgb(12, 36, 48);
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-
-  &::before {
-    content: '';
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.2);
-    transition: $transition;
+// Animaciones
+@keyframes starTwinkle {
+  0%, 100% {
+    opacity: 0.4;
   }
-
-  &::after {
-    content: '';
-    position: absolute;
-    border-style: solid;
-    border-width: 20px 0 20px 35px;
-    border-color: transparent transparent transparent #ffffff;
-    transition: $transition;
-  }
-
-  &:hover {
-    &::before {
-      background-color: rgba(255, 255, 255, 0.3);
-      transform: scale(1.1);
-    }
-
-    &::after {
-      transform: scale(1.1);
-    }
+  50% {
+    opacity: 1;
   }
 }
-
-.video-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('/assets/image/adulto.webp');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  cursor: pointer;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      45deg,
-      rgba(0, 204, 255, 0),
-      rgba(0, 37, 39, 0.438)
-    );
-    z-index: 1;
-    transition: $transition;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80px;
-    height: 80px;
-    background: rgba(0, 204, 255, 0.2);
-    border: 2px solid rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
-    z-index: 2;
-    transition: $transition;
-  }
-
-  .play-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 20px 0 20px 35px;
-    border-color: transparent transparent transparent #ffffff;
-    z-index: 3;
-    transition: $transition;
-    filter: drop-shadow(0 0 10px rgba(0, 204, 255, 0.5));
-    opacity: 0.9;
-  }
-
-  &:hover {
-    &::before {
-      background: linear-gradient(
-        45deg,
-        rgba(0, 204, 255, 0.1),
-        rgba(0, 37, 39, 0.538)
-      );
-    }
-
-    &::after {
-      transform: translate(-50%, -50%) scale(1.1);
-      background: rgba(0, 204, 255, 0.3);
-      border-color: $primary-color;
-      box-shadow: 0 0 20px rgba(0, 204, 255, 0.4);
-    }
-
-    .play-icon {
-      transform: translate(-50%, -50%) scale(1.1);
-      filter: drop-shadow(0 0 15px rgba(0, 204, 255, 0.8));
-    }
-  }
-
-  &:active {
-    &::after {
-      transform: translate(-50%, -50%) scale(0.95);
-      background: rgba(0, 204, 255, 0.4);
-    }
-
-    .play-icon {
-      transform: translate(-50%, -50%) scale(0.95);
-    }
-  }
-}
-
-.video-checkbox {
-  display: none;
-}
-
-// Optimizaciones de rendimiento
-.video-container {
-  will-change: transform;
-  backface-visibility: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-
 
 
 // Media queries para responsividad
@@ -1384,7 +1750,7 @@ $transition: all 0.3s ease;
   position: fixed;
   bottom: 40px;
   right: 40px;
-  z-index: 1000;
+  z-index: 100;
   transition: all 0.3s ease;
 }
 
@@ -1727,6 +2093,7 @@ $transition: all 0.3s ease;
   font-size: 4em;
   grid-column: 1 / span 15;
   grid-row: 4/ span 2;
+  
 }
 
 

@@ -747,34 +747,31 @@ button .text-element {
 }
 
 
-
-// Overlay del menú
 .menu-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 12, 20, 0.85);
   opacity: 0;
   visibility: hidden;
-  // Optimizar la transición
-  transition: opacity 0.3s ease;
-  will-change: opacity;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, backdrop-filter;
   z-index: 1000;
-  // Reducir la intensidad del blur
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(8px);
 
   &.visible {
     opacity: 1;
     visibility: visible;
+    animation: overlayShow 0.4s ease-out;
   }
 }
 
+// Menú lateral mejorado
 .side-menu {
   position: fixed;
   top: 0;
-  // Cambiar left por transform para mejor rendimiento
   transform: translateX(-100%);
   width: 80%;
   max-width: 400px;
@@ -783,23 +780,27 @@ button .text-element {
     rgba(0, 20, 24, 0.95) 0%,
     rgba(0, 49, 51, 0.98) 100%
   );
-  // Optimizar transición
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
   z-index: 1001;
-  // Reducir efectos costosos
-  backdrop-filter: blur(8px);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  border-right: 1px solid rgba(0, 216, 255, 0.1);
 
   &.open {
     transform: translateX(0);
+    animation: menuSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  // Optimizar header
   .menu-header {
-    padding: 20px;
+    padding: 25px;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 216, 255, 0.1),
+      rgba(0, 216, 255, 0.02)
+    );
     border-bottom: 1px solid rgba(0, 216, 255, 0.15);
-    background: rgba(0, 216, 255, 0.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 
     .header-content {
       display: flex;
@@ -807,15 +808,29 @@ button .text-element {
       justify-content: space-between;
 
       .menu-logo {
-        height: 40px;
+        height: 45px;
         width: auto;
+        filter: drop-shadow(0 0 8px rgba(0, 216, 255, 0.3));
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
       }
 
       .close-button {
-        width: 30px;
-        height: 30px;
+        width: 35px;
+        height: 35px;
         position: relative;
         cursor: pointer;
+        border-radius: 50%;
+        background: rgba(0, 216, 255, 0.1);
+        transition: all 0.3s ease;
+        
+        &:hover {
+          background: rgba(0, 216, 255, 0.2);
+          transform: rotate(90deg);
+        }
         
         span {
           position: absolute;
@@ -824,7 +839,7 @@ button .text-element {
           background: #00d8ff;
           left: 50%;
           top: 50%;
-          transition: transform 0.3s ease;
+          transition: all 0.3s ease;
 
           &:first-child {
             transform: translate(-50%, -50%) rotate(45deg);
@@ -838,74 +853,188 @@ button .text-element {
     }
   }
 
-  // Optimizar contenido
   .menu-content {
-    padding: 20px;
+    padding: 25px;
 
     .menu-item-1,
     .menu-item-2 {
       width: 100%;
-      padding: 12px 20px;
-      margin-bottom: 8px;
+      padding: 15px 25px;
+      margin-bottom: 12px;
       font-size: 1.1em;
       color: rgba(255, 255, 255, 0.9);
-      transition: all 0.2s ease;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      border: 1px solid rgba(0, 216, 255, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 3px;
+        height: 100%;
+        background: linear-gradient(to bottom, #00d8ff, rgba(0, 216, 255, 0.5));
+        transform: scaleY(0);
+        transition: transform 0.3s ease;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        transition: 0.5s;
+      }
 
       &:hover {
         background: rgba(0, 216, 255, 0.1);
-        padding-left: 25px;
+        transform: translateX(5px);
+        box-shadow: 0 4px 15px rgba(0, 216, 255, 0.1);
+        padding-left: 30px;
+
+        &::before {
+          transform: scaleY(1);
+        }
+
+        &::after {
+          left: 100%;
+        }
       }
     }
 
     .simulator-option {
-      margin: 15px 0;
-      padding: 12px 20px;
-      background: rgba(0, 216, 255, 0.1);
-      border-radius: 8px;
+      margin: 20px 0;
+      padding: 15px 25px;
+      background: linear-gradient(
+        45deg,
+        rgba(0, 216, 255, 0.15),
+        rgba(0, 216, 255, 0.05)
+      );
+      border-radius: 12px;
+      border: 1px solid rgba(0, 216, 255, 0.2);
       display: flex;
       align-items: center;
-      gap: 12px;
-      transition: background-color 0.2s ease;
+      gap: 15px;
+      transition: all 0.3s ease;
 
       &:hover {
-        background: rgba(0, 216, 255, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        background: linear-gradient(
+          45deg,
+          rgba(0, 216, 255, 0.2),
+          rgba(0, 216, 255, 0.1)
+        );
+      }
+
+      i {
+        color: #00d8ff;
+        font-size: 1.2em;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover i {
+        transform: rotate(360deg);
       }
     }
   }
 }
 
-// Optimizar botón hamburguesa
+// Botón hamburguesa mejorado
 .menu-button {
-  padding: 8px;
-  width: 30px;
-  height: 30px;
+  padding: 10px;
+  width: 35px;
+  height: 35px;
+  border-radius: 8px;
+  background: rgba(0, 216, 255, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  
+  &:hover {
+    background: rgba(0, 216, 255, 0.2);
+    
+    span {
+      box-shadow: 0 0 8px rgba(0, 217, 255, 0.979);
+    }
+  }
   
   span {
     display: block;
     width: 100%;
     height: 2px;
     background: #00d8ff;
-    transition: transform 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 5px rgb(0, 208, 245);
+
+    &:nth-child(1) {
+      width: 50%;
+    }
+
+    &:nth-child(2) {
+      width: 100%;
+    }
+
+    &:nth-child(3) {
+      width: 75%;
+      align-self: flex-end;
+    }
+  }
+
+  &:hover {
+    span:nth-child(1) {
+      width: 100%;
+    }
+    span:nth-child(3) {
+      width: 100%;
+    }
   }
 
   &.open {
-    span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    span:nth-child(2) { opacity: 0; }
-    span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    background: rgba(0, 217, 255, 0.788);
+    
+    span {
+      width: 100% !important;
+      
+      &:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      &:nth-child(2) {
+        opacity: 0;
+        transform: scale(0);
+      }
+      &:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+    }
+  }
+
+  // Efecto de pulsación
+  &:active {
+    transform: scale(0.95);
   }
 }
 
-@keyframes navbarGlow {
-  0% { box-shadow: 0 5px 23px rgba(0, 255, 255, 0.2), 0 0 10px rgba(0, 217, 255, 0.2); }
-  50% { box-shadow: 0 5px 30px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 217, 255, 0.8); }
-  100% { box-shadow: 0 5px 23px rgba(0, 255, 255, 0.2), 0 0 10px rgba(0, 217, 255, 0.2); }
+// Animación de las líneas al hover
+@keyframes lineExtend {
+  from { width: 50%; }
+  to { width: 100%; }
 }
-
-@keyframes slideIn {
-  from { transform: translateY(-100%); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
 // Navbar mejorado
 .parent-sidebar {
   animation: slideIn 0.8s ease-out, navbarGlow 4s infinite;
@@ -974,11 +1103,11 @@ button .text-element {
 // Logo mejorado
 .image-logo {
   transition: all 0.3s ease;
-  filter: drop-shadow(0 0 10px rgba(0,216,255,0.2));
+  filter: drop-shadow(0 0 10px rgba(0, 194, 228, 0.473));
   
   &:hover {
     transform: scale(1.05);
-    filter: drop-shadow(0 0 15px rgba(0,216,255,0.4));
+    filter: drop-shadow(0 0 15px rgba(0, 166, 196, 0.815));
   }
 }
 
@@ -1005,7 +1134,7 @@ button .text-element {
     }
     
     &:hover {
-      background: rgba(0, 217, 255, 0.658);
+      background: rgb(0, 217, 255);
       padding-left: 30px;
       
       &::before {
