@@ -51,6 +51,8 @@ import { ModalQrComponent } from './shared/modal-qr/modal-qr.component';
 import { CardVideo1Component } from './shared/card-video-1/card-video-1.component';
 import { FooterComponent } from './footer/footer.component';
 import { CardVideo2Component } from './shared/card-video-2/card-video-2.component';
+import { MobileProfitLeaderComponent } from './mobile-profit/mobile-profit-leader/mobile-profit-leader.component';
+import { MobileProfitPromoterComponent } from './mobile-profit/mobile-profit-promoter/mobile-profit-promoter.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -100,6 +102,8 @@ import { CardVideo2Component } from './shared/card-video-2/card-video-2.componen
     CardVideo1Component,
     FooterComponent,
     CardVideo2Component,
+    MobileProfitLeaderComponent,
+    MobileProfitPromoterComponent,
   ],
   imports: [
     BrowserModule,

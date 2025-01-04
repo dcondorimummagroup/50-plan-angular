@@ -5,10 +5,23 @@ import { Orbit2Service } from 'src/app/services/leader-system/orbit/orbit2/orbit
 import { Orbit3Service } from 'src/app/services/leader-system/orbit/orbit3/orbit3.service';
 import { OrbitOthersService } from 'src/app/services/leader-system/orbit/orbitOthers/orbit-others.service';
 
+import { trigger, state, style, animate, transition } from '@angular/animations';
 @Component({
   selector: 'app-simulator-mobile-leader',
   templateUrl: './simulator-mobile-leader.component.html',
-  styleUrls: ['./simulator-mobile-leader.component.scss']
+  styleUrls: ['./simulator-mobile-leader.component.scss'],
+  animations: [
+    trigger('fadeAnimation', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('300ms ease-in', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('300ms ease-out', style({ opacity: 0 }))
+      ])
+    ])
+  ]
+  
 })
 export class SimulatorMobileLeaderComponent {
   @ViewChild('topSection') topSection!: ElementRef;
@@ -110,6 +123,19 @@ export class SimulatorMobileLeaderComponent {
       }
   }
  
+
+  isValidToSimulate(): boolean {
+    const { isValid } = this.validateOrbitData();
+    return isValid;
+  }
+
+  getButtonTooltip(): string {
+    if (this.showSimulator) return 'Volver a simular';
+    
+    const { errorMessage } = this.validateOrbitData();
+    return errorMessage || 'Simular';
+  }
+
   private validateOrbitData(): { 
     isValid: boolean; 
     users: any[]; 
@@ -162,17 +188,6 @@ export class SimulatorMobileLeaderComponent {
     }
   }
 
-  isValidToSimulate(): boolean {
-    const { isValid } = this.validateOrbitData();
-    return isValid;
-  }
-
-  getButtonTooltip(): string {
-    if (this.showSimulator) return 'Volver a simular';
-    
-    const { errorMessage } = this.validateOrbitData();
-    return errorMessage || 'Simular';
-  }
 
   toggleSimulator(): void {
     // Si el simulador está visible, resetear todo

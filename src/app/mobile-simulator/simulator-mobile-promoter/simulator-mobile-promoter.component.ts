@@ -5,11 +5,23 @@ import { Orbit2PromoterService } from 'src/app/services/promoter-system/orbit/or
 import { Orbit3PromoterService } from 'src/app/services/promoter-system/orbit/orbit3/orbit3-promoter.service';
 import { Orbit4PromoterService } from 'src/app/services/promoter-system/orbit/orbit4/orbit4-promoter.service';
 import { Orbit5PromoterService } from 'src/app/services/promoter-system/orbit/orbit5/orbit5-promoter.service';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-simulator-mobile-promoter',
   templateUrl: './simulator-mobile-promoter.component.html',
-  styleUrls: ['./simulator-mobile-promoter.component.scss']
+  styleUrls: ['./simulator-mobile-promoter.component.scss'],
+  animations: [
+    trigger('fadeAnimation', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('300ms ease-in', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('300ms ease-out', style({ opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class SimulatorMobilePromoterComponent {
   @ViewChild('topSection') topSection!: ElementRef;

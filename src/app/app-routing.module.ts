@@ -8,6 +8,7 @@ import { SimulatorInvestorComponent } from './Body/simulator/simulator-investor/
 
 import { SimulatorPromoterComponent } from './Body/simulator/simulator-promoter-layer/simulator-promoter/simulator-promoter.component';
 import { SimulatorLeaderComponent } from './Body/simulator/simulator-leader-layer/simulator-leader/simulator-leader.component';
+import { MobileProfitLeaderComponent } from './mobile-profit/mobile-profit-leader/mobile-profit-leader.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,7 @@ const routes: Routes = [
   { path: 'simulator-investor', component: SimulatorInvestorComponent },
   { path: 'simulator-promoter', component: SimulatorPromoterComponent },
   { path: 'simulator-leader', component: SimulatorLeaderComponent },
-
+  { path: 'mobile-profit-leader', component: MobileProfitLeaderComponent },
 ];
 
 @NgModule({

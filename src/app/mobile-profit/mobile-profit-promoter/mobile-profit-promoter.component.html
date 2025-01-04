@@ -1,0 +1,37 @@
+<div class="parent-body-simulator-capa-1">
+    <div class="subtitle-block-1">Propia Inversión</div>
+    <div class="block-1">
+        <div class="block-1-box-1">
+            <div class="block-1-box-1-title">Capital + rendimiento anual:</div>
+            <div class="block-1-box-1-amount">${{formatAmount(calculateOwnInvestment(investment).total)}}</div>
+        </div>
+        <div class="block-1-box-2">
+            <div class="block-1-box-2-title">Semanal</div>
+            <div class="block-1-box-2-amount">${{formatAmount(calculateOwnInvestment(investment).weekly)}}</div>
+        </div>
+        <div class="block-1-box-3">
+            <div class="block-1-box-3-title">Mensual</div>
+            <div class="block-1-box-3-amount">${{formatAmount(calculateOwnInvestment(investment).monthly)}}</div>
+        </div>
+        <div class="block-1-box-4">
+            <div class="block-1-box-4-title">Anual</div>
+            <div class="block-1-box-4-amount">${{formatAmount(calculateOwnInvestment(investment).yearly)}}</div>
+        </div>
+    </div>
+    <div class="subtitle-block-2">Afiliados Directos</div>
+
+    <div class="block-2">
+        
+        <div class="block-2-box-1">
+            <div class="block-2-box-1-title">Semanal</div>
+            <div class="block-2-box-1-amount">${{formatAmount(calculateOrbitAmounts(investment).weekly)}}</div>
+        </div>
+        <div class="block-2-box-2">
+            <div class="block-2-box-2-title">Mensual</div>
+            <div class="block-2-box-2-amount">${{formatAmount(calculateOrbitAmounts(investment).monthly)}}</div>
+        </div>
+      
+    </div>
+</div>
+
+

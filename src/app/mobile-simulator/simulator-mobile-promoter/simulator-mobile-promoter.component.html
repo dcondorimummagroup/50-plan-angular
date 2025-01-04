@@ -45,16 +45,157 @@
         <div class="amount-percentaje-3">{{yearlyPercentage}}%</div> 
     </div>
     
-    <app-mobile-orbit-promoter></app-mobile-orbit-promoter>     
+    <div class="block-2" >
  
+        <div class="block-2-box-1" >   
+           <P class="orbit-text">Órbitas</P> 
+    
+        </div>
+        <div class="block-2-box-2" >
+            <div  class="orbit-1" >
+                <button class="orbit-button-1" 
+                    (click)="hideOrbitCard()"
+                    [disabled]="isOrbitCardVisible"
+                    [ngClass]="{'disabled-orbit': isOrbitCardVisible}">
+                
+                    <span class="orbit-number-line">1</span>
+                </button>   
+            </div>   
+        </div>
+        <div class="block-2-box-3" >
+            <div class="orbit-1">
+                <button class="orbit-button-1" 
+                    (click)="hideOrbitCard2()"
+                    [disabled]="isOrbitCardVisible || !isValidToSimulate()"
+                    [ngClass]="{
+                        'disabled-orbit': isOrbitCardVisible || !isValidToSimulate(),
+                        'invalid-button': !isValidToSimulate(),
+                        'valid-button': isValidToSimulate()
+                    }">
+                    <span class="orbit-number-line">2</span>
+                </button>   
+            </div>     
+        </div>
+        <div class="block-2-box-4" >
+            <div class="orbit-1">
+                <button class="orbit-button-1" 
+                    (click)="hideOrbitCard3()"
+                    [disabled]="isOrbitCardVisible3"
+                    [disabled]="isOrbitCardVisible || !isValidToSimulate()"
+                [ngClass]="{
+                    'disabled-orbit': isOrbitCardVisible || !isValidToSimulate(),
+                    'invalid-button': !isValidToSimulate(),
+                    'valid-button': isValidToSimulate()
+                }">
+                    <span class="orbit-number-line">3</span>
+                </button>   
+            </div>        
+        </div>
+        <div class="block-2-box-5" >
+            <div class="orbit-1">
+                <button class="orbit-button-1" 
+                    (click)="hideOrbitCard4()"
+                    [disabled]="isOrbitCardVisible || !isValidToSimulate()"
+                    [ngClass]="{
+                        'disabled-orbit': isOrbitCardVisible || !isValidToSimulate(),
+                        'invalid-button': !isValidToSimulate(),
+                        'valid-button': isValidToSimulate()
+                    }">
+                    <span class="orbit-number-line">4</span>
+                </button>   
+            </div>   
+        </div>
+        <div class="block-2-box-6" >
+            <div class="orbit-1">
+                <button class="orbit-button-1" 
+                    (click)="hideOrbitCard5()"
+                    [disabled]="isOrbitCardVisible || !isValidToSimulate()"
+                    [ngClass]="{
+                        'disabled-orbit': isOrbitCardVisible || !isValidToSimulate(),
+                        'invalid-button': !isValidToSimulate(),
+                        'valid-button': isValidToSimulate()
+                    }">
+                    <span class="orbit-number-line">5</span>
+                </button>   
+            </div>   
+        </div>
+    
+    </div>
+    
+    <div class="button-simulation" 
+    [ngClass]="{
+      'invalid-button': !isValidToSimulate(),
+      'valid-button': isValidToSimulate()
+    }"
+    
+    (click)="toggleSimulator()"
+    [title]="getButtonTooltip()">
+   <p class="button-text">{{ showSimulator ? 'Volver a simular' : 'Simular' }}</p>
+   </div>
+   
+</div>
 
-     <div class="button-simulation" 
-        [ngClass]="{
-        'invalid-button': !isValidToSimulate(),
-        'valid-button': isValidToSimulate()
-        }"
-        (click)="toggleSimulator()"
-        [title]="getButtonTooltip()">
-    <p class="button-text">{{ showSimulator ? 'Volver a simular' : 'Simular' }}</p>
+
+<app-mobile-profit-promoter 
+*ngIf="showSimulator" 
+class="simulator-section"
+[@fadeAnimation]>
+</app-mobile-profit-promoter>
+
+
+
+
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible" 
+     (click)="closeHideOrbitCard()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-promoter
+            (closeModal)="closeHideOrbitCard()">
+        </app-orbit-card-promoter>
+    </div>
+</div>
+
+<!-- Overlay para el segundo modal -->
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible2" 
+     (click)="closeHideOrbitCard2()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-promoter-2
+            (closeModal)="closeHideOrbitCard2()">
+        </app-orbit-card-promoter-2>
+    </div>
+</div>
+
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible3" 
+     (click)="closeHideOrbitCard3()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-promoter-3
+            (closeModal)="closeHideOrbitCard3()">
+        </app-orbit-card-promoter-3>
+    </div>
+</div>
+
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible4" 
+     (click)="closeHideOrbitCard4()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-promoter-4
+            (closeModal)="closeHideOrbitCard4()">
+        </app-orbit-card-promoter-4>
+    </div>
+</div>
+<div class="card-overlay" 
+     *ngIf="isOrbitCardVisible5" 
+     (click)="closeHideOrbitCard5()">
+    <div class="card-wrapper" 
+         (click)="$event.stopPropagation()">
+        <app-orbit-card-promoter-5
+            (closeModal)="closeHideOrbitCard5()">
+        </app-orbit-card-promoter-5>
     </div>
 </div>
