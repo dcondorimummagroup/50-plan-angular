@@ -127,22 +127,17 @@
      (click)="toggleSimulator()"
      [title]="getButtonTooltip()">
     <p class="button-text">{{ showSimulator ? 'Volver a simular' : 'Simular' }}</p>
-</div>
+    </div>
     <button class="exclamation-mark" (click)="showInfo()" > <p class="text-i" >¡</p> </button>
  
 </div>
 <app-simulator-mobile-leader class="mobile-simulator" ></app-simulator-mobile-leader>
 
-<div class="button-simulation-mobile" 
-[ngClass]="{
-  'invalid-button': !isValidToSimulate(),
-  'valid-button': isValidToSimulate()
-}"
-(click)="toggleSimulator()"
-[title]="getButtonTooltip()">
-<p class="button-text">{{ showSimulator ? 'Volver a simular' : 'Simular' }}</p>
-</div>
+
 <app-profit-leader *ngIf="showSimulator" class="simulator-section"></app-profit-leader>
+
+
+
 <div class="card-overlay" *ngIf="isCardVisible" (click)="hideInfo()">
     <div class="card-wrapper" (click)="$event.stopPropagation()">
         <app-card 

@@ -59,6 +59,8 @@
 </div>
 
 <app-profit-leader *ngIf="showSimulator" class="simulator-section"></app-profit-leader>
+
+
 <div class="card-overlay" *ngIf="isCardVisible" (click)="hideInfo()">
     <div class="card-wrapper" (click)="$event.stopPropagation()">
         <app-card 

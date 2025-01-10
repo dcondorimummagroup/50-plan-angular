@@ -53,9 +53,9 @@ export class ViewStartComponent implements OnInit, OnDestroy {
   ];
 
   iconImages = [
-    '/assets/image/dinero.webp',
-    '/assets/image/capital.webp',
-    '/assets/image/flujo.webp'
+    '/assets/image/transaction.webp',
+    '/assets/image/tres.webp',
+    '/assets/image/20m.webp'
   ];
   currentIconImage = this.iconImages[0];
   private imageInterval: any;
