@@ -34,6 +34,7 @@
         padding-top: 40px;
         padding-bottom: 40px;
         border-radius: 40px;
+        width:  70vw;
  
     }
 
@@ -243,17 +244,17 @@
         }
     
         &.beta {
-            background-image: url('/assets/image/i-alfa.svg');
+            background-image: url('/assets/image/i-beta.svg');
             animation: cardChange 0.3s ease-in-out;
         }
     
         &.gamma {
-            background-image: url('/assets/image/i-alfa.svg');
+            background-image: url('/assets/image/i-gamma.svg');
             animation: cardChange 0.3s ease-in-out;
         }
     
         &.delta {
-            background-image: url('/assets/image/i-alfa.svg');
+            background-image: url('/assets/image/i-delta.svg');
             animation: cardChange 0.3s ease-in-out;
         }
     }
@@ -296,7 +297,7 @@
         backdrop-filter: blur(10px);
         padding: 20px;
         padding-top: 40px;
-    
+        width: 70vw;
         border-radius: 40px;
      
 

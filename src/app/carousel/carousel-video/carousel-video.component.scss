@@ -107,9 +107,12 @@
     }
     
     .rectangle-movie {
-        background-color: rgb(0, 41, 46);
+        background-image: url('/assets/image/señor.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
         height: 100%;
-        width: 40%;
+        width: 100%;
         border-left: #002527 2px solid;
         border-right: 2px solid rgb(12, 36, 48);
         position: relative;

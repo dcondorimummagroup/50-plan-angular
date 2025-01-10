@@ -74,7 +74,7 @@ export class SimulatorMobileLeaderComponent {
   isOrbitCardVisible10: boolean = false; 
   // Propiedades para la inversión
   currentInvestment: number = 100.00;
-  currentCard: string = 'alfa';
+  currentCard: string = 'i-alfa';
   weeklyPercentage: string = '0.625';
   monthlyPercentage: string = '2.5';
   yearlyPercentage: string = '30';
@@ -101,22 +101,22 @@ export class SimulatorMobileLeaderComponent {
       if (integerSpan) integerSpan.textContent = integerPart;
       if (decimalSpan) decimalSpan.textContent = `.${decimalPart}`;
       if (this.currentInvestment >= 6000) {
-          this.currentCard = 'delta';
+          this.currentCard = 'i-delta';
           this.weeklyPercentage = '1.25';
           this.monthlyPercentage = '5';
           this.yearlyPercentage = '60';
       } else if (this.currentInvestment >= 4000) {
-          this.currentCard = 'gamma';
+          this.currentCard = 'i-gamma';
           this.weeklyPercentage = '1';
           this.monthlyPercentage = '4';
           this.yearlyPercentage = '48';
       } else if (this.currentInvestment >= 2000) {
-          this.currentCard = 'beta';
+          this.currentCard = 'i-beta';
           this.weeklyPercentage = '0.75';
           this.monthlyPercentage = '3';
           this.yearlyPercentage = '36';
       } else {
-          this.currentCard = 'alfa';
+          this.currentCard = 'i-alfa';
           this.weeklyPercentage = '0.625';
           this.monthlyPercentage = '2.5';
           this.yearlyPercentage = '30';

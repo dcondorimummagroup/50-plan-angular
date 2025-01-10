@@ -10,7 +10,7 @@ export class CarouselSimulatorComponent {
   
   currentSlide = 0;
   private touchStartX: number | null = null;
-  private readonly TOTAL_SLIDES = 4; // Cambiado a 4
+  private readonly TOTAL_SLIDES = 3; // Cambiado a 4
   private readonly SWIPE_THRESHOLD = 50;
   
   isLicensesVisible: boolean = false;
@@ -36,7 +36,7 @@ export class CarouselSimulatorComponent {
     }, options);
 
     // Observar cada card
-    const cards = this.container.nativeElement.querySelectorAll('.item-1, .item-2, .item-3, .item-4');
+    const cards = this.container.nativeElement.querySelectorAll('.item-1, .item-2, .item-3');
     cards.forEach((card, index) => {
       card.setAttribute('data-index', index.toString());
       observer.observe(card);

@@ -25,7 +25,7 @@
         grid-template-rows: repeat(7, 1fr);
         place-items: center;
         background: linear-gradient(145deg, rgba(73, 73, 73, 0.438), rgba(24, 24, 24, 0.05));
-      
+        width:  70vw;
         backdrop-filter: blur(10px);
         place-content: center;
         padding: 40px;
@@ -297,7 +297,7 @@
         padding-top: 40px;
         padding-bottom: 40px;
         border-radius: 40px;
-     
+        width:  70vw;
 
     }
     // Es
@@ -391,7 +391,7 @@
    
         padding-bottom: 40px;
         border-radius: 40px;
-
+        width:  70vw;
         margin-top: 60px;
         margin-bottom: 60px;
     }
