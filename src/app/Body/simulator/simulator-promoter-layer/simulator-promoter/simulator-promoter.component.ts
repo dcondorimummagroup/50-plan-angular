@@ -240,7 +240,7 @@ export class SimulatorPromoterComponent {
 
 
   private resetOrbitData(): void {
-    // Eliminar datos del localStorage uno por uno
+    // Eliminar datos del localStorage
     localStorage.removeItem(this.ORBIT_USERS_KEY);
     localStorage.removeItem(this.ORBIT2_USERS_KEY);
     localStorage.removeItem(this.ORBIT3_USERS_KEY);
@@ -253,20 +253,42 @@ export class SimulatorPromoterComponent {
     this.orbit3Service.resetOrbitInvestment();
     this.orbit4Service.resetOrbitInvestment();
     this.orbit5Service.resetOrbitInvestment();
-  // Resetear valores locales
-  this.currentInvestment = 100;
-  this.currentCard = 'alfa';
-  this.weeklyPercentage = '0.625';
-  this.monthlyPercentage = '2.5';
-  this.yearlyPercentage = '30';
 
-  // Actualizar el servicio con el valor inicial
-  this.orbitService.updateInvestment(this.currentInvestment);
+    // Resetear valores locales
+    this.currentInvestment = 100;
+    this.currentCard = 'alfa';
+    this.weeklyPercentage = '0.625';
+    this.monthlyPercentage = '2.5';
+    this.yearlyPercentage = '30';
 
-  // Actualizar la vista
-  this.updateInvestment({ target: { value: this.currentInvestment } });
-  }
+    // Actualizar el servicio
+    this.orbitService.updateInvestment(this.currentInvestment);
 
+    // Actualizar el input y su overlay
+    const inputElement = document.querySelector('.amount') as HTMLInputElement;
+    if (inputElement) {
+        inputElement.value = '100.00';
+    }
+
+    // Actualizar el overlay con los números
+    const integerSpan = document.querySelector('.integer');
+    const decimalSpan = document.querySelector('.decimal');
+    
+    if (integerSpan) integerSpan.textContent = '100';
+    if (decimalSpan) decimalSpan.textContent = '.00';
+
+    // Guardar en localStorage el nuevo estado
+    localStorage.setItem('investment_data', JSON.stringify({
+        amount: this.currentInvestment,
+        card: this.currentCard,
+        weekly: this.weeklyPercentage,
+        monthly: this.monthlyPercentage,
+        yearly: this.yearlyPercentage
+    }));
+
+    // Emitir el cambio de inversión
+    this.investmentChange.emit(this.currentInvestment);
+}
   handleScrollUp() {
     this.topSection.nativeElement.scrollIntoView({ 
       behavior: 'smooth',
