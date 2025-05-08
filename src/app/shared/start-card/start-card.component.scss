@@ -72,7 +72,7 @@
   font-weight: bold;
   color: white;
   margin: 16px;
-  
+
   text-align: center;
 }
 
@@ -83,21 +83,22 @@
   font-weight: bold;
   font-family: "Jost", sans-serif;
 }
-  
+
   .modal-container {
     background: linear-gradient(135deg, #0090b4 0%, #002d38 100%);
     border-radius: 8px;
     padding: 20px;
     width: 100%;
     max-width: 1220px;
-    height: 800px;
+    height: 80vh; /* Cambiado de 800px a 80vh para mejor adaptación */
     position: relative;
-    overflow: hidden;
+    overflow-y: auto; /* Habilitado scroll vertical */
+    overflow-x: hidden; /* Deshabilitado scroll horizontal */
     animation: slideIn 0.3s ease-out;
-    font-size: 16px;  
+    font-size: 16px;
     font-family: "Jost", sans-serif;
   }
-  
+
   .style-url {
     list-style-type: none;
     padding: 0;
@@ -131,7 +132,7 @@
     z-index: 2;
     font-size: 18px;         /* Tamaño del título */
     font-weight: bold;       /* Hace el título más visible */
-    color: white;     
+    color: white;
     font-family: "Jost", sans-serif;       /* Color del texto */
 
 }
@@ -150,11 +151,11 @@
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    z-index: 3;     
+    z-index: 3;
     font-family: "Jost", sans-serif;        /* Asegura que esté por encima de todo */
 }
 
-  
+
   .close-button {
     background: white;
     border: none;
@@ -167,7 +168,7 @@
     justify-content: center;
     font-weight: bold;
   }
-  
+
   .modal-content {
     color: white;
     position: relative;
@@ -175,18 +176,46 @@
     margin-inline: 40px;
     align-items: center;
     text-align: justify;
+    padding-bottom: 20px; /* Añadido padding inferior */
   }
-  
+
   .modal-body {
-    line-height: 1.2;
+    line-height: 1.4; /* Mejorado el interlineado */
     margin: 20px;
     margin-top: 20px;
+    padding: 10px; /* Añadido padding interno */
+    padding-bottom: 30px; /* Padding extra en la parte inferior */
   }
-  
+
   .modal-body p {
     margin-bottom: 15px;
   }
-  
+
+  /* Estilizar la barra de scroll global con colores del proyecto */
+  .modal-container::-webkit-scrollbar {
+    width: 6px; /* Reducido el ancho para que sea más sutil */
+  }
+
+  .modal-container::-webkit-scrollbar-track {
+    background: rgba(0, 45, 56, 0.3); /* Color oscuro del gradiente */
+    border-radius: 4px;
+  }
+
+  .modal-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 144, 180, 0.7); /* Color claro del gradiente (#0090b4) */
+    border-radius: 4px;
+  }
+
+  .modal-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(19, 189, 231, 0.8); /* Color más brillante al pasar el mouse */
+  }
+
+  /* Ocultar scrollbar en Firefox */
+  .modal-container {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 144, 180, 0.7) rgba(0, 45, 56, 0.3);
+  }
+
   .circles-container {
     position: absolute;
     bottom: -50%;
@@ -196,7 +225,7 @@
     opacity: 0.1;
     pointer-events: none;
   }
-  
+
   .circles-image {
     width: 100%;
     height: 100%;
@@ -222,81 +251,92 @@
       opacity: 1;
     }
   }
-  
+
   /* Responsive adjustments */
   @media (max-width: 1278px) {
     .modal-container {
       width: 100%;
       max-width: 780px;
-      height: auto; /* Altura máxima del viewport */
-    
-      padding: 15px 10px;
+      height: 80vh; /* Altura relativa al viewport */
+      overflow-y: auto; /* Habilita el scroll vertical */
+      padding: 15px 15px; /* Aumentado el padding horizontal */
       margin: 20px auto;
-   
+      -webkit-overflow-scrolling: touch; /* Mejor scroll en iOS */
     }
 
     .modal-content {
       color: white;
       position: relative;
       z-index: 2;
-      margin: 0 10px;
-      padding: 10px 0;
+      margin: 0 15px; /* Aumentado el margen */
+      padding: 10px 5px;
+      padding-bottom: 30px; /* Padding extra en la parte inferior */
       height: auto; /* Permite que el contenido determine la altura */
     }
 
-    /* Estilizar la barra de scroll */
-    .modal-container::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    .modal-container::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 4px;
-    }
-
-    .modal-container::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.3);
-      border-radius: 4px;
-    }
+    /* Los estilos de la barra de scroll ahora están definidos globalmente */
 
     .image-logo {
-      position: absolute; // o position: sticky; dependiendo de tu necesidad
+      position: sticky; /* Cambiado a sticky para mejor comportamiento con scroll */
       bottom: 20px;
       left: 50%;
       width: 60px;
       height: 60px;
       transform: translate(-50%, -3px);
       z-index: 3;
-      display: none;
+      margin-top: 20px; /* Espacio adicional antes del logo */
     }
+
     .circles-container {
       position: fixed; /* Mantiene los círculos fijos durante el scroll */
       bottom: -40%;
       opacity: 0.6;
     }
+  }
 
-    /* Ajustes para pantallas muy pequeñas */
-    @media (max-width: 610px) {
-      .modal-container {
-        overflow-y: scroll; /* Habilita el scroll vertical */
-        -webkit-overflow-scrolling: touch; /* Mejor scroll en iOS */
-        width: 95%;
-        height: 75vh;
-        padding: 10px 5px;
-      }
+  /* Ajustes para pantallas muy pequeñas */
+  @media (max-width: 610px) {
+    .modal-container {
+      overflow-y: auto; /* Habilita el scroll vertical */
+      overflow-x: hidden; /* Deshabilitado scroll horizontal */
+      -webkit-overflow-scrolling: touch; /* Mejor scroll en iOS */
+      width: 95%;
+      height: 85vh; /* Aumentado para mostrar más contenido */
+      padding: 15px 10px; /* Aumentado el padding */
+      margin: 10px auto;
+    }
 
-      .title-card {
-        font-size: 20px;
-        font-weight: bold;
-        color: white;
-        margin-top: 40px;
-        margin: 30px;
-        
-      }
-      .image-logo {
-        width: 50px;
-        height: 50px;
-        display: none;
-      }
+    .modal-content {
+      margin: 0 5px;
+      padding: 5px;
+      padding-bottom: 25px; /* Padding extra en la parte inferior */
+    }
+
+    .modal-body {
+      padding: 10px;
+      padding-bottom: 20px;
+    }
+
+    .title-card {
+      font-size: 22px; /* Aumentado ligeramente */
+      font-weight: bold;
+      color: white;
+      margin: 15px 10px; /* Ajustado los márgenes */
+      text-align: center;
+    }
+
+    .title-card-2 {
+      font-size: 18px; /* Reducido para mejor visualización */
+      margin: 10px;
+    }
+
+    .sub-title {
+      font-size: 16px; /* Ajustado para mejor visualización */
+    }
+
+    .image-logo {
+      width: 50px;
+      height: 50px;
+      margin-top: 15px;
     }
   }
