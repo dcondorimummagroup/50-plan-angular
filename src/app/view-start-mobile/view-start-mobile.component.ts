@@ -40,7 +40,7 @@ export class ViewStartMobileComponent implements OnInit, OnDestroy {
       styleClass: 'style1'
     },
     {
-      text1: 'Invierte ',
+      text1: 'Rentabiliza',
       text2: 'como los',
       text3: 'PROFESIONALES',
       styleClass: 'style2'

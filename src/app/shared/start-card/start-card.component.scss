@@ -49,32 +49,91 @@
     align-items: center;
     z-index: 1000;
 }
+
+.sub-title {
+  font-size: 17px;
+  font-weight: bold;
+  color: white;
+  font-family: "Jost", sans-serif;
+}
+
+.title-card-2 {
+  margin: 16px;
+  margin-top: 12px;
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+  font-family: "Jost", sans-serif;
+}
+
+
+.title-card {
+  font-size: 34px;
+  font-weight: bold;
+  color: white;
+  margin: 16px;
+  
+  text-align: center;
+}
+
+.whatsapp-float {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: "Jost", sans-serif;
+}
   
   .modal-container {
     background: linear-gradient(135deg, #0090b4 0%, #002d38 100%);
     border-radius: 8px;
-    padding: 30px;
+    padding: 20px;
     width: 100%;
-    max-width: 580px;
-    height: 600px;
+    max-width: 1220px;
+    height: 800px;
     position: relative;
     overflow: hidden;
     animation: slideIn 0.3s ease-out;
+    font-size: 16px;  
     font-family: "Jost", sans-serif;
   }
   
+  .style-url {
+    list-style-type: none;
+    padding: 0;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    margin-top: 12px;
+    max-width: 4rem;
+    text-align: left;
+  }
+
+  @media (max-width: 478px) {
+    .style-url {
+      list-style-type: none;
+      padding: 0;
+      text-decoration: none;
+      color: white;
+      font-size: 12px;
+      margin-top: 12px;
+      max-width: 60px;
+    }
+  }
+
   .modal-header {
     display: flex;
     justify-content: center;  /* Centra horizontalmente */
     align-items: center;      /* Centra verticalmente */
     width: 100%;             /* Asegura que tome todo el ancho */
-    margin-top: 60px;
+    margin-top: 10px;
     position: relative;
     z-index: 2;
-    font-size: 24px;         /* Tamaño del título */
+    font-size: 18px;         /* Tamaño del título */
     font-weight: bold;       /* Hace el título más visible */
     color: white;     
     font-family: "Jost", sans-serif;       /* Color del texto */
+
 }
 
 .close-button {
@@ -115,12 +174,13 @@
     z-index: 2;
     margin-inline: 40px;
     align-items: center;
+    text-align: justify;
   }
   
   .modal-body {
-    line-height: 1.6;
+    line-height: 1.2;
     margin: 20px;
-    margin-top: 50px;
+    margin-top: 20px;
   }
   
   .modal-body p {
@@ -145,13 +205,13 @@
 
   .image-logo {
     position: absolute;
-    bottom: 40px;
-    left: 100px;
-    width: 100px;
-    height: 100px;
+    bottom: 20px;
+    right: 50px;
+    width: 50px;
+    height: 50px;
   }
 
-  
+
   @keyframes slideIn {
     from {
       transform: translateY(-100px);
@@ -164,41 +224,79 @@
   }
   
   /* Responsive adjustments */
-  @media (max-width: 768px) {
+  @media (max-width: 1278px) {
     .modal-container {
-      width: 65%;
-      padding: 20px;
+      width: 100%;
+      max-width: 780px;
+      height: auto; /* Altura máxima del viewport */
+    
+      padding: 15px 10px;
+      margin: 20px auto;
+   
     }
-    .modal-container {
-      background: linear-gradient(135deg, #0090b4 0%, #002d38 100%);
-      border-radius: 8px;
-      padding: 5px;
-      width: 90%;
-      max-width: 580px;
-      height: 660px;
-      position: relative;
-      overflow: hidden;
-      animation: slideIn 0.3s ease-out;
-      font-family: "Jost", sans-serif;
-    }
+
     .modal-content {
       color: white;
       position: relative;
       z-index: 2;
-      margin-inline: 10px;
-      align-items: center;
+      margin: 0 10px;
+      padding: 10px 0;
+      height: auto; /* Permite que el contenido determine la altura */
     }
+
+    /* Estilizar la barra de scroll */
+    .modal-container::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .modal-container::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+    }
+
+    .modal-container::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 4px;
+    }
+
     .image-logo {
-      position: absolute;
-      bottom: 10px;
+      position: absolute; // o position: sticky; dependiendo de tu necesidad
+      bottom: 20px;
       left: 50%;
-      width: 80px;
-      height: 80px;
-      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      transform: translate(-50%, -3px);
+      z-index: 3;
+      display: none;
     }
-    
-    
     .circles-container {
-      bottom: -30%;
+      position: fixed; /* Mantiene los círculos fijos durante el scroll */
+      bottom: -40%;
+      opacity: 0.6;
+    }
+
+    /* Ajustes para pantallas muy pequeñas */
+    @media (max-width: 610px) {
+      .modal-container {
+        overflow-y: scroll; /* Habilita el scroll vertical */
+        -webkit-overflow-scrolling: touch; /* Mejor scroll en iOS */
+        width: 95%;
+        height: 75vh;
+        padding: 10px 5px;
+      }
+
+      .title-card {
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        margin-top: 40px;
+        margin: 30px;
+        
+      }
+      .image-logo {
+        width: 50px;
+        height: 50px;
+        display: none;
+      }
     }
   }

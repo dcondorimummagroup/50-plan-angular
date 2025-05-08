@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartCardComponent implements OnInit {
   isOpen: boolean = false;
-  title: string = 'Comunicado Importante';
+  title: string = 'COMUNICADO IMPORTANTE: REACTIVACIÓN DE 50 PLAN Y LANZAMIENTO DE NUESTRO EXCHANGE';
 
   ngOnInit() {
     // Eliminar el setTimeout innecesario
